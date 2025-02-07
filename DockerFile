@@ -1,0 +1,23 @@
+# 1. Use an official Node.js image as the base
+FROM node:18-alpine
+
+# 2. Set the working directory inside the container
+WORKDIR ./
+
+# 3. Copy package.json and package-lock.json (or yarn.lock)
+COPY package.json package-lock.json* yarn.lock* ./
+
+# 4. Install dependencies (use --frozen-lockfile if using Yarn)
+RUN npm install --exact
+
+# 5. Copy the rest of the application files
+COPY . .
+
+# 6. Build the Next.js application
+RUN npm run build
+
+# 7. Expose port 3000 (Next.js default)
+EXPOSE 3000
+
+# 8. Start Next.js in production mode
+CMD ["npm", "run", "start"]
