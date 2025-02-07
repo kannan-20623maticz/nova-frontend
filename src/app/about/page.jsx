@@ -93,7 +93,13 @@ const page = () => {
                 </Container>
             </section>
             <section className="sectionfour p-0">
-                <FooterBlackbox page="about" data={footblackbox} />
+                <FooterBlackbox page="about" data={[
+        {
+            datahead: "Join the platform that empowers creators, fans, and communities to connect, grow, and thrive. Start your journey today and help shape the future of the web.",
+            datadesc: "Get Started with NOVA"
+        }
+    ]
+    } />
             </section>
         </main>
     )
