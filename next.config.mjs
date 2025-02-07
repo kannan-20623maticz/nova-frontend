@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  distDir : "build",
+  distDir : "out",
+  // trailingSlash: true,
+  skipTrailingSlashRedirect: true,
   devIndicators: {
     appIsrStatus: false
   }
