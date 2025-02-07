@@ -1,11 +1,13 @@
 'use client'
+
+import React, { useState } from 'react';
 import Image from 'next/image';
 import { Col, Container, Row } from 'react-bootstrap'
 import Images from '@/Images';
 import Lottie from 'lottie-react';
 import FooterBlackbox from '@/components/FooterBlackbox';
 
-const page = () => {
+const Aboutpage = () => {
 
     const [footblackbox] = useState([
         {
@@ -103,7 +105,7 @@ const page = () => {
     )
 }
 
-export default page;
+export default Aboutpage;
 
 // 'use client';
 // import Image from 'next/image';
