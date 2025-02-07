@@ -6,8 +6,11 @@ import { Col, Container, Row } from 'react-bootstrap'
 import Images from '@/Images';
 // import Lottie from 'lottie-react';
 import FooterBlackbox from '@/components/FooterBlackbox';
+import dynamic from 'next/dynamic';
 
 const Aboutpage = () => {
+
+    const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 
     const [footblackbox] = useState([
         {
@@ -40,7 +43,7 @@ const Aboutpage = () => {
                         </Col>
                         <Col xs={12} sm={12} md={12} lg={6}>
                             <div className="bannerimgbox">
-                                {/* <Lottie animationData={Images.about} loop={true} /> */}
+                                <Lottie animationData={Images.about} loop={true} />
                             </div>
                         </Col>
                     </Row>
