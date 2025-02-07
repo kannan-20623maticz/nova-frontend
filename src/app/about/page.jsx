@@ -9,12 +9,12 @@ import FooterBlackbox from '@/components/FooterBlackbox';
 
 const page = () => {
 
-    const [footblackbox] = useState([
-        {
-            datahead: "Join the platform that empowers creators, fans, and communities to connect, grow, and thrive. Start your journey today and help shape the future of the web.",
-            datadesc: "Get Started with NOVA"
-        }
-    ]);
+    // const [footblackbox] = useState([
+    //     {
+    //         datahead: "Join the platform that empowers creators, fans, and communities to connect, grow, and thrive. Start your journey today and help shape the future of the web.",
+    //         datadesc: "Get Started with NOVA"
+    //     }
+    // ]);
 
     return (
         <main className="aboutpage">
