@@ -1495,6 +1495,59 @@ video {
   filter: invert(1);
 }
 
+.sectiontwentynine {
+  background-image: url(/assets/images/blackboxonebg.webp);
+}
+
+.sectiontwentynine .sectiontwentyninebox {
+  text-align: center;
+}
+
+.sectiontwentynine .sectiontwentynineboximg {
+  width: 100%;
+  max-width: 80px;
+}
+
+.sectiontwentynine .sectiontwentynineboxhead {
+  font-size: 22px;
+  line-height: 32px;
+  font-weight: 500;
+}
+
+.sectiontwentynine .sectiontwentynineboxdesc {
+  font-size: 20px;
+  line-height: 30px;
+  font-weight: 500;
+}
+
+.sectiontwentynine .sectiontwentyninebox_subscribeform .input-group {
+  border: 1px solid var(--lightgreen);
+  border-radius: 50px;
+  height: 55px;
+  width: 100%;
+  max-width: 480px;
+  margin: auto;
+}
+
+.sectiontwentynine .sectiontwentyninebox_subscribeform .form-control {
+  font-size: 16px;
+  background-color: transparent;
+  color: var(--white);
+  border: 0px;
+  box-shadow: none;
+  padding: 10px 20px;
+}
+
+.sectiontwentynine .sectiontwentyninebox_subscribeform .input-group-text {
+  padding: 0;
+  background-color: var(--lightgreen);
+  border: 0px;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+}
+
+
+
 
 
 /* wallet page css start */
@@ -2120,11 +2173,6 @@ video {
     max-width: 1500px;
   }
 
-  .containertwo {
-    width: 100%;
-    max-width: 90%;
-  }
-
   .banner-title {
     font-size: 52px;
     line-height: 68px;
@@ -2289,8 +2337,26 @@ video {
     font-size: 36px;
     line-height: 52px;
   }
+
+  .sectiontwentynine .sectiontwentynineboxhead {
+    font-size: 26px;
+    line-height: 40px;
+  }
 }
 
+@media (1800px < width < 2000px) {
+  .containertwo {
+    width: 100%;
+    max-width: 90%;
+  }
+}
+
+@media (width > 2000px) {
+  .containertwo {
+    width: 100%;
+    max-width: 1800px;
+  }
+}
 
 
 

@@ -61,6 +61,7 @@ const Images = {
     checked: require("../public/assets/images/checked.webp"),
     close: require("../public/assets/images/close.webp"),
     rightarrow: require("../public/assets/images/rightarrow.webp"),
+    subscribe: require("../public/assets/images/subscribe.webp"),
 
     threemobiles: require("../public/assets/images/threemobiles.json"),
     // ecosystem: require("../public/assets/images/ecosystem.gif"),

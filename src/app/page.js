@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { Accordion, Col, Container, Row } from 'react-bootstrap'
+import { Accordion, Col, Container, Form, InputGroup, Row } from 'react-bootstrap'
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 // import Lottie from 'lottie-react';
@@ -1256,6 +1256,39 @@ const page = () => {
                   Download
                   <Image src={Images.download} alt="Down Arrow" className="img-fluid" />
                 </button>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </section>
+      <section className="sectiontwentynine bgimg">
+        <Container>
+          <Row className="justify-content-center">
+            <Col xs={12} sm={12} md={12} lg={10}>
+              <div className="blackbox blackboxlightbg">
+                <Row className="justify-content-center">
+                  <Col xs={12} sm={12} md={12} lg={8}>
+                    <div className="sectiontwentyninebox">
+                      <Image src={Images.subscribe} alt="Subscribe Newsletter" className="img-fluid sectiontwentynineboximg mb-4" />
+                      <p className="paracontent text-lightgreen sectiontwentynineboxhead mb-2">Subscribe Newsletter</p>
+                      <p className="paracontent text-white sectiontwentynineboxdesc mb-4">
+                        Sign up to our newsletter to receive the latest updates
+                      </p>
+                      <Form className="sectiontwentyninebox_subscribeform">
+                        <InputGroup className="mb-3">
+                          <Form.Control
+                            aria-label="Subscribe Newsletter"
+                            aria-describedby="news"
+                          />
+                          <InputGroup.Text id="news">
+                            <button type="button" className="btn sitebtn greenbtn fw600">Subscribe</button>
+                          </InputGroup.Text>
+                        </InputGroup>
+                      </Form>
+                      <p className="paracontent text-grey">We promise not to spam you !</p>
+                    </div>
+                  </Col>
+                </Row>
               </div>
             </Col>
           </Row>
