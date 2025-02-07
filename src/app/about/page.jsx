@@ -10,7 +10,7 @@ import dynamic from 'next/dynamic';
 
 const Aboutpage = () => {
 
-    const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
+    const LottieImg = dynamic(() => import("lottie-react"), { ssr: false });
 
     const [footblackbox] = useState([
         {
@@ -43,7 +43,7 @@ const Aboutpage = () => {
                         </Col>
                         <Col xs={12} sm={12} md={12} lg={6}>
                             <div className="bannerimgbox">
-                                <Lottie animationData={Images.about} loop={true} />
+                                <LottieImg animationData={Images.about} loop={true} />
                             </div>
                         </Col>
                     </Row>
