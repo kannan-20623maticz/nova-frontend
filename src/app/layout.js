@@ -1,5 +1,6 @@
 
-import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+// import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import 'bootstrap/dist/css/bootstrap.css';
 import "./globals.css";
 import Header from "@/layouts/Header";
 import Footer from "@/layouts/Footer";
