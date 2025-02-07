@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { Col, Container, Row } from 'react-bootstrap'
 import Images from '@/Images';
-import Lottie from 'lottie-react';
+// import Lottie from 'lottie-react';
 import BoxContents from '@/components/BoxContents';
 import FlowBoxContents from '@/components/FlowBoxContents';
 import FooterBlackbox from '@/components/FooterBlackbox';
@@ -319,7 +319,7 @@ const page = () => {
                         </Col>
                         <Col xs={12} sm={12} md={12} lg={6}>
                             <div className="bannerimgbox">
-                                <Lottie animationData={Images.marketplace} loop={true} />
+                                {/* <Lottie animationData={Images.marketplace} loop={true} /> */}
                             </div>
                         </Col>
                     </Row>
@@ -356,7 +356,7 @@ const page = () => {
                                     </Col>
                                     <Col xs={12} sm={12} md={12} lg={6}>
                                         <div className="sectiontwo_leftrightboximg">
-                                            <Lottie animationData={Images.novamarketdiffone} loop={true} />
+                                            {/* <Lottie animationData={Images.novamarketdiffone} loop={true} /> */}
                                         </div>
                                     </Col>
                                 </Row>
@@ -365,7 +365,7 @@ const page = () => {
                                 <Row className="align-items-center row-reverse">
                                     <Col xs={12} sm={12} md={12} lg={6}>
                                         <div className="sectiontwo_leftrightboximg">
-                                            <Lottie animationData={Images.novamarketdifftwo} loop={true} />
+                                            {/* <Lottie animationData={Images.novamarketdifftwo} loop={true} /> */}
                                         </div>
                                     </Col>
                                     <Col xs={12} sm={12} md={12} lg={6} className="mb40">
@@ -409,7 +409,7 @@ const page = () => {
                                     </Col>
                                     <Col xs={12} sm={12} md={12} lg={6}>
                                         <div className="sectiontwo_leftrightboximg">
-                                            <Lottie animationData={Images.novamarketdiffthree} loop={true} />
+                                            {/* <Lottie animationData={Images.novamarketdiffthree} loop={true} /> */}
                                         </div>
                                     </Col>
                                 </Row>

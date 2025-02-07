@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { Accordion, Col, Container, Row } from 'react-bootstrap'
 import Images from '@/Images';
 import Link from 'next/link';
-import Lottie from 'lottie-react';
+// import Lottie from 'lottie-react';
 import BoxContents from '@/components/BoxContents';
 import FlowBoxContents from '@/components/FlowBoxContents';
 
@@ -580,7 +580,7 @@ const page = () => {
                     </Col>
                   </Row>
                   <div className="text-center sectionfivecenterimg">
-                    <Lottie animationData={Images.threemobiles} loop={true} />
+                    {/* <Lottie animationData={Images.threemobiles} loop={true} /> */}
                   </div>
                 </div>
               </Col>
@@ -604,7 +604,7 @@ const page = () => {
               </Col>
               <Col xs={12} sm={12} md={12} lg={8} xl={6} className="mb40">
                 <div className="sectionsix_centerboximgbox">
-                  <Lottie animationData={Images.ecosystemarrows} loop={true} />
+                  {/* <Lottie animationData={Images.ecosystemarrows} loop={true} /> */}
                   <Image src={Images.ecosystemcircle} alt="NOVA Ecosystem" className="img-fluid sectionsix_centerboximg" />
                   <p className="paracontent sectionsix_centercontent one">MEMBERSHIP MARKETPLACE</p>
                   <p className="paracontent sectionsix_centercontent two">WALLET</p>
@@ -733,7 +733,7 @@ const page = () => {
               </Col>
               <Col xs={12} sm={12} md={12} lg={6}>
                 <div className="text-center">
-                  <Lottie animationData={Images.earnown} loop={true} />
+                  {/* <Lottie animationData={Images.earnown} loop={true} /> */}
                 </div>
               </Col>
             </Row>
@@ -765,7 +765,7 @@ const page = () => {
               </Col>
               <Col xs={12} sm={12} md={12} lg={6}>
                 <div className="text-center">
-                  <Lottie animationData={Images.mobilewithman} loop={true} className="personimg" />
+                  {/* <Lottie animationData={Images.mobilewithman} loop={true} className="personimg" /> */}
                 </div>
               </Col>
             </Row>

@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { Col, Container, Row } from 'react-bootstrap'
 import Images from '@/Images';
-import Lottie from 'lottie-react';
+// import Lottie from 'lottie-react';
 import BoxContents from '@/components/BoxContents';
 import FooterBlackbox from '@/components/FooterBlackbox';
 
@@ -78,7 +78,7 @@ const page = () => {
             </Col>
             <Col xs={12} sm={12} md={12} lg={6}>
               <div className="bannerimgbox">
-                <Lottie animationData={Images.novawallet} loop={true} className="bannerimg" />
+                {/* <Lottie animationData={Images.novawallet} loop={true} className="bannerimg" /> */}
               </div>
             </Col>
           </Row>
