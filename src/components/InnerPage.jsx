@@ -45,7 +45,7 @@ const InnerPage = (props) => {
                                         {page === "creators" && <></>
                                         // <Lottie animationData={bannersection.dataimg} loop={true} />
                                         }
-                                        {(page === "fans" || page === "dao" || page === "community") && <Image src={bannersection.dataimg} alt={bannersection.datahead} className="img-fluid" />}
+                                        {(page === "fans" || page === "dao" || page === "community") && <Image src={bannersection.dataimg} alt={bannersection.datahead} className="img-fluid" loading="eager" />}
                                     </>
                                 {/* // } */}
                                 {/* {page === "community" && <video className="communityvid" autoPlay={true} loop={true} muted={true}>

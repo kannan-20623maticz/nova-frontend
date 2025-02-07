@@ -12,16 +12,16 @@ const Header = () => {
 
     const [headerbg, setHeaderbg] = useState(0);
 
-    // useEffect(() => {
-    //     const scrollfunc = () => {
-    //         setHeaderbg(document.documentElement.scrollTop);
-    //     }
-    //     window.addEventListener("scroll", scrollfunc);
+    useEffect(() => {
+        const scrollfunc = () => {
+            setHeaderbg(document.documentElement.scrollTop);
+        }
+        window.addEventListener("scroll", scrollfunc);
 
-    //     return () => {
-    //         window.removeEventListener("scroll", scrollfunc);
-    //     }
-    // }, [headerbg]);
+        return () => {
+            window.removeEventListener("scroll", scrollfunc);
+        }
+    }, [headerbg]);
 
     const [headlinks] = useState([
         {

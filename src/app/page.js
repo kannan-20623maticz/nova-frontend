@@ -449,7 +449,7 @@ const page = () => {
             </Col>
             <Col xs={12} sm={12} md={12} lg={6}>
               <div className="bannerimgbox">
-                <Image src={Images.bannerimg} alt="The World's First Web3 AI-Powered Social Super App" className="img-fluid bannerimg" />
+                <Image src={Images.bannerimg} alt="The World's First Web3 AI-Powered Social Super App" className="img-fluid bannerimg" loading="eager" />
               </div>
             </Col>
           </Row>
