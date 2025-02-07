@@ -3,12 +3,15 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { Col, Container, Row } from 'react-bootstrap'
-import Images from '@/Images';
+import dynamic from 'next/dynamic';
 // import Lottie from 'lottie-react';
 import BoxContents from '@/components/BoxContents';
 import FooterBlackbox from '@/components/FooterBlackbox';
 import TopBlackbox from '@/components/TopBlackbox';
 
+const Lottieimg = dynamic(() => import('lottie-react'), { ssr: false });
+
+import Images from '@/Images';
 
 const InnerPage = (props) => {
 
@@ -42,8 +45,7 @@ const InnerPage = (props) => {
                             <div className="bannerimgbox">
                                 {/* {page !== "community" && */}
                                     <>
-                                        {page === "creators" && <></>
-                                        // <Lottie animationData={bannersection.dataimg} loop={true} />
+                                        {page === "creators" && <Lottieimg animationData={bannersection.dataimg} loop={true} />
                                         }
                                         {(page === "fans" || page === "dao" || page === "community") && <Image src={bannersection.dataimg} alt={bannersection.datahead} className="img-fluid" loading="eager" />}
                                     </>
