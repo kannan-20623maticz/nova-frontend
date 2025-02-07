@@ -1499,11 +1499,11 @@ video {
 
 /* wallet page css start */
 
-.walletpage .header .navbar-nav .nav-link, .marketplacepage .header .navbar-nav .nav-link, .daopage .header .navbar-nav .nav-link {
+.wallet .header .navbar-nav .nav-link, .marketplace .header .navbar-nav .nav-link, .dao .header .navbar-nav .nav-link {
   color: var(--white);
 }
 
-.walletpage .header.headerscroll .navbar-nav .nav-link, .marketplacepage .header.headerscroll .navbar-nav .nav-link, .daopage .header.headerscroll .navbar-nav .nav-link {
+.wallet .header.headerscroll .navbar-nav .nav-link, .marketplace .header.headerscroll .navbar-nav .nav-link, .dao .header.headerscroll .navbar-nav .nav-link {
   color: var(--primary);
 }
 

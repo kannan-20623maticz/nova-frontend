@@ -54,12 +54,12 @@ const Header = () => {
         },
     ]);
 
-    // const pathname = usePathname();
+    const pathname = usePathname();
 
-    // useEffect(() => {
-    //     let location = pathname.slice(1);
-    //     document.querySelector("body").className = `${location ? location : "home"}page`;
-    // }, [pathname]);
+    useEffect(() => {
+        let location = pathname.slice(1);
+        document.querySelector("body").className = `${location ? location : "home"}`;
+    }, [pathname]);
 
     return (
         <header className={`header ${headerbg > 50 ? "headerscroll" : ""}`}>
