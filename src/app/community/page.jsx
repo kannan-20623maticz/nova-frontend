@@ -1,15 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import Image from 'next/image';
-import { Col, Container, Row } from 'react-bootstrap'
 import Images from '@/Images';
-import Link from 'next/link';
-import Lottie from 'lottie-react';
-import BoxContents from '@/components/BoxContents';
-import FlowBoxContents from '@/components/FlowBoxContents';
-import FooterBlackbox from '@/components/FooterBlackbox';
-import TopBlackbox from '@/components/TopBlackbox';
 import InnerPage from '@/components/InnerPage';
 
 
