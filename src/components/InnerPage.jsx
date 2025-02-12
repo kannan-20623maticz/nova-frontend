@@ -13,6 +13,7 @@ const Lottieimg = dynamic(() => import('lottie-react'), { ssr: false });
 
 import Images from '@/Images';
 
+
 const InnerPage = (props) => {
 
     const { page, sectionheadone, sectionheadtwo, bannersection, topblackbox, multiboxone, multiboxtwo, footblackbox } = props;
@@ -20,6 +21,7 @@ const InnerPage = (props) => {
     return (
         <>
             <section className="sectionone bannersection">
+                <Image src={Images[`${page}bg`]} alt="cover" className="img-fluid sectionbgimg" fill />
                 <Container>
                     <Row className="align-items-center">
                         <Col xs={12} sm={12} md={12} lg={6} className="mb40">
@@ -45,11 +47,10 @@ const InnerPage = (props) => {
                             <div className="bannerimgbox">
                                 {/* {page !== "community" && */}
                                     <>
-                                        {page === "creators" && <Lottieimg animationData={bannersection.dataimg} loop={true} />
-                                        }
-                                        {(page === "fans" || page === "dao" || page === "community") && <Image src={bannersection.dataimg} alt={bannersection.datahead} className="img-fluid" loading="eager" />}
+                                        {(page === "creators" || page === "dao") && <Lottieimg animationData={bannersection.dataimg} loop={true} />}
+                                        {(page === "fans" || page === "community") && <Image src={bannersection.dataimg} alt={bannersection.datahead} className="img-fluid" loading="eager" />}
                                     </>
-                                {/* // } */}
+                                {/* } */}
                                 {/* {page === "community" && <video className="communityvid" autoPlay={true} loop={true} muted={true}>
                                     <source src="/assets/images/community/community.mp4" type="video/mp4" />
                                     <track src="javascript:;" kind="captions"></track>

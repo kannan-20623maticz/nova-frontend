@@ -2,8 +2,8 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import dynamic from 'next/dynamic';
 import { Col, Container, Row } from 'react-bootstrap'
+import dynamic from 'next/dynamic';
 // import Lottie from 'lottie-react';
 import FooterBlackbox from '@/components/FooterBlackbox';
 
@@ -11,7 +11,8 @@ const Lottieimg = dynamic(() => import('lottie-react'), { ssr: false });
 
 import Images from '@/Images';
 
-const Aboutpage = () => {
+
+const page = () => {
 
     const [footblackbox] = useState([
         {
@@ -23,6 +24,7 @@ const Aboutpage = () => {
     return (
         <main className="aboutpage">
             <section className="sectionone bannersection">
+            <Image src={Images.aboutbg} alt="cover" className="img-fluid sectionbgimg" fill />
                 <Container>
                     <Row className="align-items-center">
                         <Col xs={12} sm={12} md={12} lg={6} className="mb40">
@@ -103,51 +105,4 @@ const Aboutpage = () => {
     )
 }
 
-export default Aboutpage;
-
-// 'use client';
-// import Image from 'next/image';
-// import dynamic from 'next/dynamic';
-// import { Col, Container, Row } from 'react-bootstrap';
-// import Images from '@/Images';
-
-// // Fix: Dynamically import Lottie and FooterBlackbox to prevent SSR errors
-// const Lottie = dynamic(() => import('lottie-react'), { ssr: false });
-// const FooterBlackbox = dynamic(() => import('@/components/FooterBlackbox'), { ssr: false });
-
-// const Page = () => {
-//     return (
-//         <main className="aboutpage">
-//             <section className="sectionone bannersection">
-//                 <Container>
-//                     <Row className="align-items-center">
-//                         <Col xs={12} sm={12} md={12} lg={6} className="mb40">
-//                             <div className="bannerbox">
-//                                 <h1 className="banner-title">Built for the Community, by the Community</h1>
-//                                 <p className="paracontent mb-4">
-//                                     At NOVA, we believe web3 can transform how people
-//                                     create, connect, and earn...
-//                                 </p>
-//                                 <button type="button" className="btn sitebtn blackbtn mt-4">
-//                                     Download
-//                                     <Image src={Images.download} alt="Down Arrow" className="img-fluid" />
-//                                 </button>
-//                             </div>
-//                         </Col>
-//                         <Col xs={12} sm={12} md={12} lg={6}>
-//                             <div className="bannerimgbox">
-//                                 <Lottie animationData={Images.about} loop={true} />
-//                             </div>
-//                         </Col>
-//                     </Row>
-//                 </Container>
-//             </section>
-
-//             <section className="sectionfour p-0">
-//                 <FooterBlackbox page="about" data={[{ datahead: "...", datadesc: "..." }]} />
-//             </section>
-//         </main>
-//     );
-// }
-
-// export default Page;
+export default page;

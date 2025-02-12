@@ -67,6 +67,7 @@ const page = () => {
   return (
     <main className="walletpage">
       <section className="sectionone bannersection">
+        <Image src={Images.walletbannerbg} alt="cover" className="img-fluid sectionbgimg" fill />
         <Container>
           <Row className="align-items-center">
             <Col xs={12} sm={12} md={12} lg={6} className="mb40">

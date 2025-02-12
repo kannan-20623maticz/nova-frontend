@@ -6,6 +6,9 @@ import Images from '@/Images';
 const FooterBlackbox = ({ page, data }) => {
     return (
         <div className={`innerfootbg ${page && `foot${page}bg`}`}>
+            {(page === "community" || page === "creators") && <Image src={(page === "community" && Images.communitytopbg) || (page === "creators" && Images.creatorfootbg)} alt="cover" className="img-fluid sectionbgimg" fill />}
+            {(page !== "community" && page !== "creators") && <Image src={Images[`${page}footbg`]} alt="cover" className="img-fluid sectionbgimg" fill />}
+            {/* {(page === "fans" || page === "dao" || page === "wallet" || page === "marketplace" || page === "about") && <Image src={Images[`${page}footbg`]} alt="cover" className="img-fluid sectionbgimg" fill />} */}
             <Container>
                 <Row className="justify-content-center">
                     <Col xs={12} sm={12} md={12} lg={10} xl={9} xxl={8}>

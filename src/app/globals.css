@@ -1,4 +1,3 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap'); */
 
 
 :root {
@@ -105,6 +104,17 @@ body {
 
 section {
   padding: 50px 0px;
+  position: relative;
+}
+
+.sectionbgimg {
+  z-index: -1;
+  object-fit: cover;
+  object-position: center;
+}
+
+section .container {
+  position: relative;
 }
 
 .banner-title {
@@ -218,7 +228,7 @@ section {
   font-size: 18px;
   line-height: 27px;
   font-weight: 500;
-  margin: 12px 0px 10px;
+  margin: 15px 0px 10px;
   text-transform: capitalize;
 }
 
@@ -573,9 +583,10 @@ video {
 
 .innertopbg, .innerfootbg {
   padding: 50px 0px;
-  background-size: 100% 100%;
+  position: relative;
+  /* background-size: 100% 100%;
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
 }
 
 .innertopbg .blackbox, .innerfootbg .blackbox {
@@ -754,10 +765,10 @@ video {
 
 .bannersection {
   padding-top: 100px;
-  background-image: url("/assets/images/bannerbg.webp");
+  /* background-image: url("/assets/images/bannerbg.webp");
   background-position: center;
   background-size: cover;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -829,7 +840,6 @@ video {
 
 .sectionone .bannersmimgs .btn {
   padding: 0;
-  width: 100px;
   color: transparent !important;
   background-color: transparent !important;
   border-color: transparent !important;
@@ -847,12 +857,18 @@ video {
 } */
 
 .sectiontwotopbox {
-  background-image: url("/assets/images/secondbg.webp");
+  /* background-image: url("/assets/images/secondbg.webp");
   background-position: center;
   background-size: 100% 100%;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
   padding: 20px;
   margin-top: 50px;
+  position: relative;
+}
+
+.sectiontwotopbox .sectionbgimg {
+  z-index: 1;
+  object-fit: fill;
 }
 
 .homepage .sectiontwo .blackbox {
@@ -869,6 +885,8 @@ video {
   width: 100%;
   max-width: 90%;
   margin: auto;
+  position: relative;
+  z-index: 9;
 }
 
 .sectiontwotopbox .boxgrid .borderbox:first-child {
@@ -936,11 +954,17 @@ video {
   /* border: 1px solid var(--bordercolor);
   border-radius: 20px; */
   padding: 50px;
+  position: relative;
   /* background-color: #d9d9d92a; */
-  background-image: url("/assets/images/greybg.webp");
+  /* background-image: url("/assets/images/greybg.webp");
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-size: 100% 100%; */
+}
+
+.sectionthree .sectionthreeinnerbox .sectionbgimg {
+  z-index: 1;
+  object-fit: fill;
 }
 
 .sectionthree .sectionthreevidbox {
@@ -986,21 +1010,26 @@ video {
   margin-bottom: 24px;
 }
 
-.homepage .sectionfive {
+/* .homepage .sectionfive {
   background-image: url("/assets/images/mobilessectionbg.webp");
-}
+} */
 
 .homepage .sectionfour .blackbox {
   padding: 30px 30px 6px;
 }
 
 .sectionfive .sectionfivebluebox {
-  background-image: url("/assets/images/mobilesbg.webp");
+  /* background-image: url("/assets/images/mobilesbg.webp");
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-size: 100% 100%; */
   padding: 30px 20px 0px;
   overflow: hidden;
+  position: relative;
+}
+
+.sectionfive .sectionfivebluebox .sectionbgimg {
+  object-fit: fill;
 }
 
 .sectionfive .sectionfivecenterimg {
@@ -1009,9 +1038,9 @@ video {
   margin: 20px auto 0px;
 }
 
-.homepage .sectionsix {
+/* .homepage .sectionsix {
   background-image: url("/assets/images/centercirclebg.webp");
-}
+} */
 
 .sectionsix .sectionsix_centerbox {
   margin: 40px 0px;
@@ -1066,9 +1095,9 @@ video {
   right: 19%;
 }
 
-.homepage .sectionseven {
+/* .homepage .sectionseven {
   background-image: url("/assets/images/mint-sellbg.webp");
-}
+} */
 
 .homepage .sectionseven .sectionsevenbox, .homepage .sectionnine .sectionninebox {
   padding: 60px;
@@ -1082,10 +1111,11 @@ video {
 }
 
 .homepage .sectionnine {
-  background: linear-gradient(rgba(0, 0, 0, .85), rgba(0, 0, 0, .85)), url("/assets/images/earn-ownbg.webp");
+  background-color: rgba(0, 0, 0, .85);
+  /* background: linear-gradient(rgba(0, 0, 0, .85), rgba(0, 0, 0, .85)), url("/assets/images/earn-ownbg.webp");
   background-position: center;
   background-size: 100% 100%;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
 }
 
 .sectionnine .sectionnine_earnownul li:not(:last-child) {
@@ -1095,6 +1125,11 @@ video {
 .homepage .sectionnine .sectionninebox {
   padding-top: 0;
   padding-bottom: 0;
+}
+
+.homepage .sectionnine .earnownvid {
+  width: 100%;
+  max-width: 250px;
 }
 
 .homepage .sectionten {
@@ -1176,13 +1211,13 @@ video {
 
 
 .homepage .sectioneleven {
-  background-image: url("/assets/images/newerabg.webp");
+  /* background-image: url("/assets/images/newerabg.webp"); */
   overflow: hidden;
 }
 
 .sectioneleven .neweraimg {
   width: 100%;
-  max-width: 300px;
+  max-width: 250px;
   animation: neweraimage 2.5s infinite linear alternate;
   transform: translate(-130px, 60px);
   transition: all 0.2s;
@@ -1214,9 +1249,9 @@ video {
   }
 }
 
-.homepage .sectiontwelve {
+/* .homepage .sectiontwelve {
   background-image: url("/assets/images/membershipbg.webp");
-}
+} */
 
 .sectiontwelve .sectiontwelve_grid {
   display: grid;
@@ -1252,19 +1287,19 @@ video {
   color: var(--white);
 }
 
-.sectionfourteen {
+/* .sectionfourteen {
   background-image: url("/assets/images/featuresbg.webp");
-}
+} */
 
 .sectionfourteen .featuresimg {
   width: 100%;
-  max-width: 480px;
+  max-width: 430px;
   border-radius: 20px;
 }
 
-.sectionsixteen {
+/* .sectionsixteen {
   background-image: url("/assets/images/blackboxbg.webp");
-}
+} */
 
 .sectionseventeen {
   background-color: var(--sandal);
@@ -1295,21 +1330,24 @@ video {
   background-color: var(--lightskyblue);
 }
 
-.sectiontwentythree {
+/* .sectiontwentythree {
   background-image: url("/assets/images/blackboxonebg.webp");
-}
+} */
 
 .sectiontwentyfour .sectiontwentyfourbox {
   margin-top: 50px;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 240px);
   gap: 40px;
+  justify-content: center;
 }
 
 .sectiontwentyfour .stwentyfour_gradientbox {
   width: 100%;
-  max-width: 275px;
-  height: 210px;
+  max-width: 240px;
+  height: 205px;
+  /* max-width: 275px;
+  height: 210px; */
   /* min-height: 210px; */
   padding: 25px 35px;
   margin: auto;
@@ -1350,7 +1388,12 @@ video {
   z-index: 9;
 }
 
-.sectiontwentyfour .stwentyfour_gradientbox1 {
+.sectiontwentyfour .stwentyfour_gradientbox .sectionbgimg {
+  z-index: 1;
+  object-fit: fill;
+}
+
+/* .sectiontwentyfour .stwentyfour_gradientbox1 {
   background-image: url("/assets/images/explorebgone.webp");
 }
 
@@ -1384,7 +1427,7 @@ video {
 
 .sectiontwentyfour .stwentyfour_gradientbox9 {
   background-image: url("/assets/images/explorebgnine.webp");
-}
+} */
 
 .sectiontwentyfourbox .stwentyfour_gradientboximg {
   width: 100%;
@@ -1406,9 +1449,12 @@ video {
   transition: all 0.4s;
   display: -webkit-box;
   text-overflow: ellipsis;
+  line-clamp: 6;
   -webkit-line-clamp: 6;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  position: relative;
+  z-index: 9;
 }
 
 .sectiontwentyfour .stwentyfour_gradientbox:hover .stwentyfour_gradientboxdesc {
@@ -1420,9 +1466,9 @@ video {
   opacity: 0;
 }
 
-.sectiontwentyfive {
+/* .sectiontwentyfive {
   background-image: url("/assets/images/expowerjourney.webp");
-}
+} */
 
 .sectiontwentyseven {
   background-color: var(--lightviolet);
@@ -1495,9 +1541,9 @@ video {
   filter: invert(1);
 }
 
-.sectiontwentynine {
+/* .sectiontwentynine {
   background-image: url(/assets/images/blackboxonebg.webp);
-}
+} */
 
 .sectiontwentynine .sectiontwentyninebox {
   text-align: center;
@@ -1550,6 +1596,11 @@ video {
 
 
 
+
+
+
+
+
 /* wallet page css start */
 
 .wallet .header .navbar-nav .nav-link, .marketplace .header .navbar-nav .nav-link, .dao .header .navbar-nav .nav-link {
@@ -1561,13 +1612,13 @@ video {
 }
 
 .walletpage .bannersection {
-  background-image: url("/assets/images/wallet/walletbannerbg.webp");
+  /* background-image: url("/assets/images/wallet/walletbannerbg.webp"); */
   padding-bottom: 0;
   height: auto;
 }
 
 .walletpage .sectionone .bannerimg {
-  max-width: 250px;
+  max-width: 230px;
   margin: auto;
 }
 
@@ -1603,9 +1654,9 @@ video {
   max-width: 18px;
 }
 
-.walletpage .footwalletbg {
+/* .walletpage .footwalletbg {
   background-image: url("/assets/images/wallet/walletfootbg.webp");
-}
+} */
 
 /* wallet page css end */
 
@@ -1614,9 +1665,9 @@ video {
 
 /* marketplace page css start */
 
-.marketplacepage .bannersection {
+/* .marketplacepage .bannersection {
   background-image: url("/assets/images/marketplace/marketplacebannerbg.webp");
-}
+} */
 
 .marketplacepage .sectiontwo .sectiontwo_leftrightbox .borderboxhead {
   font-size: 24px;
@@ -1639,9 +1690,9 @@ video {
   margin-bottom: 70px;
 }
 
-.marketplacepage .sectionfour {
+/* .marketplacepage .sectionfour {
   background-image: url("/assets/images/marketplace/nftstakingbg.webp");
-}
+} */
 
 .marketplacepage .sectionsevenbox .borderbox {
   background-color: var(--black);
@@ -1672,9 +1723,9 @@ video {
   color: var(--mediumpink) !important;
 }
 
-.marketplacepage .footmarketplacebg {
+/* .marketplacepage .footmarketplacebg {
   background-image: url("/assets/images/marketplace/marketplacefootbg.webp");
-}
+} */
 
 /* marketplace page css end */
 
@@ -1684,16 +1735,17 @@ video {
 /* community page css start */
 
 
-.communitypage .bannersection {
+/* .communitypage .bannersection {
   background-image: url("/assets/images/community/communitybg.webp");
-}
+} */
 
-.communitypage .topcommunitybg, .communitypage .footcommunitybg {
+/* .communitypage .topcommunitybg, .communitypage .footcommunitybg {
   background-image: url("/assets/images/community/communitytopbg.webp");
-}
+} */
 
 .communitypage .communityvid {
   width: 100%;
+  max-width: 550px;
 }
 
 
@@ -1703,17 +1755,17 @@ video {
 
 /* creators page css start */
 
-.creatorspage .bannersection {
+/* .creatorspage .bannersection {
   background-image: url("/assets/images/creators/creatorsbg.webp");
-}
+} */
 
-.creatorspage .topcreatorsbg {
+/* .creatorspage .topcreatorsbg {
   background-image: url("/assets/images/wallet/walletfootbg.webp");
-}
+} */
 
-.creatorspage .footcreatorsbg {
+/* .creatorspage .footcreatorsbg {
   background-image: url("/assets/images/creators/creatorfootbg.webp");
-}
+} */
 
 
 /* creators page css end */
@@ -1722,34 +1774,34 @@ video {
 
 /* fans page css start */
 
-.fanspage .bannersection {
+/* .fanspage .bannersection {
   background-image: url("/assets/images/fans/fansbg.webp");
-}
+} */
 
 .fanspage .topfansbg {
   background-color: #95D0DE;
 }
 
-.fanspage .footfansbg {
+/* .fanspage .footfansbg {
   background-image: url("/assets/images/fans/fansfootbg.webp");
-}
+} */
 
 /* fans page css end */
 
 
 /* dao page css start */
 
-.daopage .bannersection {
+/* .daopage .bannersection {
   background-image: url("/assets/images/dao/daobg.webp");
-}
+} */
 
 .daopage .topdaobg {
   background-color: #A5E0FF;
 }
 
-.daopage .footdaobg {
+/* .daopage .footdaobg {
   background-image: url("/assets/images/marketplace/nftstakingbg.webp");
-}
+} */
 
 /* dao page css end */
 
@@ -1758,9 +1810,9 @@ video {
 
 /* about page css end */
 
-.aboutpage .bannersection {
+/* .aboutpage .bannersection {
   background-image: url("/assets/images/about/aboutbg.webp");
-}
+} */
 
 .aboutpage .sectionvidbox .novawalletvid {
   width: 100%;
@@ -1775,9 +1827,9 @@ video {
   margin: 0;
 }
 
-.aboutpage .footaboutbg {
+/* .aboutpage .footaboutbg {
   background-image: url("/assets/images/about/aboutfootbg.webp");
-}
+} */
 
 /* about page css end */
 
@@ -1812,6 +1864,10 @@ video {
 
   .walletpage .sectionone .bannerimg {
     max-width: 220px;
+  }
+
+  .communitypage .communityvid {
+    max-width: 470px;
   }
 }
 
@@ -2021,6 +2077,11 @@ video {
   .offcanvas-header .btn-close {
     box-shadow: none;
   }
+
+  .sectiontwentyfour .sectiontwentyfourbox {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
 }
 
 @media (768px <= width <= 991px) {
@@ -2075,7 +2136,7 @@ video {
   }
 
   .sectionthree .sectionthreeinnerbox, .sectiontwentyseven .sectiontwentyseveninnerbox {
-    padding: 25px;
+    padding: 30px;
   }
 
   .homepage .sectionseven .sectionsevenbox, .homepage .sectionten .sectiontenbox {
@@ -2100,8 +2161,8 @@ video {
   }
 
   .sectionsix .sectionsix_centercontent {
-    font-size: 11px;
-    line-height: 18px;
+    font-size: 10px;
+    line-height: 16px;
     width: 100px;
   }
 
@@ -2125,6 +2186,10 @@ video {
   .sectiontwelve .sectiontwelve_gridimg {
     max-width: 80px;
   }
+
+  .sectiontwotopbox .sectionbgimg, .sectionthree .sectionthreeinnerbox .sectionbgimg {
+    display: none;
+  }
 }
 
 @media (width < 500px) {
@@ -2147,9 +2212,9 @@ video {
     aspect-ratio: 3/3;
     object-fit: contain;
   }
-    
+
   .gifimgbox .borderbox .borderboximg {
-    max-width: 80px;
+    max-width: 65px;
   }
 }
 
@@ -2219,7 +2284,7 @@ video {
   }
 
   .sectioneleven .neweraimg {
-    max-width: 350px;
+    max-width: 300px;
   }
   .sectionten .sectiontenboxdesc {
     font-size: 25px;
@@ -2227,7 +2292,7 @@ video {
   }
 
   .sectionfourteen .featuresimg {
-    max-width: 550px;
+    max-width: 480px;
   }
   .blackboxlightbg .blackboxlightcontent {
     font-size: 22px;
@@ -2242,22 +2307,25 @@ video {
   }
 
   .sectiontwentyfour .stwentyfour_gradientbox {
-    max-width: 100%;
-    height: 260px;
+    max-width: 300px;
+    height: 250px;
+    display: flex;
+    align-items: center;
   }
 
   .sectiontwentyfour .stwentyfour_gradientboxfront {
-    width: 260px;
+    /* width: 260px; */
+    padding: 45px;
   }
 
   .sectiontwentyfourbox .stwentyfour_gradientboxhead {
-    font-size: 20px;
-    line-height: 32px;
+    font-size: 22px;
+    line-height: 36px;
   }
 
   .sectiontwentyfourbox .stwentyfour_gradientboxdesc {
     font-size: 22px;
-    line-height: 36px;
+    line-height: 34px;
   }
 
   .sectiontwentyeight .accordion-button {
@@ -2300,7 +2368,7 @@ video {
   }
 
   .walletpage .sectionone .bannerimg {
-    max-width: 310px;
+    max-width: 280px;
   }
 
   .marketplacepage .sectiontwo .borderbox {
@@ -2321,7 +2389,7 @@ video {
   }
 
   .gifimgbox .borderbox .borderboximg {
-    max-width: 100px;
+    max-width: 80px;
   }
 
   .aboutpage .sectionvidbox .novawalletvid {
@@ -2342,7 +2410,21 @@ video {
     font-size: 26px;
     line-height: 40px;
   }
+
+  .sectionone .bannersmimgs img {
+    max-width: 125px;
+  }
+
+  .sectiontwentyfour .sectiontwentyfourbox {
+    grid-template-columns: repeat(3, 300px);
+  }
+
+  .communitypage .communityvid {
+    width: 100%;
+    max-width: 630px;
+  }
 }
+
 
 @media (1800px < width < 2000px) {
   .containertwo {

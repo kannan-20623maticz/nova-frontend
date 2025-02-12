@@ -305,6 +305,7 @@ const page = () => {
     return (
         <main className="marketplacepage">
             <section className="sectionone bannersection">
+                <Image src={Images.marketplacebannerbg} alt="cover" className="img-fluid sectionbgimg" fill />
                 <Container>
                     <Row className="align-items-center">
                         <Col xs={12} sm={12} md={12} lg={6} className="mb40">
@@ -439,7 +440,8 @@ const page = () => {
                     </div>
                 </Container>
             </section>
-            <section className="sectionfour bgimg">
+            <section className="sectionfour">
+                <Image src={Images.nftstakingbg} alt="cover" className="img-fluid sectionbgimg" fill />
                 <Container>
                     <Row className="justify-content-center">
                         <Col xs={12} sm={12} md={12} lg={9} xxl={8}>
@@ -506,25 +508,25 @@ const page = () => {
                         <div className="borderbox">
                             <Row className="justify-content-between">
                                 <Col xs={12} sm={12} md={12} lg={5}>
-                                <p className="sectionsevenlisthead paracontent text-skyblue">For Creators</p>
-                                        <ul className="listboxul my-4">
-                                            {
-                                                forcreators.map((libox, i) => (
-                                                    <li className="listboxli starlist" key={i}>
-                                                        <p className="borderboxdesc paracontent text-white">
-                                                            {libox.content}
-                                                        </p>
-                                                    </li>
-                                                ))
-                                            }
-                                        </ul>
-                                        <button type="button" className="btn sitebtn skybluebtn rotateicon">
-                                            Creatornomics
-                                            <Image src={Images.downloadright} alt="Download" className="img-fluid" />
-                                        </button>
+                                    <p className="sectionsevenlisthead paracontent text-skyblue">For Creators</p>
+                                    <ul className="listboxul my-4">
+                                        {
+                                            forcreators.map((libox, i) => (
+                                                <li className="listboxli starlist" key={i}>
+                                                    <p className="borderboxdesc paracontent text-white">
+                                                        {libox.content}
+                                                    </p>
+                                                </li>
+                                            ))
+                                        }
+                                    </ul>
+                                    <button type="button" className="btn sitebtn skybluebtn rotateicon">
+                                        Creatornomics
+                                        <Image src={Images.downloadright} alt="Download" className="img-fluid" />
+                                    </button>
                                 </Col>
                                 <Col xs={12} sm={12} md={12} lg={5}>
-                                    <div className="pt-5">
+                                    <div className="pt-5 pt-lg-0">
                                         <p className="sectionsevenlisthead paracontent text-skyblue">For Fans</p>
                                         <ul className="listboxul mt-4">
                                             {

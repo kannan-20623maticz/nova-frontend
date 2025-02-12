@@ -415,9 +415,49 @@ const page = () => {
     },
   ]);
 
+  const [exploreimgs] = useState([
+    {
+      id: 0,
+      value: "one"
+    },
+    {
+      id: 1,
+      value: "two"
+    },
+    {
+      id: 2,
+      value: "three"
+    },
+    {
+      id: 3,
+      value: "four"
+    },
+    {
+      id: 4,
+      value: "five"
+    },
+    {
+      id: 5,
+      value: "six"
+    },
+    {
+      id: 6,
+      value: "seven"
+    },
+    {
+      id: 7,
+      value: "eight"
+    },
+    {
+      id: 8,
+      value: "nine"
+    },
+  ]);
+
   return (
     <main className="homepage">
       <section className="sectionone bannersection">
+        <Image src={Images.bannerbg} alt="cover" className="img-fluid sectionbgimg" fill />
         <Container>
           <Row className="align-items-center">
             <Col xs={12} sm={12} md={12} lg={6} className="mb40">
@@ -467,6 +507,7 @@ const page = () => {
             </Col>
           </Row>
           <div className="sectiontwotopbox">
+            <Image src={Images.secondbg} alt="cover" className="img-fluid sectionbgimg" fill />
             <div className="blackbox boxgrid">
               {
                 sectiontwoborderbox.map((data) => (
@@ -495,6 +536,7 @@ const page = () => {
         <Container>
           <div className="sectionthreebox sectionblackbg">
             <div className="sectionthreeinnerbox">
+              <Image src={Images.greybg} alt="cover" className="img-fluid sectionbgimg" fill />
               <Row className="align-items-center">
                 <Col xs={12} sm={12} md={12} lg={6} className="mb40">
                   <h2 className="section-title mb-3">Simplifying your Digital Daily Needs</h2>
@@ -567,12 +609,14 @@ const page = () => {
           </div>
         </Container>
       </section>
-      <section className="sectionfive bglines bgimg">
+      <section className="sectionfive bglines">
+        <Image src={Images.mobilessectionbg} alt="cover" className="img-fluid sectionbgimg" fill />
         <div className="sectionfivebg">
           <Container>
             <Row className="justify-content-center">
-              <Col xs={12} sm={12} md={12} lg={11}>
+              <Col xs={12} sm={12} md={12} lg={11} xxl={10}>
                 <div className="sectionfivebluebox">
+                  <Image src={Images.mobilesbg} alt="cover" className="img-fluid sectionbgimg" fill />
                   <Row className="justify-content-center">
                     <Col xs={12} sm={12} md={12} lg={8}>
                       <h2 className="section-title text-center">
@@ -592,7 +636,8 @@ const page = () => {
           </Container>
         </div>
       </section>
-      <section className="sectionsix bglines bgimg">
+      <section className="sectionsix bglines">
+        <Image src={Images.centercirclebg} alt="cover" className="img-fluid sectionbgimg" fill />
         <Container>
           <Row className="justify-content-center">
             <Col xs={12} sm={12} md={12} lg={8}>
@@ -609,7 +654,7 @@ const page = () => {
               <Col xs={12} sm={12} md={12} lg={8} xl={6} className="mb40">
                 <div className="sectionsix_centerboximgbox">
                   <Lottieimg animationData={Images.ecosystemarrows} loop={true} />
-                  <Image src={Images.ecosystemcircle} alt="NOVA Ecosystem" className="img-fluid sectionsix_centerboximg" />
+                  {/* <Image src={Images.ecosystemcircle} alt="NOVA Ecosystem" className="img-fluid sectionsix_centerboximg" /> */}
                   <p className="paracontent sectionsix_centercontent one">MEMBERSHIP MARKETPLACE</p>
                   <p className="paracontent sectionsix_centercontent two">WALLET</p>
                   <p className="paracontent sectionsix_centercontent three">SOCIAL COMMUNITY & CREATOR HUB</p>
@@ -623,7 +668,8 @@ const page = () => {
           <p className="paracontent sectionsix_centerboxhead text-teal fntoswald">Earn & Own</p>
         </Container>
       </section>
-      <section className="sectionseven bgimg">
+      <section className="sectionseven">
+        <Image src={Images.mintsellbg} alt="cover" className="img-fluid sectionbgimg" fill />
         <Container>
           <div className="sectionsevenbox blackbox">
             <Row className="align-items-center">
@@ -705,7 +751,8 @@ const page = () => {
           </div>
         </Container>
       </section>
-      <section className="sectionnine bgimg">
+      <section className="sectionnine">
+        <Image src={Images.earnownbg} alt="cover" className="img-fluid sectionbgimg" fill />
         <Container>
           <div className="sectionninebox">
             <Row className="align-items-center">
@@ -737,6 +784,10 @@ const page = () => {
               </Col>
               <Col xs={12} sm={12} md={12} lg={6}>
                 <div className="text-center">
+                  {/* <video className="earnownvid" autoPlay={true} loop={true} muted={true}>
+                    <source src="/assets/images/earnown.mp4" type="video/mp4" />
+                    <track src="javascript:;" kind="captions"></track>
+                  </video> */}
                   <Lottieimg animationData={Images.earnown} loop={true} />
                 </div>
               </Col>
@@ -776,7 +827,8 @@ const page = () => {
           </div>
         </Container>
       </section>
-      <section className="sectioneleven bgimg">
+      <section className="sectioneleven">
+        <Image src={Images.newerabg} alt="cover" className="img-fluid sectionbgimg" fill />
         <Container>
           <div className="sectionelevenbox">
             <Row className="align-items-center row-reverse">
@@ -808,7 +860,8 @@ const page = () => {
           </div>
         </Container>
       </section>
-      <section className="sectiontwelve bgimg">
+      <section className="sectiontwelve">
+        <Image src={Images.membershipbg} alt="cover" className="img-fluid sectionbgimg" fill />
         <Container>
           <Row className="justify-content-center">
             <Col xs={12} sm={12} md={12} lg={7}>
@@ -861,7 +914,8 @@ const page = () => {
           </Row>
         </Container>
       </section>
-      <section className="sectionfourteen bgimg">
+      <section className="sectionfourteen">
+        <Image src={Images.featuresbg} alt="cover" className="img-fluid sectionbgimg" fill />
         <Container>
           <div className="sectionfourteenbox">
             <Row className="align-items-center row-reverse">
@@ -898,7 +952,8 @@ const page = () => {
           </div>
         </Container>
       </section>
-      <section className="sectionsixteen bgimg">
+      <section className="sectionsixteen">
+        <Image src={Images.blackboxbg} alt="cover" className="img-fluid sectionbgimg" fill />
         <Container>
           <Row className="justify-content-center">
             <Col xs={12} sm={12} md={12} lg={9}>
@@ -1093,7 +1148,8 @@ const page = () => {
           </div>
         </Container>
       </section>
-      <section className="sectiontwentythree bgimg">
+      <section className="sectiontwentythree">
+        <Image src={Images.blackboxonebg} alt="cover" className="img-fluid sectionbgimg" fill />
         <Container>
           <Row className="justify-content-center">
             <Col xs={12} sm={12} md={12} lg={9}>
@@ -1124,11 +1180,12 @@ const page = () => {
             </Col>
           </Row>
           <Row className="justify-content-center">
-            <Col xs={12} sm={12} md={12} lg={9}>
+            <Col xs={12} sm={12} md={12} lg={12} xl={9}>
               <div className="sectiontwentyfourbox">
                 {
                   explorebox.map((eb, i) => (
                     <div className={`stwentyfour_gradientbox ${"stwentyfour_gradientbox" + (i + 1)}`} key={eb.datahead}>
+                      <Image src={Images[`explorebg${exploreimgs[i].id === i && exploreimgs[i].value}`]} alt="cover" className="img-fluid sectionbgimg" fill />
                       <div className="stwentyfour_gradientboxfront">
                         <Image src={eb.dataimg} alt={eb.datahead} className="img-fluid stwentyfour_gradientboximg" />
                         <p className="paracontent stwentyfour_gradientboxhead">{eb.datahead}</p>
@@ -1144,7 +1201,8 @@ const page = () => {
           </Row>
         </Container>
       </section>
-      <section className="sectiontwentyfive bgimg">
+      <section className="sectiontwentyfive">
+        <Image src={Images.expowerjourney} alt="cover" className="img-fluid sectionbgimg" fill />
         <Container>
           <Row className="justify-content-center">
             <Col xs={12} sm={12} md={12} lg={9}>
@@ -1261,7 +1319,8 @@ const page = () => {
           </Row>
         </Container>
       </section>
-      <section className="sectiontwentynine bgimg">
+      <section className="sectiontwentynine">
+        <Image src={Images.blackboxonebg} alt="cover" className="img-fluid sectionbgimg" fill />
         <Container>
           <Row className="justify-content-center">
             <Col xs={12} sm={12} md={12} lg={10}>

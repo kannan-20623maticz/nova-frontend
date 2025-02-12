@@ -1,9 +1,12 @@
+import Image from 'next/image';
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
+import Images from '@/Images';
 
 const TopBlackbox = ({ page, data }) => {
     return (
         <div className={`innertopbg ${page && `top${page}bg`}`}>
+            {(page === "community" || page === "creators") && <Image src={(page === "community" && Images.communitytopbg) || (page === "creators" && Images.walletfootbg)} alt="cover" className="img-fluid sectionbgimg" fill />}
             <Container>
                 <Row className="justify-content-center">
                     <Col xs={12} sm={12} md={12} lg={10} xl={9} xxl={8}>

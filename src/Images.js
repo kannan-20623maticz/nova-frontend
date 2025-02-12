@@ -68,6 +68,30 @@ const Images = {
     ecosystemcircle: require("../public/assets/images/ecosystemcircle.gif"),
     ecosystemarrows: require("../public/assets/images/ecosystemarrows.json"),
     earnown: require("../public/assets/images/earnown.json"),
+    mobilessectionbg: require("../public/assets/images/mobilessectionbg.webp"),
+    centercirclebg: require("../public/assets/images/centercirclebg.webp"),
+    mintsellbg: require("../public/assets/images/mint-sellbg.webp"),
+    earnownbg: require("../public/assets/images/earn-ownbg.webp"),
+    newerabg: require("../public/assets/images/newerabg.webp"),
+    membershipbg: require("../public/assets/images/membershipbg.webp"),
+    featuresbg: require("../public/assets/images/featuresbg.webp"),
+    blackboxbg: require("../public/assets/images/blackboxbg.webp"),
+    blackboxonebg: require("../public/assets/images/blackboxonebg.webp"),
+    expowerjourney: require("../public/assets/images/expowerjourney.webp"),
+    mobilesbg: require("../public/assets/images/mobilesbg.webp"),
+    bannerbg: require("../public/assets/images/bannerbg.webp"),
+    secondbg: require("../public/assets/images/secondbg.webp"),
+    greybg: require("../public/assets/images/greybg.webp"),
+
+    explorebgone: require("../public/assets/images/explorebgone.webp"),
+    explorebgtwo: require("../public/assets/images/explorebgtwo.webp"),
+    explorebgthree: require("../public/assets/images/explorebgthree.webp"),
+    explorebgfour: require("../public/assets/images/explorebgfour.webp"),
+    explorebgfive: require("../public/assets/images/explorebgfive.webp"),
+    explorebgsix: require("../public/assets/images/explorebgsix.webp"),
+    explorebgseven: require("../public/assets/images/explorebgseven.webp"),
+    explorebgeight: require("../public/assets/images/explorebgeight.webp"),
+    explorebgnine: require("../public/assets/images/explorebgnine.webp"),
     
 
     // wallet page 
@@ -78,9 +102,15 @@ const Images = {
     novadiffimgthree: require("../public/assets/images/wallet/novadiffimgthree.webp"),
     novadiffimgfour: require("../public/assets/images/wallet/novadiffimgfour.webp"),
     novadiffimgfive: require("../public/assets/images/wallet/novadiffimgfive.webp"),
+
+    walletbannerbg: require("../public/assets/images/wallet/walletbannerbg.webp"),
+    walletfootbg: require("../public/assets/images/wallet/walletfootbg.webp"),
     // wallet page 
 
     // marketplace page 
+    marketplacebannerbg: require("../public/assets/images/marketplace/marketplacebannerbg.webp"),
+    marketplacefootbg: require("../public/assets/images/marketplace/marketplacefootbg.webp"),
+    nftstakingbg: require("../public/assets/images/marketplace/nftstakingbg.webp"),
     marketplace: require("../public/assets/images/marketplace/marketplace.json"),
     novamarketdiffone: require("../public/assets/images/marketplace/novamarketdiffone.json"),
     novamarketdifftwo: require("../public/assets/images/marketplace/novamarketdifftwo.json"),
@@ -125,6 +155,8 @@ const Images = {
 
     // community page 
 
+    communitybg: require("../public/assets/images/community/communitybg.webp"),
+    communitytopbg: require("../public/assets/images/community/communitytopbg.webp"),
     community: require("../public/assets/images/community/community.gif"),
     keyfeatone: require("../public/assets/images/community/keyfeatone.webp"),
     keyfeattwo: require("../public/assets/images/community/keyfeattwo.webp"),
@@ -142,6 +174,8 @@ const Images = {
 
 
     // creators page 
+    creatorsbg: require("../public/assets/images/creators/creatorsbg.webp"),
+    creatorfootbg: require("../public/assets/images/creators/creatorfootbg.webp"),
     whycreatorone: require("../public/assets/images/creators/whycreatorone.gif"),
     whycreatortwo: require("../public/assets/images/creators/whycreatortwo.gif"),
     whycreatorthree: require("../public/assets/images/creators/whycreatorthree.gif"),
@@ -174,13 +208,19 @@ const Images = {
     fansfeatfive: require("../public/assets/images/fans/fansfeatfive.webp"),
     fansfeatsix: require("../public/assets/images/fans/fansfeatsix.webp"),
 
+    fansbg: require("../public/assets/images/fans/fansbg.webp"),
+    fansfootbg: require("../public/assets/images/fans/fansfootbg.webp"),
+
     // fans page 
 
 
 
     // dao page 
 
-    dao: require("../public/assets/images/dao/dao.gif"),
+    daobg: require("../public/assets/images/dao/daobg.webp"),
+    daofootbg: require("../public/assets/images/marketplace/nftstakingbg.webp"),
+    // dao: require("../public/assets/images/dao/dao.gif"),
+    dao: require("../public/assets/images/dao/dao.json"),
 
     daoone: require("../public/assets/images/dao/daoone.gif"),
     daotwo: require("../public/assets/images/dao/daotwo.gif"),
@@ -198,6 +238,8 @@ const Images = {
 
     // about page 
 
+    aboutbg: require("../public/assets/images/about/aboutbg.webp"),
+    aboutfootbg: require("../public/assets/images/about/aboutfootbg.webp"),
     about: require("../public/assets/images/about/about.json"),
 
     // about page 
