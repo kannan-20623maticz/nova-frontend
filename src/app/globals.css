@@ -1071,8 +1071,8 @@ video {
 
 .sectionsix .sectionsix_centercontent {
   color: var(--white);
-  font-size: 15px;
-  line-height: 24px;
+  font-size: 14px;
+  line-height: 22px;
   font-weight: 600;
   width: 140px;
   position: absolute;
@@ -1120,6 +1120,11 @@ video {
 
 .sectionnine .sectionnine_earnownul li:not(:last-child) {
   margin-bottom: 10px;
+}
+
+.sectionnine .sectionninebox .earnownimg {
+  width: 100%;
+  max-width: 400px;
 }
 
 .homepage .sectionnine .sectionninebox {
@@ -2422,6 +2427,10 @@ video {
   .communitypage .communityvid {
     width: 100%;
     max-width: 630px;
+  }
+
+  .sectionnine .sectionninebox .earnownimg {
+    max-width: 480px;
   }
 }
 

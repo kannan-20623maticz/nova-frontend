@@ -784,11 +784,12 @@ const page = () => {
               </Col>
               <Col xs={12} sm={12} md={12} lg={6}>
                 <div className="text-center">
+                  <Image src={Images.earnown} alt="Earn & Own" className="img-fluid earnownimg" width={500} />
                   {/* <video className="earnownvid" autoPlay={true} loop={true} muted={true}>
                     <source src="/assets/images/earnown.mp4" type="video/mp4" />
                     <track src="javascript:;" kind="captions"></track>
                   </video> */}
-                  <Lottieimg animationData={Images.earnown} loop={true} />
+                  {/* <Lottieimg animationData={Images.earnown} loop={true} /> */}
                 </div>
               </Col>
             </Row>
