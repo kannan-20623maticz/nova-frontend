@@ -4,6 +4,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 import Images from '@/Images';
 
 const FooterBlackbox = ({ page, data }) => {
+    console.log("datataaaa",data);
     return (
         <div className={`innerfootbg ${page && `foot${page}bg`}`}>
             {(page === "community" || page === "creators") && <Image src={(page === "community" && Images.communitytopbg) || (page === "creators" && Images.creatorfootbg)} alt="cover" className="img-fluid sectionbgimg" fill />}
@@ -14,15 +15,15 @@ const FooterBlackbox = ({ page, data }) => {
                     <Col xs={12} sm={12} md={12} lg={10} xl={9} xxl={8}>
                         <div className="blackbox blackboxlightbg">
                             {
-                                data.map((da) => (
-                                    <Row className="justify-content-center" key={da.datahead}>
+                                data?.map((da) => (
+                                    <Row className="justify-content-center" key={da.heading}>
                                         <Col xs={12} sm={12} md={12} lg={10} xl={9}>
-                                            {page === "fans" && da.datasubhead && <p className="paracontent text-center blackboxlightcontent text-white mb-2">{da.datasubhead}</p>}
-                                            <p className="paracontent text-center blackboxlightcontent">{da.datahead}</p>
+                                            {page === "fans" && da.datasubhead && <p className="paracontent text-center blackboxlightcontent text-white mb-2">{da.description}</p>}
+                                            <p className="paracontent text-center blackboxlightcontent">{da.heading}</p>
                                         </Col>
                                         <Col xs={12} sm={12} md={12} lg={9}>
-                                            {page === "dao" && da.datasubhead && <p className="paracontent text-center blackboxlightcontent text-lightblue mb-2">{da.datasubhead}</p>}
-                                            <p className={`paracontent text-center ${page === "dao" && "text-white"} ${page !== "fans" && "blackboxendcontent"}  ${((page === "wallet") || (page === "marketplace") || (page === "creators")) && "text-mediumpink"} ${((page === "community") || (page === "fans")) && "text-skyblue"} ${page === "about" && "text-lightorange"}`}>{da.datadesc}</p>
+                                            {page === "dao" && da.datasubhead && <p className="paracontent text-center blackboxlightcontent text-lightblue mb-2">{da.description}</p>}
+                                            <p className={`paracontent text-center ${page === "dao" && "text-white"} ${page !== "fans" && "blackboxendcontent"}  ${((page === "wallet") || (page === "marketplace") || (page === "creators")) && "text-mediumpink"} ${((page === "community") || (page === "fans")) && "text-skyblue"} ${page === "about" && "text-lightorange"}`}>{da.description}</p>
 
                                             <button type="button" className={`btn sitebtn mt-4 mx-auto ${page === "marketplace" && "rightarrow"} ${((page === "community") || (page === "fans")) && "skybluebtn"} ${page === "dao" && "darkbluebtn"} ${page === "about" && "lightorangebtn"}`}>
                                                 {page === "marketplace" ? "Go to Marketplace" : "Download"}

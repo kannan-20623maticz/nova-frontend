@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { Col, Container, Row } from 'react-bootstrap'
 import dynamic from 'next/dynamic';
@@ -8,6 +8,8 @@ import dynamic from 'next/dynamic';
 import BoxContents from '@/components/BoxContents';
 import FlowBoxContents from '@/components/FlowBoxContents';
 import FooterBlackbox from '@/components/FooterBlackbox';
+import { getCms } from "../../action/cmsAction";
+
 
 const Lottieimg = dynamic(() => import('lottie-react'), { ssr: false });
 
@@ -302,6 +304,30 @@ const page = () => {
         }
     ]);
 
+    const [cmsData, setCmsData] = useState("");
+    console.log("cms_data", cmsData);
+
+    const getCmsData = async () => {
+        try {
+            const getData = await getCms({ page: "marketplace" });
+            console.log("marketplace_getData_cms", getData);
+            if (getData.status) {
+                setCmsData(getData.data.data)
+            }
+        } catch (e) {
+            console.log("getCmsData_err", e);
+        }
+    }
+
+
+    useEffect(() => {
+        getCmsData()
+        window.scroll({
+            top: 0,
+            behavior: "smooth",
+        });
+    }, []);
+
     return (
         <main className="marketplacepage">
             <section className="sectionone bannersection">
@@ -311,11 +337,10 @@ const page = () => {
                         <Col xs={12} sm={12} md={12} lg={6} className="mb40">
                             <div className="bannerbox">
                                 <h1 className="banner-title text-white">
-                                    The Premier Platform for NFT Memberships
+                                    {cmsData && cmsData?.content?.[0].heading}
                                 </h1>
                                 <p className="paracontent text-white mb-4">
-                                    NOVA lets you mint, sell, and invest in passes for creators, events, and courses all in one seamless marketplace.
-                                </p>
+                                    {cmsData && cmsData?.content?.[0].description}                                </p>
                                 <button type="button" className="btn sitebtn mediumbluebtn">
                                     Download
                                     <Image src={Images.download} alt="Down Arrow" className="img-fluid" />
@@ -334,7 +359,7 @@ const page = () => {
                 <Container>
                     <Row className="justify-content-center">
                         <Col xs={12} sm={12} md={12} lg={8}>
-                            <h2 className="section-title text-center">What Makes the NOVA Marketplace Different?</h2>
+                            <h2 className="section-title text-center">  {cmsData && cmsData?.content?.[1].heading}</h2>
                         </Col>
                     </Row>
                     <div className="sectiontwobox mt-5">
@@ -342,20 +367,21 @@ const page = () => {
                             <div className="sectiontwo_leftrightbox">
                                 <Row className="align-items-center">
                                     <Col xs={12} sm={12} md={12} lg={6} className="mb40">
-                                        <p className="paracontent borderboxhead">Memberships for Every
-                                            Creator</p>
+                                        <p className="paracontent borderboxhead"> {cmsData && cmsData?.content?.[1].card[0].heading}</p>
                                         <ul className="listboxul mt-4">
-                                            {
-                                                liboxone.map((libox, i) => (
-                                                    <li className="listboxli starlist" key={libox.lihead}>
-                                                        <p className="listboxlihead paracontent text-lightgreen fw500">
-                                                            {libox.lihead}
-                                                        </p>
-                                                        <p className="borderboxdesc paracontent text-white">
-                                                            {libox.licontent}
-                                                        </p>
+                                            {(cmsData && cmsData?.content[1]?.card.length > 0) ?
+                                                [cmsData && cmsData?.content[1]?.card[0]].map((libox, i) => (
+                                                 <li>
+                                              
+                                                    <div className="borderboxdesc paracontent text-white"
+                                                         
+                                                        dangerouslySetInnerHTML={{ __html: libox.sunediter }}
+                                                    >
+                                                        
+                                                    </div>
                                                     </li>
-                                                ))
+
+                                                )) : ""
                                             }
                                         </ul>
                                     </Col>
@@ -374,20 +400,20 @@ const page = () => {
                                         </div>
                                     </Col>
                                     <Col xs={12} sm={12} md={12} lg={6} className="mb40">
-                                        <p className="paracontent borderboxhead">Built for Growth and
-                                            Engagement</p>
+                                        {/* <p className="paracontent borderboxhead">Built for Growth and
+                                            Engagement</p> */}
+                                   <p className="paracontent borderboxhead"> {cmsData && cmsData?.content?.[1].card[1]?.heading}</p>
+
                                         <ul className="listboxul mt-4">
-                                            {
-                                                liboxtwo.map((libox, i) => (
-                                                    <li className="listboxli starlist" key={libox.lihead}>
-                                                        <p className="listboxlihead paracontent text-lightgreen fw500">
-                                                            {libox.lihead}
-                                                        </p>
-                                                        <p className="borderboxdesc paracontent text-white">
-                                                            {libox.licontent}
+                                            { (cmsData && cmsData?.content[1]?.card.length > 0) ?
+                                                [cmsData && cmsData?.content[1]?.card[1]].map((libox, i) => (
+                                                    <li >
+                                                       
+                                                        <p className="borderboxdesc paracontent text-white"
+                                                         dangerouslySetInnerHTML={{ __html: libox.sunediter }}>
                                                         </p>
                                                     </li>
-                                                ))
+                                                )) : ""
                                             }
                                         </ul>
                                     </Col>
@@ -396,19 +422,16 @@ const page = () => {
                             <div className="sectiontwo_leftrightbox">
                                 <Row className="align-items-center">
                                     <Col xs={12} sm={12} md={12} lg={6} className="mb40">
-                                        <p className="paracontent borderboxhead">Easy, Secure, and Decentralized</p>
+                                        <p className="paracontent borderboxhead">{cmsData && cmsData?.content?.[1].card[1]?.heading}</p>
                                         <ul className="listboxul mt-4">
-                                            {
-                                                liboxthree.map((libox, i) => (
-                                                    <li className="listboxli starlist starlistorange" key={libox.lihead}>
-                                                        <p className="listboxlihead paracontent text-orange fw500">
-                                                            {libox.lihead}
-                                                        </p>
-                                                        <p className="borderboxdesc paracontent text-white">
-                                                            {libox.licontent}
+                                            {(cmsData && cmsData?.content[1]?.card.length > 0) ?
+                                                 [cmsData && cmsData?.content[1]?.card[2]].map((libox, i) => (
+                                                    <li >
+                                                        <p className="borderboxdesc paracontent text-white"
+                                                         dangerouslySetInnerHTML={{ __html: libox.sunediter }}>
                                                         </p>
                                                     </li>
-                                                ))
+                                                )) : ""
                                             }
                                         </ul>
                                     </Col>
@@ -429,14 +452,15 @@ const page = () => {
                         <Row className="justify-content-center mb-5">
                             <Col xs={12} sm={12} md={12} lg={10}>
                                 <h2 className="section-title text-center fw600">
-                                    Turn Access into Assets with DeFi Memberships Options
+                                    {cmsData && cmsData?.content?.[2].heading}
                                 </h2>
                                 <p className="paracontent mt-3 text-center text-grey">
-                                    Membership passes are no longer just about exclusive content—they’re now also a valuable monetary asset, which unlock new financial opportunities for creators and fans alike
-                                </p>
+                                    {cmsData && cmsData?.content?.[2].description}                                </p>
                             </Col>
                         </Row>
-                        <FlowBoxContents data={flowboxcontents} />
+                        {/* <FlowBoxContents data={flowboxcontents} /> */}
+                        <FlowBoxContents data={(cmsData && cmsData?.content[2]?.card.length > 0) ? cmsData && cmsData?.content[2].card : []} image={flowboxcontents} />
+
                     </div>
                 </Container>
             </section>
@@ -449,12 +473,17 @@ const page = () => {
                                 <Row className="justify-content-center">
                                     <Col xs={12} sm={12} md={12} lg={8}>
                                         <p className="paracontent text-center blackboxlightcontent">
-                                            How NFT <span className="text-mediumpink">Staking</span> Works: A Step-by-Step Guide
+                                            {/* How NFT <span className="text-mediumpink">Staking</span> Works: A Step-by-Step Guide */}
+                                            {cmsData && cmsData?.content?.[3].heading}
+                                            {/* How NFT Works: A Step-by-Step Guide */}
+
+
                                         </p>
                                     </Col>
                                     <Col xs={12} sm={12} md={12} lg={10}>
                                         <p className="paracontent text-center text-lightblue">
-                                            NFT staking allows creators and NFT holders (fans) to earn rewards by “locking up” their NFTs in a staking mechanism. It works similarly to staking tokens in DeFi, but instead of cryptocurrency, the staked asset your NFT Membership Pass. Here’s a breakdown of the process for both Creator and Fans:
+                                            {cmsData && cmsData?.content?.[3].description}
+
                                         </p>
                                     </Col>
                                 </Row>
@@ -469,12 +498,15 @@ const page = () => {
                         <Row className="justify-content-center">
                             <Col xs={12} sm={12} md={12} lg={8} xl={6}>
                                 <h2 className="section-title text-center">
-                                    <span className="text-mediumpink">For Creators :</span> Offering Staking Rewards
+                                    <span className="text-mediumpink"> {cmsData && cmsData?.content?.[4].heading}</span> {cmsData && cmsData?.content?.[4].subHeading}
                                 </h2>
                             </Col>
                         </Row>
                         <div className="sectionfivebox gifimgbox mt-5">
-                            <BoxContents data={creators} />
+                            {/* <BoxContents data={creators} /> */}
+
+                            <BoxContents data={(cmsData && cmsData?.content[4]?.card.length > 0) ? cmsData?.content[4]?.card : []} image={creators} />
+
                         </div>
                     </div>
                 </Container>
@@ -485,12 +517,14 @@ const page = () => {
                         <Row className="justify-content-center">
                             <Col xs={12} sm={12} md={12} lg={8} xl={6}>
                                 <h2 className="section-title text-center">
-                                    <span className="text-lightgreen">For Fans :</span> Earn Staking Rewards
+                                    <span className="text-lightgreen">{cmsData && cmsData?.content?.[5].heading}</span> {cmsData && cmsData?.content?.[5].subHeading}
                                 </h2>
                             </Col>
                         </Row>
                         <div className="sectionsixbox gifimgbox mt-5">
-                            <BoxContents data={fans} />
+                            {/* <BoxContents data={fans} /> */}
+                            <BoxContents data={(cmsData && cmsData?.content[5]?.card.length > 0) ? cmsData?.content[5]?.card : []} image={fans} />
+
                         </div>
                     </div>
                 </Container>
@@ -500,7 +534,7 @@ const page = () => {
                     <Row className="justify-content-center">
                         <Col xs={12} sm={12} md={12} lg={8} xl={6}>
                             <h2 className="section-title text-center text-rose">
-                                Benefits of NFT Staking
+                                {cmsData && cmsData?.content?.[6].heading}
                             </h2>
                         </Col>
                     </Row>
@@ -508,16 +542,17 @@ const page = () => {
                         <div className="borderbox">
                             <Row className="justify-content-between">
                                 <Col xs={12} sm={12} md={12} lg={5}>
-                                    <p className="sectionsevenlisthead paracontent text-skyblue">For Creators</p>
+                                    <p className="sectionsevenlisthead paracontent text-skyblue">{cmsData && cmsData?.content[6]?.card[0].heading}</p>
                                     <ul className="listboxul my-4">
-                                        {
-                                            forcreators.map((libox, i) => (
-                                                <li className="listboxli starlist" key={i}>
-                                                    <p className="borderboxdesc paracontent text-white">
-                                                        {libox.content}
-                                                    </p>
-                                                </li>
-                                            ))
+                                        {(cmsData && cmsData?.content[6]?.card.length > 0) ?
+                                            [cmsData && cmsData?.content[6]?.card[0]].map((libox, i) => (
+
+                                                <div className="borderboxdesc paracontent text-white"
+                                                    dangerouslySetInnerHTML={{ __html: libox.sunediter }}  >
+
+                                                </div>
+
+                                            )) : ""
                                         }
                                     </ul>
                                     <button type="button" className="btn sitebtn skybluebtn rotateicon">
@@ -527,16 +562,17 @@ const page = () => {
                                 </Col>
                                 <Col xs={12} sm={12} md={12} lg={5}>
                                     <div className="pt-5 pt-lg-0">
-                                        <p className="sectionsevenlisthead paracontent text-skyblue">For Fans</p>
+                                        <p className="sectionsevenlisthead paracontent text-skyblue">{cmsData && cmsData?.content[6]?.card[1].heading}</p>
                                         <ul className="listboxul mt-4">
-                                            {
-                                                forfans.map((libox, i) => (
-                                                    <li className="listboxli starlist" key={i}>
-                                                        <p className="borderboxdesc paracontent text-white">
-                                                            {libox.content}
-                                                        </p>
-                                                    </li>
-                                                ))
+                                            {(cmsData && cmsData?.content[6]?.card.length > 0) ?
+                                                [cmsData && cmsData?.content[6]?.card[1]].map((libox, i) => (
+
+
+                                                    <div className="borderboxdesc paracontent text-white"
+                                                        dangerouslySetInnerHTML={{ __html: libox.sunediter }}  >
+
+                                                    </div>
+                                                )) : ""
                                             }
                                         </ul>
                                     </div>
@@ -554,12 +590,12 @@ const page = () => {
                                 <Row className="justify-content-center">
                                     <Col xs={12} sm={12} md={12} lg={10}>
                                         <p className="paracontent text-center blackboxendcontent text-mediumpink mb-4">
-                                            How NFT Borrowing and Lending Works on NOVA
+                                            {cmsData && cmsData?.content[7]?.heading}
                                         </p>
                                     </Col>
                                     <Col xs={12} sm={12} md={12} lg={11}>
                                         <p className="paracontent text-center blackboxlightcontent mb-0">
-                                            NOVA’s NFT lending and borrowing platform empowers users to unlock the value of their digital assets. Whether you’re looking to access liquidity without selling your NFTs or earn passive income by lending out your assets, NOVA makes the process seamless and secure.
+                                            {cmsData && cmsData?.content[7]?.description}
                                         </p>
                                     </Col>
                                 </Row>
@@ -567,7 +603,9 @@ const page = () => {
                             <div className="blackbox blackboxlightbg flowboxgridone">
                                 <Row className="justify-content-center">
                                     <Col xs={12} sm={12} md={10} lg={9}>
-                                        <FlowBoxContents data={flowboxcontentstwo} />
+                                        {/* <FlowBoxContents data={flowboxcontentstwo} /> */}
+                                        <FlowBoxContents data={(cmsData && cmsData?.content[7]?.card.length > 0) ? cmsData && cmsData?.content[7].card : []} image={flowboxcontentstwo} />
+
                                     </Col>
                                 </Row>
                             </div>
@@ -581,12 +619,14 @@ const page = () => {
                         <Row className="justify-content-center">
                             <Col xs={12} sm={12} md={12} lg={8} xl={6}>
                                 <h2 className="section-title text-center">
-                                    For Borrowers: Unlock Liquidity
+                                    {cmsData && cmsData?.content[8]?.heading}
                                 </h2>
                             </Col>
                         </Row>
                         <div className="sectionninebox gifimgbox mt-5">
-                            <BoxContents data={borrowers} />
+                            {/* <BoxContents data={borrowers} /> */}
+                            <BoxContents data={(cmsData && cmsData?.content[8]?.card.length > 0) ? cmsData?.content[8]?.card : []} image={borrowers} />
+
                         </div>
                     </div>
                 </Container>
@@ -597,12 +637,13 @@ const page = () => {
                         <Row className="justify-content-center">
                             <Col xs={12} sm={12} md={12} lg={8} xl={6}>
                                 <h2 className="section-title text-center">
-                                    For Lenders: Earn Staking Rewards
-                                </h2>
+                                    {cmsData && cmsData?.content[9]?.heading}                                </h2>
                             </Col>
                         </Row>
                         <div className="sectiontenbox gifimgbox mt-5">
-                            <BoxContents data={lenders} />
+                            {/* <BoxContents data={lenders} /> */}
+                            <BoxContents data={(cmsData && cmsData?.content[9]?.card.length > 0) ? cmsData?.content[8]?.card : []} image={lenders} />
+
                         </div>
                     </div>
                 </Container>
@@ -615,15 +656,15 @@ const page = () => {
                                 <Row className="justify-content-center">
                                     <Col xs={12} sm={12} md={12} lg={10}>
                                         <h2 className="section-title text-center text-lightgreen fw600">
-                                            Why NOVA?
-                                        </h2>
+                                            {cmsData && cmsData?.content[10]?.heading}                                           </h2>
                                         <p className="paracontent mt-3 text-center text-white">
-                                            NOVA’s NFT staking, borrowing, and lending platform offers
-                                        </p>
+                                            {cmsData && cmsData?.content[10]?.subHeading}                                           </p>
                                     </Col>
                                 </Row>
                                 <div className="mt-5">
-                                    <BoxContents data={fanownership} oddgrid={fanownership.length % 2 !== 0} />
+                                    {/* <BoxContents data={fanownership} oddgrid={fanownership.length % 2 !== 0} /> */}
+                                    <BoxContents data={(cmsData && cmsData?.content[10]?.card.length > 0) ? cmsData?.content[8]?.card : []} image={fanownership} oddgrid={fanownership.length % 2 !== 0} />
+
                                 </div>
                             </div>
                         </Col>
@@ -636,18 +677,22 @@ const page = () => {
                         <Row className="justify-content-center">
                             <Col xs={12} sm={12} md={12} lg={8} xl={6}>
                                 <h2 className="section-title text-center">
-                                    NOVA Marketplace Features
+                                    {cmsData && cmsData?.content[11]?.heading}
                                 </h2>
                             </Col>
                         </Row>
                         <div className="sectiontwelvebox mt-5 gridboxthree">
-                            <BoxContents data={marketplacefeatures} />
+                            {/* <BoxContents data={marketplacefeatures} /> */}
+                            <BoxContents data={(cmsData && cmsData?.content[11]?.card.length > 0) ? cmsData?.content[11]?.card : []} image={marketplacefeatures} />
+
                         </div>
                     </div>
                 </Container>
             </section>
             <section className="sectionthirteen p-0">
-                <FooterBlackbox page="marketplace" data={footblackbox} />
+                {/* <FooterBlackbox page="marketplace" data={footblackbox} /> */}
+                <FooterBlackbox page="marketplace" data={[(cmsData, cmsData?.content ? cmsData?.content?.[12] : {})]} />
+
             </section>
         </main>
     )

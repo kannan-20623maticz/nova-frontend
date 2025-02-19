@@ -16,7 +16,9 @@ import Images from '@/Images';
 
 const InnerPage = (props) => {
 
-    const { page, sectionheadone, sectionheadtwo, bannersection, topblackbox, multiboxone, multiboxtwo, footblackbox } = props;
+    console.log("props_vi--",props);
+    const { page, sectionheadone, sectionheadtwo, bannersection,bannerinamge, topblackbox, multiboxone,multiboxoneimage, multiboxtwo, multiboxtwoimage,footblackbox } = props;
+    console.log("bannersection_bannersection",multiboxtwo);
 
     return (
         <>
@@ -27,15 +29,15 @@ const InnerPage = (props) => {
                         <Col xs={12} sm={12} md={12} lg={6} className="mb40">
                             <div className="bannerbox">
                                 <h1 className={`banner-title ${page === "dao" && "text-white"}`}>
-                                    {bannersection.datahead}
+                                    {bannersection.heading}
                                 </h1>
-                                {bannersection.datasubhead &&
+                                {bannersection.subHeading &&
                                     <p className="banner-subtitle my-2">
-                                        {bannersection.datasubhead}
+                                        {bannersection.description}
                                     </p>
                                 }
                                 <p className={`paracontent mb-4 ${page === "dao" && "text-white"}`}>
-                                    {bannersection.datadesc}
+                                    {bannersection.description}
                                 </p>
                                 <button type="button" className={`btn sitebtn ${(page === "creators" || page === "fans") && "blackbtn"}`}>
                                     Download
@@ -47,8 +49,8 @@ const InnerPage = (props) => {
                             <div className="bannerimgbox">
                                 {/* {page !== "community" && */}
                                     <>
-                                        {(page === "creators" || page === "dao") && <Lottieimg animationData={bannersection.dataimg} loop={true} />}
-                                        {(page === "fans" || page === "community") && <Image src={bannersection.dataimg} alt={bannersection.datahead} className="img-fluid" loading="eager" />}
+                                        {(page === "creators" || page === "dao") && <Lottieimg animationData={bannersection?.dataimg} loop={true} />}
+                                        {(page === "fans" || page === "community") && <Image src={bannerinamge?.dataimg} alt={bannersection?.datahead} className="img-fluid" loading="eager" />}
                                     </>
                                 {/* } */}
                                 {/* {page === "community" && <video className="communityvid" autoPlay={true} loop={true} muted={true}>
@@ -74,7 +76,7 @@ const InnerPage = (props) => {
                             </Col>
                         </Row>
                         <div className="sectionthreebox gifimgbox mt-5">
-                            <BoxContents data={multiboxone} />
+                            <BoxContents data={multiboxone} image = {multiboxoneimage} />
                         </div>
                     </div>
                 </Container>
@@ -90,7 +92,7 @@ const InnerPage = (props) => {
                             </Col>
                         </Row>
                         <div className="sectionfourbox mt-5 gridboxthree">
-                            <BoxContents data={multiboxtwo} />
+                            <BoxContents data={multiboxtwo} image ={multiboxtwoimage} />
                         </div>
                     </div>
                 </Container>

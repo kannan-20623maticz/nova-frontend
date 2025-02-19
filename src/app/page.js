@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from "react";
+
 import Image from 'next/image';
 import { Accordion, Col, Container, Form, InputGroup, Row } from 'react-bootstrap'
 import dynamic from 'next/dynamic';
@@ -8,18 +9,20 @@ import Link from 'next/link';
 // import Lottie from 'lottie-react';
 import BoxContents from '@/components/BoxContents';
 import FlowBoxContents from '@/components/FlowBoxContents';
+import { getCms } from "../action/cmsAction";
 
 const Lottieimg = dynamic(() => import('lottie-react'), { ssr: false });
 
 import Images from '@/Images';
 
 const page = () => {
-
+  const [cmsData, setCmsData] = useState("");
+  console.log("cms",cmsData);
   const [sectiontwoborderbox] = useState([
     {
       boximg: Images.roundimgone,
-      boxhead: "Fragmented Ecosystem",
-      boxdesc: "We know how annoying it can be to switch between platforms for wallets, NFT trading, community engagement, and tracking your investments. It’s messy and inefficient."
+      boxhead: "Default Header",
+      boxdesc: ""
     },
     {
       boximg: Images.roundimgtwo,
@@ -49,6 +52,7 @@ const page = () => {
       boxdesc: "We know how annoying it can be to switch between platforms for wallets, NFT trading, community engagement, and tracking your investments. It’s messy and inefficient."
     },
   ]);
+
 
   const [listsboxes] = useState([
     {
@@ -454,6 +458,39 @@ const page = () => {
     },
   ]);
 
+
+
+// console.log("cmsData_cmsData_frontend",cmsData?.content[0]);
+
+  const getCmsData = async () => {
+    try {
+      const getData = await getCms({ page: "HomePage" });
+      console.log("frontend_getData_cms",getData);
+      if (getData.status) {
+        setCmsData(getData.data.data)
+      }
+    } catch (e) {
+      console.log("getCmsData_err", e);
+    }
+  }
+
+  useEffect(() => {
+    getCmsData()
+    window.scroll({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, []);
+
+
+
+
+
+
+
+
+
+
   return (
     <main className="homepage">
       <section className="sectionone bannersection">
@@ -463,11 +500,12 @@ const page = () => {
             <Col xs={12} sm={12} md={12} lg={6} className="mb40">
               <div className="bannerbox">
                 <h1 className="banner-title">
-                  The World's First Web3 AI-Powered Social Super App
-                </h1>
+                {/* <p>{cmsData?.content?.[0]?.heading || "Loading"}</p>         */}
+                {cmsData && cmsData?.content[0]?.heading}
+
+                        </h1>
                 <p className="paracontent">
-                  Create, Connect, and Earn together in an All-In-One Social Digital Ecosystem for the Creator Economy.
-                </p>
+                {cmsData && cmsData?.content[0]?.description}                </p>
                 <button type="button" className="btn sitebtn">
                   Download
                   <Image src={Images.download} alt="Down Arrow" className="img-fluid" />
@@ -503,30 +541,35 @@ const page = () => {
         <Container>
           <Row className="justify-content-center">
             <Col xs={12} sm={12} md={12} lg={8}>
-              <h2 className="section-title text-center">Your Web3 Experience Deserves Better</h2>
+              <h2 className="section-title text-center">{cmsData && cmsData?.content[1]?.heading}</h2>
             </Col>
           </Row>
+          {console.log('testtttttt',cmsData?.content)}
           <div className="sectiontwotopbox">
             <Image src={Images.secondbg} alt="cover" className="img-fluid sectionbgimg" fill />
             <div className="blackbox boxgrid">
               {
-                sectiontwoborderbox.map((data) => (
-                  <div className={`borderbox ${["bots", "data"].some(text => data.boxhead.toLowerCase().includes(text)) ? "videobox" : ""}`} key={data.boxhead}>
-                    <div className={`${["bots", "data"].some(text => data.boxhead.toLowerCase().includes(text)) ? "videoboxdiv" : ""}`}>
-                      <Image src={data.boximg} alt={data.boxhead} className="img-fluid borderboximg" />
-                      <p className="borderboxhead paracontent">{data.boxhead}</p>
+                (cmsData?.content?.[1]?.card?.length > 0)
+                ?
+                cmsData?.content?.[1]?.card?.map((data,ind) => (
+                  <div className={`borderbox ${["bots", "data"].some(text => sectiontwoborderbox[ind].boxhead.toLowerCase().includes(text)) ? "videobox" : ""}`} key={sectiontwoborderbox[ind].boxhead}>
+                    <div className={`${["bots", "data"].some(text => sectiontwoborderbox[ind].boxhead.toLowerCase().includes(text)) ? "videoboxdiv" : ""}`}>
+                      <Image src={sectiontwoborderbox[ind].boximg} alt={sectiontwoborderbox[ind].boxhead} className="img-fluid borderboximg" />
+                      <p className="borderboxhead paracontent">{data?.heading}</p>
                       <p className="borderboxdesc paracontent">
-                        {data.boxdesc}
+                        {data.description}
                       </p>
                     </div>
                     {
-                      ["bots", "data"].some(text => data.boxhead.toLowerCase().includes(text)) && <video autoPlay={true} loop={true} muted={true} controls={false}>
-                        <source src={`/assets/images/${data.boxhead.toLowerCase().includes("bots") ? "botspamvid" : "twomobiles"}.mp4`} type="video/mp4" />
+                      ["bots", "data"].some(text => sectiontwoborderbox[ind].boxhead.toLowerCase().includes(text)) && <video autoPlay={true} loop={true} muted={true} controls={false}>
+                        <source src={`/assets/images/${sectiontwoborderbox[ind].boxhead.toLowerCase().includes("bots") ? "botspamvid" : "twomobiles"}.mp4`} type="video/mp4" />
                         <track src="javascript:;" kind="captions"></track>
                       </video>
                     }
                   </div>
                 ))
+                :
+                <></>
               }
             </div>
           </div>
@@ -539,16 +582,13 @@ const page = () => {
               <Image src={Images.greybg} alt="cover" className="img-fluid sectionbgimg" fill />
               <Row className="align-items-center">
                 <Col xs={12} sm={12} md={12} lg={6} className="mb40">
-                  <h2 className="section-title mb-3">Simplifying your Digital Daily Needs</h2>
+                  <h2 className="section-title mb-3">{cmsData && cmsData?.content[2]?.heading}</h2>
                   <p className="paracontent mb-3 text-white">
-                    The Mobile app space is fragmented, by social networks, shopping, disconnected wallets, dApps, and chats limiting its potential and making it difficult to navigate your daily needs
-                  </p>
-                  <p className="paracontent mb-3 text-white">
-                    Nova unites the fragmented mobile app space by connecting social networks, shopping, wallets, dApps, and chats into one seamless experience.
-                  </p>
+                  {cmsData && cmsData?.content[2]?.description}                  </p>
+                  
                   <p className="paracontent text-pink mb-3">
-                    Start Using NOVA for Free and Keep 100% of What You Earn
-                  </p>
+                  {cmsData && cmsData?.content[2]?.subHeading}   
+                                    </p>
                   <button type="button" className="btn sitebtn">
                     Download
                     <Image src={Images.download} alt="Down Arrow" className="img-fluid" />
@@ -574,22 +614,28 @@ const page = () => {
             <Row className="justify-content-center">
               <Col xs={12} sm={12} md={12} lg={6}>
                 <h2 className="section-title text-center">
-                  The Ultimate Digital Social Ecosystem for Web3 & the Mobile Era
-                </h2>
+                {cmsData && cmsData?.content[3]?.heading}   
+                             </h2>
               </Col>
             </Row>
             <div className="listsbox mt-5">
               <Row className="justify-content-center">
                 {
-                  listsboxes.map((libox) => (
-                    <Col xs={12} sm={12} md={6} lg={6} xl={4} key={libox.listboxhead}>
+                  (cmsData?.content?.[3]?.card?.length > 0) ? 
+                  cmsData?.content[3]?.card?.map((libox,index) => (
+                    <Col xs={12} sm={12} md={6} lg={6} xl={4} key={index}>
                       <div className="borderbox">
                         <div className="d-flex align-items-center gap20">
-                          <Image src={libox.listboximg} alt={libox.listboxhead} className="img-fluid borderboximg" />
-                          <p className="paracontent text-lightgreen fw500 borderboxhead">{libox.listboxhead}</p>
+                          <Image src={listsboxes[index].listboximg} alt={listsboxes[index].listboxhead} className="img-fluid borderboximg" />
+                          <p className="paracontent text-lightgreen fw500 borderboxhead">{libox.heading}</p>
                         </div>
-                        <p className="paracontent text-white my-3 fw500">{libox.listboxsubhead}</p>
-                        <ul className="listboxul">
+                        <p className="paracontent text-white my-3 fw500">{libox.subHeading}</p>
+                        <div
+                        dangerouslySetInnerHTML={{__html:libox.sunediter}}
+                        >
+
+                        </div>
+                        {/* <ul className="listboxul">
                           {
                             libox.listboxli.map((liboxinn, i) => (
                               <li className="listboxli starlist" key={i}>
@@ -599,10 +645,10 @@ const page = () => {
                               </li>
                             ))
                           }
-                        </ul>
+                        </ul> */}
                       </div>
                     </Col>
-                  ))
+                  ) ) : ""
                 }
               </Row>
             </div>
@@ -620,10 +666,10 @@ const page = () => {
                   <Row className="justify-content-center">
                     <Col xs={12} sm={12} md={12} lg={8}>
                       <h2 className="section-title text-center">
-                        NOVA is a Super App for Creators, Fans, Shoppers, Supporters, Investors, and Mobile lovers.
+                      {cmsData && cmsData?.content[4]?.heading}  
                       </h2>
                       <p className="paracontent text-white text-center mt-2">
-                        We are the EVERYTHING App for All your daily needs.
+                      {cmsData && cmsData?.content[4]?.description}  
                       </p>
                     </Col>
                   </Row>
@@ -674,18 +720,11 @@ const page = () => {
           <div className="sectionsevenbox blackbox">
             <Row className="align-items-center">
               <Col xs={12} sm={12} md={12} lg={6} className="mb40">
-                <h2 className="section-title mb-2">Mint & Sell</h2>
+                <h2 className="section-title mb-2">{cmsData && cmsData?.content[4]?.card[0]?.heading} </h2>
                 <p className="paracontent text-lightgreen text-uppercase fw500 mb-3">
-                  MEMBERSHIP MARKETPLACE
-                </p>
+                {cmsData && cmsData?.content[4]?.card[0]?.subHeading}                </p>
                 <p className="paracontent mb-4 text-white">
-                  Connect directly with fans and
-                  communities through NOVA’s NFT
-                  Marketplace. This is where creators and
-                  users can trade, buy, and sell exclusive
-                  NFT membership passes, enabling
-                  ownership, access, and unique
-                  opportunities in the web3 world.
+                {cmsData && cmsData?.content[4]?.card[0]?.description}
                 </p>
                 <Link href="/" className="btn sitebtn rotateicon greenbtn">
                   Learnmore
@@ -714,19 +753,11 @@ const page = () => {
                 </div>
               </Col>
               <Col xs={12} sm={12} md={12} lg={6} className="mb40">
-                <h2 className="section-title mb-2">Create & Connect</h2>
+                <h2 className="section-title mb-2">{cmsData && cmsData?.content[4]?.card[1]?.heading}</h2>
                 <p className="paracontent text-mediumblue text-uppercase fw500 mb-3">
-                  Social Community & Creator Hub
-                </p>
+                {cmsData && cmsData?.content[4]?.card[1]?.subHeading}                </p>
                 <p className="paracontent mb-4 text-white">
-                  NOVA’s social community & creator
-                  hub is designed to bring people
-                  together in meaningful, interactive
-                  ways. It’s built for creators, fans, and
-                  communities to engage deeply through
-                  token-gated features, real-time
-                  interaction, and access exclusive
-                  content from creators.
+                {cmsData && cmsData?.content[4]?.card[1]?.description}
                 </p>
                 <div className="d-flex align-items-center flex-wrap gap-3">
                   <Link href="/" className="btn sitebtn blueoutlinebtn">
@@ -757,16 +788,12 @@ const page = () => {
           <div className="sectionninebox">
             <Row className="align-items-center">
               <Col xs={12} sm={12} md={12} lg={6} className="mb40">
-                <h2 className="section-title mb-2">Earn & Own</h2>
+                <h2 className="section-title mb-2">{cmsData && cmsData?.content[4]?.card[2]?.heading}</h2>
                 <p className="paracontent text-lightgreen text-uppercase fw500 mb-3">
-                  NOVA Wallet
+                {cmsData && cmsData?.content[4]?.card[2]?.subHeading}
                 </p>
                 <p className="paracontent text-white">
-                  NOVA’s wallet and financial tools
-                  empower you to manage your digital
-                  assets, generate revenue, and seamlessly
-                  transact peer to peer globally—all with
-                  complete control and zero fees.
+                {cmsData && cmsData?.content[4]?.card[2]?.description}
                 </p>
                 <ul className="mt-3 mb-4 sectionnine_earnownul">
                   {
@@ -801,8 +828,7 @@ const page = () => {
           <Row className="justify-content-center">
             <Col xs={12} sm={12} md={12} lg={7}>
               <h2 className="section-title text-center fw600">
-                Monetize your community with Collectable Token-gated NFT Membership Passes.
-              </h2>
+              {cmsData && cmsData?.content[5]?.heading}               </h2>
             </Col>
           </Row>
           <div className="sectiontenbox blackbox">
@@ -810,12 +836,14 @@ const page = () => {
               <Col xs={12} sm={12} md={12} lg={7}>
                 <ul className="sectiontenboxul">
                   {
-                    tokenMember.map((tm, i) => (
+                (cmsData?.content?.[5]?.card?.length > 0) ? 
+
+                     cmsData?.content[5]?.card?.map((tm, i) => (
                       <li className="sectiontenboxli" key={i}>
                         <span className="sectiontenboxnum">{i + 1}</span>
-                        <p className="sectiontenboxdesc paracontent">{tm.tokencontent}</p>
+                        <p className="sectiontenboxdesc paracontent">{tm.heading}</p>
                       </li>
-                    ))
+                    )) :""
                   }
                 </ul>
               </Col>
@@ -839,23 +867,13 @@ const page = () => {
                 </div>
               </Col>
               <Col xs={12} sm={12} md={12} lg={6} className="mb40">
-                <h2 className="section-title section-titlebig text-lightgreen mb-2">A New Era of Memberships</h2>
+                <h2 className="section-title section-titlebig text-lightgreen mb-2"> {cmsData && cmsData?.content[6]?.heading}  </h2>
                 <p className="section-titletwo mb-3">
-                  With NOVA’s NFT Membership Passes, fans become more than just participants—they become owners.
-                </p>
+                {cmsData && cmsData?.content[6]?.subHeading}                 </p>
                 <p className="paracontent mb-3 text-white">
-                  With web2's streaming services and exclusive
-                  memberships, you’re renting access
-                  temporarily, and when you’re done, you’re left
-                  with nothing. Web3 changes the game,
-                  allowing fans to be not just users but owners.
+                {cmsData && cmsData?.content[6]?.description}    
                 </p>
-                <p className="paracontent text-white">
-                  Each NFT Membership Pass is more than an
-                  access key; it’s a unique, verifiable digital
-                  asset that combines the benefits of
-                  ownership and collectibility.
-                </p>
+                
               </Col>
             </Row>
           </div>
@@ -867,26 +885,25 @@ const page = () => {
           <Row className="justify-content-center">
             <Col xs={12} sm={12} md={12} lg={7}>
               <h2 className="section-title text-center text-lightgreen fw600">
-                What Sets NOVA Memberships Apart
-              </h2>
+              {cmsData && cmsData?.content[7]?.heading}               </h2>
             </Col>
           </Row>
           <div className="sectiontwelvebox">
             <div className="sectiontwelve_grid">
               {
-                membership.map((mem) => (
-                  <div className="sectiontwelve_gridbox" key={mem.memberhead}>
+                (cmsData?.content?.[7]?.card?.length > 0) ?  cmsData?.content[7]?.card?.map((mem ,index) => (
+                  <div className="sectiontwelve_gridbox" key={index}>
                     <div>
-                      <Image src={mem.memberimg} alt={mem.memberhead} className="img-fluid sectiontwelve_gridimg" />
+                      <Image src={membership[index].memberimg} alt={membership[index].memberhead} className="img-fluid sectiontwelve_gridimg" />
                     </div>
                     <div>
-                      <p className="paracontent sectiontwelve_gridhead">{mem.memberhead}</p>
+                      <p className="paracontent sectiontwelve_gridhead">{mem.heading}</p>
                       <p className="paracontent sectiontwelve_griddesc">
-                        {mem.memberdesc}
+                        {mem.description}
                       </p>
                     </div>
                   </div>
-                ))
+                )) : ""
               }
             </div>
           </div>
@@ -900,15 +917,14 @@ const page = () => {
                 <Row className="justify-content-center">
                   <Col xs={12} sm={12} md={12} lg={10}>
                     <h2 className="section-title text-center text-lightgreen fw600">
-                      Fan Ownership
-                    </h2>
+                    {cmsData && cmsData?.content[8]?.heading}                       </h2>
                     <p className="paracontent mt-3 text-center text-white">
-                      NOVA gives fans the unique opportunity to invest in the success of their favorite creators. By owning a Collectable Token-Gated NFT Membership Pass, fans become more than just supporters—they become stakeholders in the creator’s journey.
-                    </p>
+                    {cmsData && cmsData?.content[8]?.description}                             </p>
                   </Col>
                 </Row>
                 <div className="mt-4">
-                  <BoxContents data={fanownership} oddgrid={fanownership.length % 2 !== 0} />
+                  {console.log('fefewfallll',cmsData?.content?.[8]?.card,fanownership)}
+                  <BoxContents data={ (cmsData && cmsData?.content[8]?.card.length > 0 ) ? cmsData?.content[8]?.card : []}  image = { fanownership} oddgrid={fanownership.length % 2 !== 0} />
                 </div>
               </div>
             </Col>
@@ -926,20 +942,12 @@ const page = () => {
                 </div>
               </Col>
               <Col xs={12} sm={12} md={12} lg={6} className="mb40">
-                <h2 className="section-title section-titlebig text-mediumpurple fw600 mb-2">DeFi Features</h2>
+                <h2 className="section-title section-titlebig text-mediumpurple fw600 mb-2">  {cmsData && cmsData?.content[9]?.heading}   </h2>
                 <p className="section-titletwo mb-3">
-                  Unlocking the Full Value of <span className="d-block text-lightgreen">NOVA Memberships</span>
+                 <span className="d-block text-lightgreen">  {cmsData && cmsData?.content[9]?.subHeading}   </span>
                 </p>
                 <p className="paracontent text-white">
-                  NOVA takes memberships to the
-                  next level by combining exclusive
-                  access with the power of
-                  decentralized finance (DeFi). With
-                  our innovative DeFi features, your
-                  NFT Membership Passes aren’t just
-                  keys to exclusive content—they’re
-                  valuable assets that can generate
-                  financial rewards.
+                {cmsData && cmsData?.content[9]?.description} 
                 </p>
               </Col>
             </Row>
@@ -949,7 +957,9 @@ const page = () => {
       <section className="sectionfiveteen sectionblackbg">
         <Container className="containertwo">
           <div className="blackbox">
-            <FlowBoxContents data={flowboxcontents} />
+            {/* <FlowBoxContents data={flowboxcontents} /> */}
+            <FlowBoxContents data={(  cmsData && cmsData?.content[9]?.card.length > 0 ) ? cmsData && cmsData?.content[9].card  : [] } image = {flowboxcontents} />
+
           </div>
         </Container>
       </section>
@@ -962,17 +972,16 @@ const page = () => {
                 <Row className="justify-content-center">
                   <Col xs={12} sm={12} md={12} lg={8}>
                     <p className="paracontent text-center blackboxlightcontent">
-                      From powerful AI tools to ad-free
-                      social features, NOVA solves your
-                      daily digital needs while prioritizing
-
-                      simplicity and privacy
+                    {cmsData && cmsData?.content[10]?.description}  
                     </p>
                   </Col>
                   <Col xs={12} sm={12} md={12} lg={9}>
                     <p className="paracontent text-center blackboxendcontent">
-                      <span className="text-lightgreen">
+                      {/* <span className="text-lightgreen">
                         Unlock the full potential of the Internet with <span className="text-purple">NOVA</span>
+                      </span> */}
+                      <span className="text-lightgreen">
+                      {cmsData && cmsData?.content[10]?.heading}  
                       </span>
                     </p>
                   </Col>
@@ -992,16 +1001,9 @@ const page = () => {
                 </div>
               </Col>
               <Col xs={12} sm={12} md={12} lg={6} className="mb40">
-                <h2 className="section-title text-black fw600 mb-3">True Ownership of Your Assets</h2>
+                <h2 className="section-title text-black fw600 mb-3"> {cmsData && cmsData?.content[10]?.card[0]?.heading}  </h2>
                 <p className="paracontent text-black">
-                  With NOVA, you take full control of your
-                  financial and digital assets. You hold the
-                  keys whether it’s your cryptocurrency
-                  assets or membership passes. Seamlessly
-                  manage, spend, and trade your assets
-                  without restrictions or middlemen, all
-                  backed by advanced security. This is what
-                  true ownership looks like.
+                {cmsData && cmsData?.content[10]?.card[0]?.description} 
                 </p>
               </Col>
             </Row>
@@ -1014,15 +1016,10 @@ const page = () => {
             <Row className="align-items-center">
               <Col xs={12} sm={12} md={12} lg={6} className="mb40">
                 <div className="pe-lg-5">
-                  <h2 className="section-title text-black fw600 mb-3">Social Features Built for Web3</h2>
+                  <h2 className="section-title text-black fw600 mb-3">{cmsData && cmsData?.content[10]?.card[1]?.heading} </h2>
                   <p className="paracontent text-black">
-                    Web3 isn’t just about transactions; it’s
-                    about connections. NOVA provides
-                    powerful social tools like token-gated live
-                    audio spaces, video rooms & group chats,
-                    making it easier than ever to engage with
-                    your communities and collaborate with
-                    like-minded individuals.
+                  {cmsData && cmsData?.content[10]?.card[1]?.description} 
+
                   </p>
                 </div>
               </Col>
@@ -1046,16 +1043,9 @@ const page = () => {
               </Col>
               <Col xs={12} sm={12} md={12} lg={6} className="mb40">
                 <div className="ps-lg-5">
-                  <h2 className="section-title text-black fw600 mb-3">AI Assistant</h2>
+                  <h2 className="section-title text-black fw600 mb-3">{cmsData && cmsData?.content[10]?.card[2]?.heading} </h2>
                   <p className="paracontent text-black">
-                    NOVA’s AI is a powerful two-in-one tool,
-                    combining the capabilities of an advanced
-                    LLM with the functionality of AI Agents.
-                    Whether you need help generating content,
-                    managing DeFi operations, or completing a
-                    variety of everyday tasks, NOVA’s AI is here
-                    to simplify your web3 experience and
-                    handle the work for you.
+                  {cmsData && cmsData?.content[10]?.card[2]?.description} 
                   </p>
                 </div>
               </Col>
@@ -1070,15 +1060,10 @@ const page = () => {
               <Col xs={12} sm={12} md={12} lg={6} className="mb40">
                 <div className="pe-lg-5">
                   <h2 className="section-title text-black fw600 mb-3">
-                    Seamless Experience without Bots, Spam, or Ads
+                  {cmsData && cmsData?.content[10]?.card[3]?.heading} 
                   </h2>
                   <p className="paracontent text-black">
-                    Tired of bots, spam, and cluttered
-                    community spaces? NOVA ensures your
-                    experience is free from distractions, with
-                    token-gated access that keeps interactions
-                    meaningful and high-quality. Enjoy a
-                    platform designed for genuine connections no bots, no spam, and no ads.
+                  {cmsData && cmsData?.content[10]?.card[3]?.description} 
                   </p>
                 </div>
               </Col>
@@ -1102,15 +1087,9 @@ const page = () => {
               </Col>
               <Col xs={12} sm={12} md={12} lg={6} className="mb40">
                 <div className="ps-lg-5">
-                  <h2 className="section-title text-black fw600 mb-3">Data Privacy & Digital Identity</h2>
+                  <h2 className="section-title text-black fw600 mb-3">{cmsData && cmsData?.content[10]?.card[4]?.heading} </h2>
                   <p className="paracontent text-black">
-                    With NOVA, you own your data, digital
-                    identity, and assets—unlike web2 platforms
-                    that track your activity and build profiles
-                    for targeted ads. NOVA doesn’t access or
-                    share your information, giving you
-                    complete control and privacy in the web3
-                    world.
+                  {cmsData && cmsData?.content[10]?.card[4]?.description} 
                   </p>
                 </div>
               </Col>
@@ -1125,18 +1104,10 @@ const page = () => {
               <Col xs={12} sm={12} md={12} lg={6} className="mb40">
                 <div className="pe-lg-5">
                   <h2 className="section-title text-black fw600 mb-3">
-                    DApp Store and Web3 Browser
+                  {cmsData && cmsData?.content[10]?.card[5]?.heading} 
                   </h2>
                   <p className="paracontent text-black">
-                    Explore a wide array of decentralized
-                    applications with NOVA’s DApp Store,
-                    seamlessly integrated with our web3 browser.
-                    From DeFi apps like Polytrade and Polymarket to
-                    gaming platforms and more, NOVA brings the
-                    best of web3 directly to your fingertips. Interact,
-                    trade, and grow—all within a single, accessible
-                    platform designed to connect you with the full
-                    potential of decentralized technology.
+                  {cmsData && cmsData?.content[10]?.card[5]?.description} 
                   </p>
                 </div>
               </Col>
@@ -1158,11 +1129,8 @@ const page = () => {
                 <Row className="justify-content-center">
                   <Col xs={12} sm={12} md={12} lg={8}>
                     <p className="paracontent text-center blackboxlightcontent mb-0">
-                      At NOVA, sharing, connecting,
-                      and earning all happen
-                      seamlessly within one platform,
-                      empowering users to unlock the
-                      full potential of web3
+                    {cmsData && cmsData?.content[11]?.description}  
+
                     </p>
                   </Col>
                 </Row>
@@ -1176,7 +1144,7 @@ const page = () => {
           <Row className="justify-content-center">
             <Col xs={12} sm={12} md={12} lg={8}>
               <h2 className="section-title text-center">
-                Explore the powerful features that make NOVA your ultimate web3 solution
+              {cmsData && cmsData?.content[11]?.heading}  
               </h2>
             </Col>
           </Row>
@@ -1184,18 +1152,19 @@ const page = () => {
             <Col xs={12} sm={12} md={12} lg={12} xl={9}>
               <div className="sectiontwentyfourbox">
                 {
-                  explorebox.map((eb, i) => (
-                    <div className={`stwentyfour_gradientbox ${"stwentyfour_gradientbox" + (i + 1)}`} key={eb.datahead}>
-                      <Image src={Images[`explorebg${exploreimgs[i].id === i && exploreimgs[i].value}`]} alt="cover" className="img-fluid sectionbgimg" fill />
+
+(cmsData?.content?.[11]?.card?.length > 0) ?  
+cmsData?.content?.[11]?.card?.map((eb, i) => (
+                    <div className={`stwentyfour_gradientbox ${"stwentyfour_gradientbox" + (i + 1)}`} key={eb.heading}>
                       <div className="stwentyfour_gradientboxfront">
-                        <Image src={eb.dataimg} alt={eb.datahead} className="img-fluid stwentyfour_gradientboximg" />
-                        <p className="paracontent stwentyfour_gradientboxhead">{eb.datahead}</p>
+                        <Image src={explorebox[i].dataimg} alt={explorebox[i].datahead} className="img-fluid stwentyfour_gradientboximg" />
+                        <p className="paracontent stwentyfour_gradientboxhead">{eb.heading}</p>
                       </div>
                       <p className="paracontent stwentyfour_gradientboxdesc">
-                        {eb.datadesc}
+                        {eb.description}
                       </p>
                     </div>
-                  ))
+                  )) : ""
                 }
               </div>
             </Col>
@@ -1211,18 +1180,12 @@ const page = () => {
                 <Row className="justify-content-center">
                   <Col xs={12} sm={12} md={12} lg={8}>
                     <p className="paracontent text-center blackboxlightcontent">
-                      We're just getting started. NOVA is
-                      more than a platform—it’s a growing
-                      ecosystem designed to evolve
-                      alongside the needs of its
-                      community.
+                    {cmsData && cmsData?.content[12]?.description}  
                     </p>
                   </Col>
                   <Col xs={12} sm={12} md={12} lg={10}>
                     <p className="paracontent text-center blackboxendcontent text-mediumpink">
-                      Here’s a glimpse of what’s coming next to expand your
-                      experience and empower your journey.
-                    </p>
+                    {cmsData && cmsData?.content[12]?.heading}                      </p>
                   </Col>
                 </Row>
               </div>
@@ -1236,12 +1199,16 @@ const page = () => {
             <Row className="justify-content-center">
               <Col xs={12} sm={12} md={12} lg={6}>
                 <h2 className="section-title text-center">
-                  <span className="text-lightpurple">Ecosystem Expansion : The Future of</span> <span className="text-lightgreen">NOVA</span>
+                  {/* <span className="text-lightpurple">Ecosystem Expansion : The Future of</span> <span className="text-lightgreen">NOVA</span> */}
+                  <span className="text-lightpurple">{cmsData && cmsData?.content[13]?.heading}  </span> <span className="text-lightgreen"></span>
+
                 </h2>
               </Col>
             </Row>
             <div className="sectiontwentysixbox mt-5 gridboxthree">
-              <BoxContents data={ecosystem} />
+              {/* <BoxContents data={ecosystem} /> */}
+              <BoxContents data={ (cmsData && cmsData?.content[13]?.card.length > 0 ) ? cmsData?.content[13]?.card : []}  image = { ecosystem} />
+
             </div>
           </div>
         </Container>
@@ -1252,13 +1219,11 @@ const page = () => {
             <div className="sectiontwentyseveninnerbox">
               <Row className="align-items-center">
                 <Col xs={12} sm={12} md={12} lg={6} className="mb40">
-                  <h2 className="section-title mb-3">One Platform. Endless Possibilities</h2>
+                  <h2 className="section-title mb-3">{cmsData && cmsData?.content[14]?.heading} </h2>
                   <p className="paracontent text-white mb-3">
-                    NOVA was created by a team of web3 investors, creators, and influencers who understand the challenges and opportunities of the decentralized world. It’s not just a platform—it’s a movement to make web3 accessible, empowering, and transformative for all users
-                  </p>
+                  {cmsData && cmsData?.content[14]?.description}                   </p>
                   <p className="paracontent text-lightviolet fw500 mb-3">
-                    Join NOVA Today and Shape the Future of Web3
-                  </p>
+                  {cmsData && cmsData?.content[14]?.subHeading}                   </p>
                   <button type="button" className="btn sitebtn lightskyvioletbtn">
                     Download
                     <Image src={Images.download} alt="Down Arrow" className="img-fluid" />
@@ -1281,7 +1246,7 @@ const page = () => {
         <Container>
           <Row className="justify-content-center">
             <Col xs={12} sm={12} md={12} lg={6}>
-              <h2 className="section-title text-center">Frequently Asked Questions</h2>
+              <h2 className="section-title text-center">{cmsData && cmsData?.content[15]?.heading} </h2>
             </Col>
           </Row>
           <Row className="justify-content-center">
@@ -1290,19 +1255,20 @@ const page = () => {
                 <div className="sectiontwentyeightbox">
                   <Accordion defaultActiveKey="0">
                     {
-                      faq.map((fa, i) => (
-                        <Accordion.Item eventKey={i} key={fa.datahead}>
+                        (cmsData?.content?.[15]?.card?.length > 0) ? 
+                        cmsData?.content?.[15]?.card?.map((fa, i) => (
+                        <Accordion.Item eventKey={i} key={fa.heading}>
                           <Accordion.Header>
                             <span>0{i + 1}</span>
-                            {fa.datahead}
+                            {fa.heading}
                           </Accordion.Header>
                           <Accordion.Body>
                             <p className="paracontent">
-                              {fa.datadesc}
+                              {fa.description}
                             </p>
                           </Accordion.Body>
                         </Accordion.Item>
-                      ))
+                      )) : ""
                     }
                   </Accordion>
                 </div>

@@ -1,12 +1,14 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import Image from 'next/image';
 import { Col, Container, Row } from 'react-bootstrap'
 import dynamic from 'next/dynamic';
 // import Lottie from 'lottie-react';
 import BoxContents from '@/components/BoxContents';
 import FooterBlackbox from '@/components/FooterBlackbox';
+import { getCms } from "../../action/cmsAction";
+
 
 const Lottieimg = dynamic(() => import('lottie-react'), { ssr: false });
 
@@ -64,6 +66,31 @@ const page = () => {
     }
   ]);
 
+  const [cmsData, setCmsData] = useState("");
+  console.log("cms_data",cmsData);
+
+  const getCmsData = async () => {
+    try {
+      const getData = await getCms({ page: "wallet" });
+      console.log("frontend_getData_cms",getData);
+      if (getData.status) {
+        setCmsData(getData.data.data)
+      }
+    } catch (e) {
+      console.log("getCmsData_err", e);
+    }
+  }
+
+  useEffect(() => {
+    getCmsData()
+    window.scroll({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, []);
+
+
+
   return (
     <main className="walletpage">
       <section className="sectionone bannersection">
@@ -72,8 +99,11 @@ const page = () => {
           <Row className="align-items-center">
             <Col xs={12} sm={12} md={12} lg={6} className="mb40">
               <div className="bannerbox">
-                <h1 className="banner-title text-white">
+                {/* <h1 className="banner-title text-white">
                   The <span className="text-mediumpink">NOVA Wallet</span> Say goodbye to third-party control and high fees
+                </h1> */}
+                   <h1 className="banner-title text-white">
+                  {cmsData && cmsData?.content?.[0].heading}
                 </h1>
                 <button type="button" className="btn sitebtn mediumpinkbtn mt-4">
                   Download
@@ -95,13 +125,18 @@ const page = () => {
             <Row className="align-items-center">
               <Col xs={12} sm={12} md={12} lg={6} className="mb40">
                 <h2 className="section-title mb-3">
-                  Traditional banks control your money setting limits, delaying payouts, and charging hidden fees.
+                {cmsData && cmsData?.content?.[1].description}
                 </h2>
                 <p className="paracontent text-skyblue">
-                  With NOVA’s wallet, you’re
-                  in charge.
+                {cmsData && cmsData?.content?.[1].heading}
+
                 </p>
-                <div className="sectiontwolistbox mt-4">
+                <div
+                        dangerouslySetInnerHTML={{__html:cmsData && cmsData?.content?.[1].sunediter}}
+                        >
+
+                        </div>
+                {/* <div className="sectiontwolistbox mt-4">
                   <ul className="sectiontwolist_ul">
                     {
                       novawallet.map((novali) => (
@@ -112,7 +147,7 @@ const page = () => {
                       ))
                     }
                   </ul>
-                </div>
+                </div> */}
               </Col>
               <Col xs={12} sm={12} md={12} lg={6}>
                 <div className="sectiontwovidbox text-center">
@@ -132,18 +167,20 @@ const page = () => {
             <Row className="justify-content-center">
               <Col xs={12} sm={12} md={12} lg={6}>
                 <h2 className="section-title text-center">
-                  The NOVA Difference
+                {cmsData && cmsData?.content?.[2].heading}
                 </h2>
               </Col>
             </Row>
             <div className="sectionthreebox mt-5 gridboxthree">
-              <BoxContents data={novadiff} />
+              {/* <BoxContents data={novadiff} /> */}
+              <BoxContents data={ (cmsData && cmsData?.content[2]?.card.length > 0 ) ? cmsData?.content[2]?.card : []}  image = { novadiff} />
+
             </div>
           </div>
         </Container>
       </section>
       <section className="sectionfour p-0">        
-        <FooterBlackbox page="wallet" data={footblackbox} />
+        <FooterBlackbox page="wallet" data={ [ (cmsData,cmsData?.content? cmsData?.content?.[3]: {})]}  />
       </section>
     </main>
   )

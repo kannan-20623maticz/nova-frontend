@@ -1,8 +1,10 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import InnerPage from '@/components/InnerPage';
 import Images from '@/Images';
+import { getCms } from "../../action/cmsAction";
+
 
 const page = () => {
 
@@ -85,9 +87,44 @@ const page = () => {
         }
     ]);
 
+    const [cmsData, setCmsData] = useState("");
+    console.log("cms_data",cmsData);
+
+
+    const getCmsData = async () => {
+        try {
+          const getData = await getCms({ page: "fans" });
+          console.log("frontend_getData_cms",getData);
+          if (getData.status) {
+            setCmsData(getData.data.data)
+          }
+        } catch (e) {
+          console.log("getCmsData_err", e);
+        }
+      }
+
+      useEffect(() => {
+        getCmsData()
+        window.scroll({
+          top: 0,
+          behavior: "smooth",
+        });
+      }, []);
+
+
     return (
         <main className="fanspage">
-            <InnerPage page="fans" sectionheadone="Why Fans Love NOVA" sectionheadtwo="Key Features" bannersection={bannersection} topblackbox={topblackbox} multiboxone={whyfans} multiboxtwo={keyfeatures} footblackbox={footblackbox} />
+            <InnerPage page="fans" sectionheadone={cmsData?.content?.[2]?.heading} sectionheadtwo={cmsData?.content?.[3]?.heading}
+             bannersection={(cmsData && cmsData?.content[0] ) ? cmsData?.content[0]: []} 
+             bannerinamge={bannersection}
+             topblackbox={[ (cmsData,cmsData?.content? cmsData?.content?.[1]: {})]} 
+             multiboxone={(cmsData && cmsData?.content?.[2].card ) ? cmsData?.content?.[2].card: []}
+             multiboxoneimage ={whyfans}
+
+             multiboxtwo={(cmsData && cmsData?.content?.[3].card ) ? cmsData?.content?.[3].card: []}
+             multiboxtwoimage={keyfeatures}
+
+             footblackbox={[ (cmsData,cmsData?.content? cmsData?.content?.[4]: {})]} />
         </main>
     )
 }
