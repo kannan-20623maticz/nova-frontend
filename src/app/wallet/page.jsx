@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { Col, Container, Row } from 'react-bootstrap'
 import dynamic from 'next/dynamic';
@@ -67,12 +67,12 @@ const page = () => {
   ]);
 
   const [cmsData, setCmsData] = useState("");
-  console.log("cms_data",cmsData);
+  console.log("cms_data", cmsData);
 
   const getCmsData = async () => {
     try {
       const getData = await getCms({ page: "wallet" });
-      console.log("frontend_getData_cms",getData);
+      console.log("frontend_getData_cms", getData);
       if (getData.status) {
         setCmsData(getData.data.data)
       }
@@ -88,13 +88,14 @@ const page = () => {
       behavior: "smooth",
     });
   }, []);
+  
 
 
 
   return (
     <main className="walletpage">
       <section className="sectionone bannersection">
-        <Image src={Images.walletbannerbg} alt="cover" className="img-fluid sectionbgimg" fill />
+        <Image src={Images.walletbannerbg} alt="wallet" className="img-fluid sectionbgimg" fill />
         <Container>
           <Row className="align-items-center">
             <Col xs={12} sm={12} md={12} lg={6} className="mb40">
@@ -102,7 +103,7 @@ const page = () => {
                 {/* <h1 className="banner-title text-white">
                   The <span className="text-mediumpink">NOVA Wallet</span> Say goodbye to third-party control and high fees
                 </h1> */}
-                   <h1 className="banner-title text-white">
+                <h1 className="banner-title text-white">
                   {cmsData && cmsData?.content?.[0].heading}
                 </h1>
                 <button type="button" className="btn sitebtn mediumpinkbtn mt-4">
@@ -125,17 +126,18 @@ const page = () => {
             <Row className="align-items-center">
               <Col xs={12} sm={12} md={12} lg={6} className="mb40">
                 <h2 className="section-title mb-3">
-                {cmsData && cmsData?.content?.[1].description}
+                  {cmsData && cmsData?.content?.[1].description}
                 </h2>
                 <p className="paracontent text-skyblue">
-                {cmsData && cmsData?.content?.[1].heading}
+                  {cmsData && cmsData?.content?.[1].heading}
 
                 </p>
                 <div
-                        dangerouslySetInnerHTML={{__html:cmsData && cmsData?.content?.[1].sunediter}}
-                        >
+                  dangerouslySetInnerHTML={{ __html: cmsData && cmsData?.content?.[1].sunediter }}
+                  className="sectiontwolistbox mt-4"
+                >
 
-                        </div>
+                </div>
                 {/* <div className="sectiontwolistbox mt-4">
                   <ul className="sectiontwolist_ul">
                     {
@@ -167,20 +169,20 @@ const page = () => {
             <Row className="justify-content-center">
               <Col xs={12} sm={12} md={12} lg={6}>
                 <h2 className="section-title text-center">
-                {cmsData && cmsData?.content?.[2].heading}
+                  {cmsData && cmsData?.content?.[2].heading}
                 </h2>
               </Col>
             </Row>
             <div className="sectionthreebox mt-5 gridboxthree">
               {/* <BoxContents data={novadiff} /> */}
-              <BoxContents data={ (cmsData && cmsData?.content[2]?.card.length > 0 ) ? cmsData?.content[2]?.card : []}  image = { novadiff} />
+              <BoxContents data={(cmsData && cmsData?.content[2]?.card.length > 0) ? cmsData?.content[2]?.card : []} image={novadiff} />
 
             </div>
           </div>
         </Container>
       </section>
-      <section className="sectionfour p-0">        
-        <FooterBlackbox page="wallet" data={ [ (cmsData,cmsData?.content? cmsData?.content?.[3]: {})]}  />
+      <section className="sectionfour p-0">
+        <FooterBlackbox page="wallet" data={[(cmsData, cmsData?.content ? cmsData?.content?.[3] : {})]} />
       </section>
     </main>
   )

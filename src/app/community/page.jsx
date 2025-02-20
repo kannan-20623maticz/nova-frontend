@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Images from '@/Images';
 import InnerPage from '@/components/InnerPage';
 
@@ -89,7 +89,7 @@ const page = () => {
 
 
     const [cmsData, setCmsData] = useState("");
-console.log("cms_data",[cmsData?.content?.[3]]);
+    console.log("cms_data", [cmsData?.content?.[3]]);
     // const getCmsData = async () => {
     //     try {
     //       const getData = await getCms({ page: "HomePage" });
@@ -104,25 +104,25 @@ console.log("cms_data",[cmsData?.content?.[3]]);
 
     const getCmsData = async () => {
         try {
-          const getData = await getCms({ page: "community" });
-          console.log("frontend_getData_cms",getData);
-          if (getData.status) {
-            setCmsData(getData.data.data)
-          }
+            const getData = await getCms({ page: "community" });
+            console.log("frontend_getData_cms", getData);
+            if (getData.status) {
+                setCmsData(getData.data.data)
+            }
         } catch (e) {
-          console.log("getCmsData_err", e);
+            console.log("getCmsData_err", e);
         }
-      }
+    }
 
 
 
     useEffect(() => {
         getCmsData()
         window.scroll({
-          top: 0,
-          behavior: "smooth",
+            top: 0,
+            behavior: "smooth",
         });
-      }, []);
+    }, []);
 
 
 
@@ -130,15 +130,15 @@ console.log("cms_data",[cmsData?.content?.[3]]);
     return (
         <main className="communitypage">
             <InnerPage page="community" sectionheadone={cmsData?.content?.[2]?.heading} sectionheadtwo={cmsData?.content?.[3]?.heading}
-             bannersection={(cmsData && cmsData?.content[0] ) ? cmsData?.content[0]: []} 
-            bannerinamge={bannersection}
-             topblackbox={ [ (cmsData,cmsData?.content? cmsData?.content?.[1]: {})]}
-              multiboxone={(cmsData && cmsData?.content?.[2].card ) ? cmsData?.content?.[2].card: []}
-              multiboxoneimage ={communitythrives}
-               multiboxtwo={(cmsData && cmsData?.content?.[3].card ) ? cmsData?.content?.[3].card: []}
-               multiboxtwoimage={keyfeatures}
+                bannersection={(cmsData && cmsData?.content[0]) ? cmsData?.content[0] : []}
+                bannerinamge={bannersection}
+                topblackbox={[(cmsData, cmsData?.content ? cmsData?.content?.[1] : {})]}
+                multiboxone={(cmsData && cmsData?.content?.[2].card) ? cmsData?.content?.[2].card : []}
+                multiboxoneimage={communitythrives}
+                multiboxtwo={(cmsData && cmsData?.content?.[3].card) ? cmsData?.content?.[3].card : []}
+                multiboxtwoimage={keyfeatures}
 
-                footblackbox={[ (cmsData,cmsData?.content? cmsData?.content?.[4]: {})]} />
+                footblackbox={[(cmsData, cmsData?.content ? cmsData?.content?.[4] : {})]} />
         </main>
 
 

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState ,useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { Col, Container, Row } from 'react-bootstrap'
 import dynamic from 'next/dynamic';
@@ -23,41 +23,41 @@ const page = () => {
         }
     ]);
     const [cmsData, setCmsData] = useState("");
-    console.log("cms_data",cmsData);
+    console.log("cms_data", cmsData);
 
-  const getCmsData = async () => {
-    try {
-      const getData = await getCms({ page: "about" });
-      console.log("frontend_getData_cms",getData);
-      if (getData.status) {
-        setCmsData(getData.data.data)
-      }
-    } catch (e) {
-      console.log("getCmsData_err", e);
+    const getCmsData = async () => {
+        try {
+            const getData = await getCms({ page: "about" });
+            console.log("frontend_getData_cms", getData);
+            if (getData.status) {
+                setCmsData(getData.data.data)
+            }
+        } catch (e) {
+            console.log("getCmsData_err", e);
+        }
     }
-  }
 
     useEffect(() => {
         getCmsData()
         window.scroll({
-          top: 0,
-          behavior: "smooth",
+            top: 0,
+            behavior: "smooth",
         });
-      }, []);
+    }, []);
 
     return (
         <main className="aboutpage">
             <section className="sectionone bannersection">
-            <Image src={Images.aboutbg} alt="cover" className="img-fluid sectionbgimg" fill />
+                <Image src={Images.aboutbg} alt="about" className="img-fluid sectionbgimg" fill />
                 <Container>
                     <Row className="align-items-center">
                         <Col xs={12} sm={12} md={12} lg={6} className="mb40">
                             <div className="bannerbox">
                                 <h1 className="banner-title">
-                                {cmsData && cmsData?.content?.[0].heading}
+                                    {cmsData && cmsData?.content?.[0].heading}
                                 </h1>
                                 <p className="paracontent mb-4">
-                                {cmsData && cmsData?.content?.[0].description}
+                                    {cmsData && cmsData?.content?.[0].description}
 
                                 </p>
                                 <button type="button" className="btn sitebtn blackbtn mt-4">
@@ -88,13 +88,13 @@ const page = () => {
                                 </div>
                                 {/* <p className="paracontent text-grey text-center mb-3">
                                 {cmsData && cmsData?.content?.[0].heading}                                </p> */}
-                                
+
 
                                 <div className="paracontent text-grey text-center mb-3"
-                        dangerouslySetInnerHTML={{__html:cmsData && cmsData?.content?.[1].sunediter}}
-                        >
-                        </div>
-                      
+                                    dangerouslySetInnerHTML={{ __html: cmsData && cmsData?.content?.[1].sunediter }}
+                                >
+                                </div>
+
                             </Col>
                         </Row>
                     </div>
@@ -113,16 +113,16 @@ const page = () => {
                                     </video>
                                 </div>
                                 <div className="paracontent text-grey text-center mb-3"
-                        dangerouslySetInnerHTML={{__html:cmsData && cmsData?.content?.[2].sunediter}}
-                        >
-                              </div>
+                                    dangerouslySetInnerHTML={{ __html: cmsData && cmsData?.content?.[2].sunediter }}
+                                >
+                                </div>
                             </Col>
                         </Row>
                     </div>
                 </Container>
             </section>
             <section className="sectionfour p-0">
-                <FooterBlackbox page="about" data={ [ (cmsData,cmsData?.content? cmsData?.content?.[3]: {})]} />
+                <FooterBlackbox page="about" data={[(cmsData, cmsData?.content ? cmsData?.content?.[3] : {})]} />
             </section>
         </main>
     )

@@ -710,8 +710,9 @@ video {
 }
 
 .header .logo, .offcanvas .logo {
-  width: 100%;
-  max-width: 55px;
+  /* width: 100%;
+  max-width: 55px; */
+  width: 55px;
 }
 
 /* header css end */
@@ -1691,11 +1692,43 @@ video {
   list-style: none;
 }
 
-.walletpage .sectiontwo .sectiontwolist_li {
+.walletpage .sectiontwo ul {
+  margin: 0;
+  list-style: none;
+}
+
+.walletpage .sectiontwo ul li {
+  position: relative;
+}
+
+.walletpage .sectiontwo ul li::before {
+  content: "";
+  position: absolute;
+  background-image: url("/assets/images/close.webp");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 18px;
+  height: 18px;
+  top: 0;
+  bottom: 0;
+  left: -32px;
+  margin: auto;
+}
+
+.walletpage .sectiontwo ul li:last-child:before {
+  background-image: url("/assets/images/checked.webp");
+}
+
+.walletpage .sectiontwo ul li p {
+  font-size: 16px;
+}
+
+/* .walletpage .sectiontwo .sectiontwolist_li, .walletpage .sectiontwo li {
   display: flex;
   align-items: center;
   gap: 12px;
-}
+} */
 
 .walletpage .sectiontwo .sectiontwolist_li:not(:last-child) {
   margin-bottom: 12px;
@@ -2142,6 +2175,7 @@ video {
   .sectionthree .sectionthreeinnerbox .sectionbgimg {
     display: none;
   }
+
 }
 
 @media (768px <= width <= 991px) {
