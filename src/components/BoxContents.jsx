@@ -9,7 +9,7 @@ const BoxContents = ({ data, oddgrid ,image}) => {
             {
                 data?.map((da,i) => (
                     <div className="borderbox" key={i}>
-                        <Image src={image?.[i]?.dataimg} alt={image?.[i]?.datahead} className="img-fluid borderboximg" />
+                        <Image src={image?.[i]?.dataimg} alt={da?.heading} className="img-fluid borderboximg" />
                         <p className="borderboxhead paracontent">{da.heading}</p>
                         <p className="borderboxdesc paracontent">{da.description}</p>
                     </div>

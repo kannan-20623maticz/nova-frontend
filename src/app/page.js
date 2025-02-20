@@ -17,7 +17,7 @@ import Images from '@/Images';
 
 const page = () => {
   const [cmsData, setCmsData] = useState("");
-  console.log("cms",cmsData);
+  console.log("cms", cmsData);
   const [sectiontwoborderbox] = useState([
     {
       boximg: Images.roundimgone,
@@ -460,12 +460,12 @@ const page = () => {
 
 
 
-// console.log("cmsData_cmsData_frontend",cmsData?.content[0]);
+  // console.log("cmsData_cmsData_frontend",cmsData?.content[0]);
 
   const getCmsData = async () => {
     try {
       const getData = await getCms({ page: "HomePage" });
-      console.log("frontend_getData_cms",getData);
+      console.log("frontend_getData_cms", getData);
       if (getData.status) {
         setCmsData(getData.data.data)
       }
@@ -500,12 +500,12 @@ const page = () => {
             <Col xs={12} sm={12} md={12} lg={6} className="mb40">
               <div className="bannerbox">
                 <h1 className="banner-title">
-                {/* <p>{cmsData?.content?.[0]?.heading || "Loading"}</p>         */}
-                {cmsData && cmsData?.content[0]?.heading}
+                  {/* <p>{cmsData?.content?.[0]?.heading || "Loading"}</p>         */}
+                  {cmsData && cmsData?.content[0]?.heading}
 
-                        </h1>
+                </h1>
                 <p className="paracontent">
-                {cmsData && cmsData?.content[0]?.description}                </p>
+                  {cmsData && cmsData?.content[0]?.description}                </p>
                 <button type="button" className="btn sitebtn">
                   Download
                   <Image src={Images.download} alt="Down Arrow" className="img-fluid" />
@@ -544,32 +544,32 @@ const page = () => {
               <h2 className="section-title text-center">{cmsData && cmsData?.content[1]?.heading}</h2>
             </Col>
           </Row>
-          {console.log('testtttttt',cmsData?.content)}
+          {console.log('testtttttt', cmsData?.content)}
           <div className="sectiontwotopbox">
             <Image src={Images.secondbg} alt="cover" className="img-fluid sectionbgimg" fill />
             <div className="blackbox boxgrid">
               {
                 (cmsData?.content?.[1]?.card?.length > 0)
-                ?
-                cmsData?.content?.[1]?.card?.map((data,ind) => (
-                  <div className={`borderbox ${["bots", "data"].some(text => sectiontwoborderbox[ind].boxhead.toLowerCase().includes(text)) ? "videobox" : ""}`} key={sectiontwoborderbox[ind].boxhead}>
-                    <div className={`${["bots", "data"].some(text => sectiontwoborderbox[ind].boxhead.toLowerCase().includes(text)) ? "videoboxdiv" : ""}`}>
-                      <Image src={sectiontwoborderbox[ind].boximg} alt={sectiontwoborderbox[ind].boxhead} className="img-fluid borderboximg" />
-                      <p className="borderboxhead paracontent">{data?.heading}</p>
-                      <p className="borderboxdesc paracontent">
-                        {data.description}
-                      </p>
+                  ?
+                  cmsData?.content?.[1]?.card?.map((data, ind) => (
+                    <div className={`borderbox ${["bots", "data"].some(text => sectiontwoborderbox[ind].boxhead.toLowerCase().includes(text)) ? "videobox" : ""}`} key={sectiontwoborderbox[ind].boxhead}>
+                      <div className={`${["bots", "data"].some(text => sectiontwoborderbox[ind].boxhead.toLowerCase().includes(text)) ? "videoboxdiv" : ""}`}>
+                        <Image src={sectiontwoborderbox[ind].boximg} alt={sectiontwoborderbox[ind].boxhead} className="img-fluid borderboximg" />
+                        <p className="borderboxhead paracontent">{data?.heading}</p>
+                        <p className="borderboxdesc paracontent">
+                          {data.description}
+                        </p>
+                      </div>
+                      {
+                        ["bots", "data"].some(text => sectiontwoborderbox[ind].boxhead.toLowerCase().includes(text)) && <video autoPlay={true} loop={true} muted={true} controls={false}>
+                          <source src={`/assets/images/${sectiontwoborderbox[ind].boxhead.toLowerCase().includes("bots") ? "botspamvid" : "twomobiles"}.mp4`} type="video/mp4" />
+                          <track src="javascript:;" kind="captions"></track>
+                        </video>
+                      }
                     </div>
-                    {
-                      ["bots", "data"].some(text => sectiontwoborderbox[ind].boxhead.toLowerCase().includes(text)) && <video autoPlay={true} loop={true} muted={true} controls={false}>
-                        <source src={`/assets/images/${sectiontwoborderbox[ind].boxhead.toLowerCase().includes("bots") ? "botspamvid" : "twomobiles"}.mp4`} type="video/mp4" />
-                        <track src="javascript:;" kind="captions"></track>
-                      </video>
-                    }
-                  </div>
-                ))
-                :
-                <></>
+                  ))
+                  :
+                  <></>
               }
             </div>
           </div>
@@ -580,15 +580,15 @@ const page = () => {
           <div className="sectionthreebox sectionblackbg">
             <div className="sectionthreeinnerbox">
               <Image src={Images.greybg} alt="cover" className="img-fluid sectionbgimg" fill />
-              <Row className="align-items-center">
+              <Row className="align-items-center positionbox">
                 <Col xs={12} sm={12} md={12} lg={6} className="mb40">
                   <h2 className="section-title mb-3">{cmsData && cmsData?.content[2]?.heading}</h2>
                   <p className="paracontent mb-3 text-white">
-                  {cmsData && cmsData?.content[2]?.description}                  </p>
-                  
+                    {cmsData && cmsData?.content[2]?.description}                  </p>
+
                   <p className="paracontent text-pink mb-3">
-                  {cmsData && cmsData?.content[2]?.subHeading}   
-                                    </p>
+                    {cmsData && cmsData?.content[2]?.subHeading}
+                  </p>
                   <button type="button" className="btn sitebtn">
                     Download
                     <Image src={Images.download} alt="Down Arrow" className="img-fluid" />
@@ -614,28 +614,29 @@ const page = () => {
             <Row className="justify-content-center">
               <Col xs={12} sm={12} md={12} lg={6}>
                 <h2 className="section-title text-center">
-                {cmsData && cmsData?.content[3]?.heading}   
-                             </h2>
+                  {cmsData && cmsData?.content[3]?.heading}
+                </h2>
               </Col>
             </Row>
             <div className="listsbox stars mt-5">
               <Row className="justify-content-center">
                 {
-                  (cmsData?.content?.[3]?.card?.length > 0) ? 
-                  cmsData?.content[3]?.card?.map((libox,index) => (
-                    <Col xs={12} sm={12} md={6} lg={6} xl={4} key={index}>
-                      <div className="borderbox">
-                        <div className="d-flex align-items-center gap20">
-                          <Image src={listsboxes[index].listboximg} alt={listsboxes[index].listboxhead} className="img-fluid borderboximg" />
-                          <p className="paracontent text-lightgreen fw500 borderboxhead">{libox.heading}</p>
-                        </div>
-                        <p className="paracontent text-white my-3 fw500">{libox.subHeading}</p>
-                        <div
-                        dangerouslySetInnerHTML={{__html:libox.sunediter}}
-                        >
+                  (cmsData?.content?.[3]?.card?.length > 0) ?
+                    cmsData?.content[3]?.card?.map((libox, index) => (
+                      <Col xs={12} sm={12} md={6} lg={6} xl={4} key={index}>
+                        <div className="borderbox">
+                          <div className="d-flex align-items-center gap20">
+                            <Image src={listsboxes[index].listboximg} alt={listsboxes[index].listboxhead} className="img-fluid borderboximg" />
+                            <p className="paracontent text-lightgreen fw500 borderboxhead">{libox.heading}</p>
+                          </div>
+                          <p className="paracontent text-white my-3 fw500">{libox.subHeading}</p>
+                          <div
+                            dangerouslySetInnerHTML={{ __html: libox.sunediter }}
+                            className="listboxul"
+                          >
 
-                        </div>
-                        {/* <ul className="listboxul">
+                          </div>
+                          {/* <ul className="listboxul">
                           {
                             libox.listboxli.map((liboxinn, i) => (
                               <li className="listboxli starlist" key={i}>
@@ -646,9 +647,9 @@ const page = () => {
                             ))
                           }
                         </ul> */}
-                      </div>
-                    </Col>
-                  ) ) : ""
+                        </div>
+                      </Col>
+                    )) : ""
                 }
               </Row>
             </div>
@@ -666,10 +667,10 @@ const page = () => {
                   <Row className="justify-content-center">
                     <Col xs={12} sm={12} md={12} lg={8}>
                       <h2 className="section-title text-center">
-                      {cmsData && cmsData?.content[4]?.heading}  
+                        {cmsData && cmsData?.content[4]?.heading}
                       </h2>
                       <p className="paracontent text-white text-center mt-2">
-                      {cmsData && cmsData?.content[4]?.description}  
+                        {cmsData && cmsData?.content[4]?.description}
                       </p>
                     </Col>
                   </Row>
@@ -722,9 +723,9 @@ const page = () => {
               <Col xs={12} sm={12} md={12} lg={6} className="mb40">
                 <h2 className="section-title mb-2">{cmsData && cmsData?.content[4]?.card[0]?.heading} </h2>
                 <p className="paracontent text-lightgreen text-uppercase fw500 mb-3">
-                {cmsData && cmsData?.content[4]?.card[0]?.subHeading}                </p>
+                  {cmsData && cmsData?.content[4]?.card[0]?.subHeading}                </p>
                 <p className="paracontent mb-4 text-white">
-                {cmsData && cmsData?.content[4]?.card[0]?.description}
+                  {cmsData && cmsData?.content[4]?.card[0]?.description}
                 </p>
                 <Link href="/" className="btn sitebtn rotateicon greenbtn">
                   Learnmore
@@ -755,24 +756,24 @@ const page = () => {
               <Col xs={12} sm={12} md={12} lg={6} className="mb40">
                 <h2 className="section-title mb-2">{cmsData && cmsData?.content[4]?.card[1]?.heading}</h2>
                 <p className="paracontent text-mediumblue text-uppercase fw500 mb-3">
-                {cmsData && cmsData?.content[4]?.card[1]?.subHeading}                </p>
+                  {cmsData && cmsData?.content[4]?.card[1]?.subHeading}                </p>
                 <p className="paracontent mb-4 text-white">
-                {cmsData && cmsData?.content[4]?.card[1]?.description}
+                  {cmsData && cmsData?.content[4]?.card[1]?.description}
                 </p>
                 <div className="d-flex align-items-center flex-wrap gap-3">
-                  <Link href="/" className="btn sitebtn blueoutlinebtn">
+                  <Link href="/community" className="btn sitebtn blueoutlinebtn">
                     Community
                     <Image src={Images.blueright} alt="Right Arrow" className="img-fluid" />
                   </Link>
-                  <Link href="/" className="btn sitebtn blueoutlinebtn">
+                  <Link href="/creators" className="btn sitebtn blueoutlinebtn">
                     Creators
                     <Image src={Images.blueright} alt="Right Arrow" className="img-fluid" />
                   </Link>
-                  <Link href="/" className="btn sitebtn blueoutlinebtn">
+                  <Link href="/fans" className="btn sitebtn blueoutlinebtn">
                     Fans
                     <Image src={Images.blueright} alt="Right Arrow" className="img-fluid" />
                   </Link>
-                  <Link href="/" className="btn sitebtn blueoutlinebtn">
+                  <Link href="/dao" className="btn sitebtn blueoutlinebtn">
                     DAO’s
                     <Image src={Images.blueright} alt="Right Arrow" className="img-fluid" />
                   </Link>
@@ -790,10 +791,10 @@ const page = () => {
               <Col xs={12} sm={12} md={12} lg={6} className="mb40">
                 <h2 className="section-title mb-2">{cmsData && cmsData?.content[4]?.card[2]?.heading}</h2>
                 <p className="paracontent text-lightgreen text-uppercase fw500 mb-3">
-                {cmsData && cmsData?.content[4]?.card[2]?.subHeading}
+                  {cmsData && cmsData?.content[4]?.card[2]?.subHeading}
                 </p>
                 <p className="paracontent text-white">
-                {cmsData && cmsData?.content[4]?.card[2]?.description}
+                  {cmsData && cmsData?.content[4]?.card[2]?.description}
                 </p>
                 <ul className="mt-3 mb-4 sectionnine_earnownul">
                   {
@@ -826,9 +827,9 @@ const page = () => {
       <section className="sectionten bglines">
         <Container>
           <Row className="justify-content-center">
-            <Col xs={12} sm={12} md={12} lg={7}>
+            <Col xs={12} sm={12} md={12} lg={8} xl={7}>
               <h2 className="section-title text-center fw600">
-              {cmsData && cmsData?.content[5]?.heading}               </h2>
+                {cmsData && cmsData?.content[5]?.heading}               </h2>
             </Col>
           </Row>
           <div className="sectiontenbox blackbox">
@@ -836,14 +837,14 @@ const page = () => {
               <Col xs={12} sm={12} md={12} lg={7}>
                 <ul className="sectiontenboxul">
                   {
-                (cmsData?.content?.[5]?.card?.length > 0) ? 
+                    (cmsData?.content?.[5]?.card?.length > 0) ?
 
-                     cmsData?.content[5]?.card?.map((tm, i) => (
-                      <li className="sectiontenboxli" key={i}>
-                        <span className="sectiontenboxnum">{i + 1}</span>
-                        <p className="sectiontenboxdesc paracontent">{tm.heading}</p>
-                      </li>
-                    )) :""
+                      cmsData?.content[5]?.card?.map((tm, i) => (
+                        <li className="sectiontenboxli" key={i}>
+                          <span className="sectiontenboxnum">{i + 1}</span>
+                          <p className="sectiontenboxdesc paracontent">{tm.heading}</p>
+                        </li>
+                      )) : ""
                   }
                 </ul>
               </Col>
@@ -869,11 +870,11 @@ const page = () => {
               <Col xs={12} sm={12} md={12} lg={6} className="mb40">
                 <h2 className="section-title section-titlebig text-lightgreen mb-2"> {cmsData && cmsData?.content[6]?.heading}  </h2>
                 <p className="section-titletwo mb-3">
-                {cmsData && cmsData?.content[6]?.subHeading}                 </p>
+                  {cmsData && cmsData?.content[6]?.subHeading}                 </p>
                 <p className="paracontent mb-3 text-white">
-                {cmsData && cmsData?.content[6]?.description}    
+                  {cmsData && cmsData?.content[6]?.description}
                 </p>
-                
+
               </Col>
             </Row>
           </div>
@@ -885,13 +886,13 @@ const page = () => {
           <Row className="justify-content-center">
             <Col xs={12} sm={12} md={12} lg={7}>
               <h2 className="section-title text-center text-lightgreen fw600">
-              {cmsData && cmsData?.content[7]?.heading}               </h2>
+                {cmsData && cmsData?.content[7]?.heading}               </h2>
             </Col>
           </Row>
           <div className="sectiontwelvebox">
             <div className="sectiontwelve_grid">
               {
-                (cmsData?.content?.[7]?.card?.length > 0) ?  cmsData?.content[7]?.card?.map((mem ,index) => (
+                (cmsData?.content?.[7]?.card?.length > 0) ? cmsData?.content[7]?.card?.map((mem, index) => (
                   <div className="sectiontwelve_gridbox" key={index}>
                     <div>
                       <Image src={membership[index].memberimg} alt={membership[index].memberhead} className="img-fluid sectiontwelve_gridimg" />
@@ -917,14 +918,14 @@ const page = () => {
                 <Row className="justify-content-center">
                   <Col xs={12} sm={12} md={12} lg={10}>
                     <h2 className="section-title text-center text-lightgreen fw600">
-                    {cmsData && cmsData?.content[8]?.heading}                       </h2>
+                      {cmsData && cmsData?.content[8]?.heading}                       </h2>
                     <p className="paracontent mt-3 text-center text-white">
-                    {cmsData && cmsData?.content[8]?.description}                             </p>
+                      {cmsData && cmsData?.content[8]?.description}                             </p>
                   </Col>
                 </Row>
                 <div className="mt-4">
-                  {console.log('fefewfallll',cmsData?.content?.[8]?.card,fanownership)}
-                  <BoxContents data={ (cmsData && cmsData?.content[8]?.card.length > 0 ) ? cmsData?.content[8]?.card : []}  image = { fanownership} oddgrid={fanownership.length % 2 !== 0} />
+                  {console.log('fefewfallll', cmsData?.content?.[8]?.card, fanownership)}
+                  <BoxContents data={(cmsData && cmsData?.content[8]?.card.length > 0) ? cmsData?.content[8]?.card : []} image={fanownership} oddgrid={fanownership.length % 2 !== 0} />
                 </div>
               </div>
             </Col>
@@ -944,10 +945,10 @@ const page = () => {
               <Col xs={12} sm={12} md={12} lg={6} className="mb40">
                 <h2 className="section-title section-titlebig text-mediumpurple fw600 mb-2">  {cmsData && cmsData?.content[9]?.heading}   </h2>
                 <p className="section-titletwo mb-3">
-                 <span className="d-block text-lightgreen">  {cmsData && cmsData?.content[9]?.subHeading}   </span>
+                  <span className="d-block text-lightgreen">  {cmsData && cmsData?.content[9]?.subHeading}   </span>
                 </p>
                 <p className="paracontent text-white">
-                {cmsData && cmsData?.content[9]?.description} 
+                  {cmsData && cmsData?.content[9]?.description}
                 </p>
               </Col>
             </Row>
@@ -958,7 +959,7 @@ const page = () => {
         <Container className="containertwo">
           <div className="blackbox">
             {/* <FlowBoxContents data={flowboxcontents} /> */}
-            <FlowBoxContents data={(  cmsData && cmsData?.content[9]?.card.length > 0 ) ? cmsData && cmsData?.content[9].card  : [] } image = {flowboxcontents} />
+            <FlowBoxContents data={(cmsData && cmsData?.content[9]?.card.length > 0) ? cmsData && cmsData?.content[9].card : []} image={flowboxcontents} />
 
           </div>
         </Container>
@@ -972,7 +973,7 @@ const page = () => {
                 <Row className="justify-content-center">
                   <Col xs={12} sm={12} md={12} lg={8}>
                     <p className="paracontent text-center blackboxlightcontent">
-                    {cmsData && cmsData?.content[10]?.description}  
+                      {cmsData && cmsData?.content[10]?.description}
                     </p>
                   </Col>
                   <Col xs={12} sm={12} md={12} lg={9}>
@@ -981,7 +982,7 @@ const page = () => {
                         Unlock the full potential of the Internet with <span className="text-purple">NOVA</span>
                       </span> */}
                       <span className="text-lightgreen">
-                      {cmsData && cmsData?.content[10]?.heading}  
+                        {cmsData && cmsData?.content[10]?.heading}
                       </span>
                     </p>
                   </Col>
@@ -1003,7 +1004,7 @@ const page = () => {
               <Col xs={12} sm={12} md={12} lg={6} className="mb40">
                 <h2 className="section-title text-black fw600 mb-3"> {cmsData && cmsData?.content[10]?.card[0]?.heading}  </h2>
                 <p className="paracontent text-black">
-                {cmsData && cmsData?.content[10]?.card[0]?.description} 
+                  {cmsData && cmsData?.content[10]?.card[0]?.description}
                 </p>
               </Col>
             </Row>
@@ -1018,7 +1019,7 @@ const page = () => {
                 <div className="pe-lg-5">
                   <h2 className="section-title text-black fw600 mb-3">{cmsData && cmsData?.content[10]?.card[1]?.heading} </h2>
                   <p className="paracontent text-black">
-                  {cmsData && cmsData?.content[10]?.card[1]?.description} 
+                    {cmsData && cmsData?.content[10]?.card[1]?.description}
 
                   </p>
                 </div>
@@ -1045,7 +1046,7 @@ const page = () => {
                 <div className="ps-lg-5">
                   <h2 className="section-title text-black fw600 mb-3">{cmsData && cmsData?.content[10]?.card[2]?.heading} </h2>
                   <p className="paracontent text-black">
-                  {cmsData && cmsData?.content[10]?.card[2]?.description} 
+                    {cmsData && cmsData?.content[10]?.card[2]?.description}
                   </p>
                 </div>
               </Col>
@@ -1060,11 +1061,11 @@ const page = () => {
               <Col xs={12} sm={12} md={12} lg={6} className="mb40">
                 <div className="pe-lg-5">
                   <h2 className="section-title text-black fw600 mb-3">
-                  {console.log("new_home",cmsData && cmsData?.content[10]?.card[3]?.heading) } 
-                  {cmsData && cmsData?.content[10]?.card[3]?.heading} 
+                    {console.log("new_home", cmsData && cmsData?.content[10]?.card[3]?.heading)}
+                    {cmsData && cmsData?.content[10]?.card[3]?.heading}
                   </h2>
                   <p className="paracontent text-black">
-                  {cmsData && cmsData?.content[10]?.card[3]?.description} 
+                    {cmsData && cmsData?.content[10]?.card[3]?.description}
                   </p>
                 </div>
               </Col>
@@ -1090,7 +1091,7 @@ const page = () => {
                 <div className="ps-lg-5">
                   <h2 className="section-title text-black fw600 mb-3">{cmsData && cmsData?.content[10]?.card[4]?.heading} </h2>
                   <p className="paracontent text-black">
-                  {cmsData && cmsData?.content[10]?.card[4]?.description} 
+                    {cmsData && cmsData?.content[10]?.card[4]?.description}
                   </p>
                 </div>
               </Col>
@@ -1105,10 +1106,10 @@ const page = () => {
               <Col xs={12} sm={12} md={12} lg={6} className="mb40">
                 <div className="pe-lg-5">
                   <h2 className="section-title text-black fw600 mb-3">
-                  {cmsData && cmsData?.content[10]?.card[5]?.heading} 
+                    {cmsData && cmsData?.content[10]?.card[5]?.heading}
                   </h2>
                   <p className="paracontent text-black">
-                  {cmsData && cmsData?.content[10]?.card[5]?.description} 
+                    {cmsData && cmsData?.content[10]?.card[5]?.description}
                   </p>
                 </div>
               </Col>
@@ -1130,7 +1131,7 @@ const page = () => {
                 <Row className="justify-content-center">
                   <Col xs={12} sm={12} md={12} lg={8}>
                     <p className="paracontent text-center blackboxlightcontent mb-0">
-                    {cmsData && cmsData?.content[11]?.description}  
+                      {cmsData && cmsData?.content[11]?.description}
 
                     </p>
                   </Col>
@@ -1145,7 +1146,7 @@ const page = () => {
           <Row className="justify-content-center">
             <Col xs={12} sm={12} md={12} lg={8}>
               <h2 className="section-title text-center">
-              {cmsData && cmsData?.content[11]?.heading}  
+                {cmsData && cmsData?.content[11]?.heading}
               </h2>
             </Col>
           </Row>
@@ -1154,18 +1155,19 @@ const page = () => {
               <div className="sectiontwentyfourbox">
                 {
 
-(cmsData?.content?.[11]?.card?.length > 0) ?  
-cmsData?.content?.[11]?.card?.map((eb, i) => (
-                    <div className={`stwentyfour_gradientbox ${"stwentyfour_gradientbox" + (i + 1)}`} key={eb.heading}>
-                      <div className="stwentyfour_gradientboxfront">
-                        <Image src={explorebox[i].dataimg} alt={explorebox[i].datahead} className="img-fluid stwentyfour_gradientboximg" />
-                        <p className="paracontent stwentyfour_gradientboxhead">{eb.heading}</p>
+                  (cmsData?.content?.[11]?.card?.length > 0) ?
+                    cmsData?.content?.[11]?.card?.map((eb, i) => (
+                      <div className="stwentyfour_gradientbox" key={eb.heading}>
+                        <Image src={Images[`explorebg${exploreimgs[i].id === i && exploreimgs[i].value}`]} alt="cover" className="img-fluid sectionbgimg" fill />
+                        <div className="stwentyfour_gradientboxfront">
+                          <Image src={explorebox[i].dataimg} alt={explorebox[i].datahead} className="img-fluid stwentyfour_gradientboximg" />
+                          <p className="paracontent stwentyfour_gradientboxhead">{eb.heading}</p>
+                        </div>
+                        <p className="paracontent stwentyfour_gradientboxdesc">
+                          {eb.description}
+                        </p>
                       </div>
-                      <p className="paracontent stwentyfour_gradientboxdesc">
-                        {eb.description}
-                      </p>
-                    </div>
-                  )) : ""
+                    )) : ""
                 }
               </div>
             </Col>
@@ -1181,12 +1183,12 @@ cmsData?.content?.[11]?.card?.map((eb, i) => (
                 <Row className="justify-content-center">
                   <Col xs={12} sm={12} md={12} lg={8}>
                     <p className="paracontent text-center blackboxlightcontent">
-                    {cmsData && cmsData?.content[12]?.description}  
+                      {cmsData && cmsData?.content[12]?.description}
                     </p>
                   </Col>
                   <Col xs={12} sm={12} md={12} lg={10}>
                     <p className="paracontent text-center blackboxendcontent text-mediumpink">
-                    {cmsData && cmsData?.content[12]?.heading}                      </p>
+                      {cmsData && cmsData?.content[12]?.heading}                      </p>
                   </Col>
                 </Row>
               </div>
@@ -1208,7 +1210,7 @@ cmsData?.content?.[11]?.card?.map((eb, i) => (
             </Row>
             <div className="sectiontwentysixbox mt-5 gridboxthree">
               {/* <BoxContents data={ecosystem} /> */}
-              <BoxContents data={ (cmsData && cmsData?.content[13]?.card.length > 0 ) ? cmsData?.content[13]?.card : []}  image = { ecosystem} />
+              <BoxContents data={(cmsData && cmsData?.content[13]?.card.length > 0) ? cmsData?.content[13]?.card : []} image={ecosystem} />
 
             </div>
           </div>
@@ -1222,9 +1224,9 @@ cmsData?.content?.[11]?.card?.map((eb, i) => (
                 <Col xs={12} sm={12} md={12} lg={6} className="mb40">
                   <h2 className="section-title mb-3">{cmsData && cmsData?.content[14]?.heading} </h2>
                   <p className="paracontent text-white mb-3">
-                  {cmsData && cmsData?.content[14]?.description}                   </p>
+                    {cmsData && cmsData?.content[14]?.description}                   </p>
                   <p className="paracontent text-lightviolet fw500 mb-3">
-                  {cmsData && cmsData?.content[14]?.subHeading}                   </p>
+                    {cmsData && cmsData?.content[14]?.subHeading}                   </p>
                   <button type="button" className="btn sitebtn lightskyvioletbtn">
                     Download
                     <Image src={Images.download} alt="Down Arrow" className="img-fluid" />
@@ -1256,20 +1258,20 @@ cmsData?.content?.[11]?.card?.map((eb, i) => (
                 <div className="sectiontwentyeightbox">
                   <Accordion defaultActiveKey="0">
                     {
-                        (cmsData?.content?.[15]?.card?.length > 0) ? 
+                      (cmsData?.content?.[15]?.card?.length > 0) ?
                         cmsData?.content?.[15]?.card?.map((fa, i) => (
-                        <Accordion.Item eventKey={i} key={fa.heading}>
-                          <Accordion.Header>
-                            <span>0{i + 1}</span>
-                            {fa.heading}
-                          </Accordion.Header>
-                          <Accordion.Body>
-                            <p className="paracontent">
-                              {fa.description}
-                            </p>
-                          </Accordion.Body>
-                        </Accordion.Item>
-                      )) : ""
+                          <Accordion.Item eventKey={i} key={fa.heading}>
+                            <Accordion.Header>
+                              <span>0{i + 1}</span>
+                              {fa.heading}
+                            </Accordion.Header>
+                            <Accordion.Body>
+                              <p className="paracontent">
+                                {fa.description}
+                              </p>
+                            </Accordion.Body>
+                          </Accordion.Item>
+                        )) : ""
                     }
                   </Accordion>
                 </div>
