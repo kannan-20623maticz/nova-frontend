@@ -13,7 +13,6 @@ export default {
 
     //demo live
 
-    // frontend : "https://darkcoin.maticz.in/",
     backurl:"https://novapromotional-backend.maticz.in/",
 
     

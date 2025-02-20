@@ -618,7 +618,7 @@ const page = () => {
                              </h2>
               </Col>
             </Row>
-            <div className="listsbox mt-5">
+            <div className="listsbox stars mt-5">
               <Row className="justify-content-center">
                 {
                   (cmsData?.content?.[3]?.card?.length > 0) ? 
@@ -1060,6 +1060,7 @@ const page = () => {
               <Col xs={12} sm={12} md={12} lg={6} className="mb40">
                 <div className="pe-lg-5">
                   <h2 className="section-title text-black fw600 mb-3">
+                  {console.log("new_home",cmsData && cmsData?.content[10]?.card[3]?.heading) } 
                   {cmsData && cmsData?.content[10]?.card[3]?.heading} 
                   </h2>
                   <p className="paracontent text-black">
