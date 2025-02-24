@@ -18,12 +18,12 @@ const FooterBlackbox = ({ page, data }) => {
                                 data?.map((da, i) => (
                                     <Row className="justify-content-center" key={i}>
                                         <Col xs={12} sm={12} md={12} lg={10} xl={9}>
-                                            {page === "fans" && da.datasubhead && <p className="paracontent text-center blackboxlightcontent text-white mb-2">{da.description}</p>}
+                                            {page === "fans" && da.subHeading && <p className="paracontent text-center blackboxlightcontent text-white mb-2">{da.subHeading}</p>}
                                             {/* <p className="paracontent text-center blackboxlightcontent">{da.description}</p> */}
                                             <p className="paracontent text-center blackboxlightcontent">{da.heading}</p>
                                         </Col>
                                         <Col xs={12} sm={12} md={12} lg={9}>
-                                            {page === "dao" && da.datasubhead && <p className="paracontent text-center blackboxlightcontent text-lightblue mb-2">{da.description}</p>}
+                                            {page === "dao" && da.subHeading && <p className="paracontent text-center blackboxlightcontent text-lightblue mb-2">{da.subHeading}</p>}
                                             <p className={`paracontent text-center ${page === "dao" && "text-white"} ${page !== "fans" && "blackboxendcontent"}  ${((page === "wallet") || (page === "marketplace") || (page === "creators")) && "text-mediumpink"} ${((page === "community") || (page === "fans")) && "text-skyblue"} ${page === "about" && "text-lightorange"}`}>{da.description}</p>
                                             {/* <p className={`paracontent text-center ${page === "dao" && "text-white"} ${page !== "fans" && "blackboxendcontent"}  ${((page === "wallet") || (page === "marketplace") || (page === "creators")) && "text-mediumpink"} ${((page === "community") || (page === "fans")) && "text-skyblue"} ${page === "about" && "text-lightorange"}`}>{da.heading}</p> */}
 

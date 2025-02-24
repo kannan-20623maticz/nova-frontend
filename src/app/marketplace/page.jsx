@@ -368,22 +368,22 @@ const page = () => {
                                 <Row className="align-items-center">
                                     <Col xs={12} sm={12} md={12} lg={6} className="mb40">
                                         <p className="paracontent borderboxhead"> {cmsData && cmsData?.content?.[1].card[0].heading}</p>
-                                        <ul className="listboxul mt-4">
+                                        {/* <ul className="listboxul mt-4"> */}
                                             {(cmsData && cmsData?.content[1]?.card.length > 0) ?
                                                 [cmsData && cmsData?.content[1]?.card[0]].map((libox, i) => (
-                                                 <li>
+                                                //  <li>
                                               
-                                                    <div className="borderboxdesc paracontent text-white"
+                                                    <div className="listboxul starlist mt-4 borderboxdesc paracontent text-white"
                                                          
                                                         dangerouslySetInnerHTML={{ __html: libox.sunediter }}
                                                     >
                                                         
                                                     </div>
-                                                    </li>
+                                                    // </li>
 
                                                 )) : ""
                                             }
-                                        </ul>
+                                        {/* </ul> */}
                                     </Col>
                                     <Col xs={12} sm={12} md={12} lg={6}>
                                         <div className="sectiontwo_leftrightboximg">
@@ -404,36 +404,36 @@ const page = () => {
                                             Engagement</p> */}
                                    <p className="paracontent borderboxhead"> {cmsData && cmsData?.content?.[1].card[1]?.heading}</p>
 
-                                        <ul className="listboxul mt-4">
+                                        {/* <ul className="listboxul mt-4"> */}
                                             { (cmsData && cmsData?.content[1]?.card.length > 0) ?
                                                 [cmsData && cmsData?.content[1]?.card[1]].map((libox, i) => (
-                                                    <li >
+                                                    // <li >
                                                        
-                                                        <p className="borderboxdesc paracontent text-white"
+                                                        <div className="listboxul starlist mt-4 borderboxdesc paracontent text-white"
                                                          dangerouslySetInnerHTML={{ __html: libox.sunediter }}>
-                                                        </p>
-                                                    </li>
+                                                        </div>
+                                                    // {/* </li> */}
                                                 )) : ""
                                             }
-                                        </ul>
+                                        {/* </ul> */}
                                     </Col>
                                 </Row>
                             </div>
                             <div className="sectiontwo_leftrightbox">
                                 <Row className="align-items-center">
                                     <Col xs={12} sm={12} md={12} lg={6} className="mb40">
-                                        <p className="paracontent borderboxhead">{cmsData && cmsData?.content?.[1].card[1]?.heading}</p>
-                                        <ul className="listboxul mt-4">
+                                        <p className="paracontent borderboxhead">{cmsData && cmsData?.content?.[1].card[2]?.heading}</p>
+                                        {/* <ul className="listboxul mt-4"> */}
                                             {(cmsData && cmsData?.content[1]?.card.length > 0) ?
                                                  [cmsData && cmsData?.content[1]?.card[2]].map((libox, i) => (
-                                                    <li >
-                                                        <p className="borderboxdesc paracontent text-white"
+                                                    // <li >
+                                                        <div className="listboxul starlist starlistorange mt-4 borderboxdesc paracontent text-white"
                                                          dangerouslySetInnerHTML={{ __html: libox.sunediter }}>
-                                                        </p>
-                                                    </li>
+                                                        </div>
+                                                    // </li>
                                                 )) : ""
                                             }
-                                        </ul>
+                                        {/* </ul> */}
                                     </Col>
                                     <Col xs={12} sm={12} md={12} lg={6}>
                                         <div className="sectiontwo_leftrightboximg">
@@ -453,9 +453,11 @@ const page = () => {
                             <Col xs={12} sm={12} md={12} lg={10}>
                                 <h2 className="section-title text-center fw600">
                                     {cmsData && cmsData?.content?.[2].heading}
-                                </h2>
+                                </h2>                                
+                            </Col>
+                            <Col xs={12} sm={12} md={12} lg={9} xl={7}>
                                 <p className="paracontent mt-3 text-center text-grey">
-                                    {cmsData && cmsData?.content?.[2].description}                                </p>
+                                {cmsData && cmsData?.content?.[2].description}</p>                               
                             </Col>
                         </Row>
                         {/* <FlowBoxContents data={flowboxcontents} /> */}
@@ -543,18 +545,18 @@ const page = () => {
                             <Row className="justify-content-between">
                                 <Col xs={12} sm={12} md={12} lg={5}>
                                     <p className="sectionsevenlisthead paracontent text-skyblue">{cmsData && cmsData?.content[6]?.card[0].heading}</p>
-                                    <ul className="listboxul my-4">
+                                    {/* <ul className="listboxul my-4"> */}
                                         {(cmsData && cmsData?.content[6]?.card.length > 0) ?
                                             [cmsData && cmsData?.content[6]?.card[0]].map((libox, i) => (
 
-                                                <div className="borderboxdesc paracontent text-white"
+                                                <div className="listboxul starlist my-4 borderboxdesc paracontent text-white"
                                                     dangerouslySetInnerHTML={{ __html: libox.sunediter }}  >
 
                                                 </div>
 
                                             )) : ""
                                         }
-                                    </ul>
+                                    {/* </ul> */}
                                     <button type="button" className="btn sitebtn skybluebtn rotateicon">
                                         Creatornomics
                                         <Image src={Images.downloadright} alt="Download" className="img-fluid" />
@@ -563,18 +565,18 @@ const page = () => {
                                 <Col xs={12} sm={12} md={12} lg={5}>
                                     <div className="pt-5 pt-lg-0">
                                         <p className="sectionsevenlisthead paracontent text-skyblue">{cmsData && cmsData?.content[6]?.card[1].heading}</p>
-                                        <ul className="listboxul mt-4">
+                                        {/* <ul className="listboxul mt-4"> */}
                                             {(cmsData && cmsData?.content[6]?.card.length > 0) ?
                                                 [cmsData && cmsData?.content[6]?.card[1]].map((libox, i) => (
 
 
-                                                    <div className="borderboxdesc paracontent text-white"
+                                                    <div className="listboxul starlist mt-4 borderboxdesc paracontent text-white"
                                                         dangerouslySetInnerHTML={{ __html: libox.sunediter }}  >
 
                                                     </div>
                                                 )) : ""
                                             }
-                                        </ul>
+                                        {/* </ul> */}
                                     </div>
                                 </Col>
                             </Row>
@@ -642,7 +644,7 @@ const page = () => {
                         </Row>
                         <div className="sectiontenbox gifimgbox mt-5">
                             {/* <BoxContents data={lenders} /> */}
-                            <BoxContents data={(cmsData && cmsData?.content[9]?.card.length > 0) ? cmsData?.content[8]?.card : []} image={lenders} />
+                            <BoxContents data={(cmsData && cmsData?.content[9]?.card.length > 0) ? cmsData?.content[9]?.card : []} image={lenders} />
 
                         </div>
                     </div>
@@ -663,7 +665,7 @@ const page = () => {
                                 </Row>
                                 <div className="mt-5">
                                     {/* <BoxContents data={fanownership} oddgrid={fanownership.length % 2 !== 0} /> */}
-                                    <BoxContents data={(cmsData && cmsData?.content[10]?.card.length > 0) ? cmsData?.content[8]?.card : []} image={fanownership} oddgrid={fanownership.length % 2 !== 0} />
+                                    <BoxContents data={(cmsData && cmsData?.content[10]?.card.length > 0) ? cmsData?.content[10]?.card : []} image={fanownership} oddgrid={fanownership.length % 2 !== 0} />
 
                                 </div>
                             </div>

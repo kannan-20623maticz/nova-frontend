@@ -251,6 +251,7 @@ section .container {
   max-width: 55px;
   /* max-width: 65px; */
   color: var(--white) !important;
+  object-fit: contain;
 }
 
 .borderbox .borderboxhead {
@@ -456,7 +457,7 @@ section .container {
   box-shadow: 0px 4px 25px #00000040;
 }
 
-.listboxul {
+.listboxul, .listboxul ul {
   /* padding: 0; */
   margin: 0;
   /* list-style-image: url("/assets/images/star.webp");
@@ -476,7 +477,7 @@ section .container {
   color: var(--grey);
 }
 
-.listboxul .listboxlihead {
+.listboxul .listboxlihead, .marketplace .sectiontwotopbox .listboxul li p:first-child {
   font-size: 17px;
   margin-bottom: 6px;
 }
@@ -485,12 +486,12 @@ section .container {
   margin-bottom: 0;
 }
 
-.starlist {
+.starlist, .starlist li {
   list-style: none;
   position: relative;
 }
 
-.starlist::before {
+.starlist::before, .starlist li::before {
   content: "";
   position: absolute;
   background-image: url("/assets/images/star.webp");
@@ -499,11 +500,11 @@ section .container {
   background-size: 100% 100%;
   width: 15px;
   height: 15px;
-  top: 6px;
+  top: 4px;
   left: -32px;
 }
 
-.starlistorange::before {
+.starlistorange::before, .starlistorange li::before {
   background-image: url("/assets/images/starorange.webp");
 }
 
@@ -591,10 +592,11 @@ section .container {
   margin-bottom: 20px;
 }
 
-.flowboxgrid .flowboxgridlihead {
+.flowboxgrid .flowboxgridlihead, .flowboxgrid ul li p:first-child, .sectiontwo_leftrightbox .listboxul p:first-child {
   font-size: 18px;
   font-weight: 500;
-  margin-bottom: 5px;
+  margin-bottom: 7px;
+  color: var(--lightgreen);
 }
 
 .flowboxgrid .borderboxdesc p {
@@ -973,7 +975,6 @@ video {
   /* min-height: 300px; */
   object-fit: cover;
   border-radius: 20px;
-  pointer-events: none;
 }
 
 .sectiontwotopbox .videoboxdiv {
@@ -1812,6 +1813,44 @@ video {
   background-image: url("/assets/images/marketplace/marketplacefootbg.webp");
 } */
 
+.marketplace .listboxul p {
+  color: var(--white);
+}
+
+.marketplace .borderbox .starlist::before {
+  position: static;
+  background: none;
+  width: 0;
+  height: 0;
+  inset: auto;
+  display: none;
+}
+
+.marketplace .sectiontwotopbox .listboxul li p:first-child {
+  color: var(--lightgreen);
+  font-weight: 500;
+}
+
+.marketplace .listboxul li:last-child p:first-child {
+  margin-bottom: 6px;
+}
+
+.marketplace .listboxul.starlistorange li p:first-child {
+  color: var(--orange);
+}
+
+.marketplace .sectioneight .flowboxgrid ul li:first-child p:first-child{
+  color: var(--mediumpink);
+}
+
+/* .marketplace .borderboxdesc ul li P:first-child {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 7px;
+  color: var(--lightgreen);
+} */
+
+
 /* marketplace page css end */
 
 
@@ -2310,6 +2349,7 @@ video {
 
   .gifimgbox .borderbox .borderboximg {
     max-width: 65px;
+    height: 65px;
   }
 }
 
@@ -2485,6 +2525,7 @@ video {
 
   .gifimgbox .borderbox .borderboximg {
     max-width: 80px;
+    height: 80px;
   }
 
   .aboutpage .sectionvidbox .novawalletvid {

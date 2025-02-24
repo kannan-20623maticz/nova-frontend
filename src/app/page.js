@@ -579,7 +579,7 @@ const page = () => {
         <Container>
           <div className="sectionthreebox sectionblackbg">
             <div className="sectionthreeinnerbox">
-              <Image src={Images.greybg} alt="cover" className="img-fluid sectionbgimg" fill />
+              <Image src={Images.greybg} alt={cmsData && cmsData?.content[2]?.heading ? cmsData?.content[2]?.heading : "Moniterbg"} className="img-fluid sectionbgimg" fill />
               <Row className="align-items-center positionbox">
                 <Col xs={12} sm={12} md={12} lg={6} className="mb40">
                   <h2 className="section-title mb-3">{cmsData && cmsData?.content[2]?.heading}</h2>
