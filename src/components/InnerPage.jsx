@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { Col, Container, Row } from 'react-bootstrap'
 import dynamic from 'next/dynamic';
@@ -12,6 +12,7 @@ import TopBlackbox from '@/components/TopBlackbox';
 const Lottieimg = dynamic(() => import('lottie-react'), { ssr: false });
 
 import Images from '@/Images';
+import Loading from './loading';
 
 
 const InnerPage = (props) => {
@@ -19,6 +20,16 @@ const InnerPage = (props) => {
     console.log("props_vi--",props);
     const { page, sectionheadone, sectionheadtwo, bannersection,bannerinamge, topblackbox, multiboxone,multiboxoneimage, multiboxtwo, multiboxtwoimage,footblackbox } = props;
     console.log("bannersection_bannersection",multiboxtwo);
+
+    const [isLoading, setIsLoading] = useState(true);
+    
+    useEffect(() => {
+        props && setIsLoading(false);
+    }, []);
+
+    if (isLoading) {
+        return <Loading />;
+    }
 
     return (
         <>

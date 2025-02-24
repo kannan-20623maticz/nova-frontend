@@ -13,6 +13,7 @@ import { getCms } from "../../action/cmsAction";
 const Lottieimg = dynamic(() => import('lottie-react'), { ssr: false });
 
 import Images from '@/Images';
+import Loading from '@/components/loading';
 
 const page = () => {
 
@@ -67,6 +68,7 @@ const page = () => {
   ]);
 
   const [cmsData, setCmsData] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
   console.log("cms_data", cmsData);
 
   const getCmsData = async () => {
@@ -74,7 +76,8 @@ const page = () => {
       const getData = await getCms({ page: "wallet" });
       console.log("frontend_getData_cms", getData);
       if (getData.status) {
-        setCmsData(getData.data.data)
+        setCmsData(getData.data.data);
+        setIsLoading(false);
       }
     } catch (e) {
       console.log("getCmsData_err", e);
@@ -88,7 +91,11 @@ const page = () => {
       behavior: "smooth",
     });
   }, []);
-  
+
+
+  if (isLoading) {
+    return <Loading />;
+  }
 
 
 

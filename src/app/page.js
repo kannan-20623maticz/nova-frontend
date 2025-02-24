@@ -14,10 +14,12 @@ import { getCms } from "../action/cmsAction";
 const Lottieimg = dynamic(() => import('lottie-react'), { ssr: false });
 
 import Images from '@/Images';
+import Loading from "@/components/loading";
 
 const page = () => {
   const [cmsData, setCmsData] = useState("");
   console.log("cms", cmsData);
+  const [isLoading, setIsLoading] = useState(true);
   const [sectiontwoborderbox] = useState([
     {
       boximg: Images.roundimgone,
@@ -467,7 +469,8 @@ const page = () => {
       const getData = await getCms({ page: "HomePage" });
       console.log("frontend_getData_cms", getData);
       if (getData.status) {
-        setCmsData(getData.data.data)
+        setCmsData(getData.data.data);
+        setIsLoading(false);
       }
     } catch (e) {
       console.log("getCmsData_err", e);
@@ -486,7 +489,9 @@ const page = () => {
 
 
 
-
+  if (isLoading) {
+    return <Loading />;
+  }
 
 
 
@@ -945,7 +950,7 @@ const page = () => {
               <Col xs={12} sm={12} md={12} lg={6} className="mb40">
                 <h2 className="section-title section-titlebig text-mediumpurple fw600 mb-2">  {cmsData && cmsData?.content[9]?.heading}   </h2>
                 <p className="section-titletwo mb-3">
-                  <span className="d-block text-lightgreen">  {cmsData && cmsData?.content[9]?.subHeading}   </span>
+                  <span className="d-block">  {cmsData && cmsData?.content[9]?.subHeading}   </span>
                 </p>
                 <p className="paracontent text-white">
                   {cmsData && cmsData?.content[9]?.description}

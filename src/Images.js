@@ -245,6 +245,10 @@ const Images = {
 
     // about page 
 
+
+    // loader: require("../public/assets/images/nova-loader.json"),
+    loadergif: require("../public/assets/images/loader.gif")
+
 }
 
 export default Images;

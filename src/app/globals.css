@@ -666,6 +666,32 @@ video {
   z-index: 99;
 }
 
+
+.loaderbox {
+  height: 100vh;
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)); */
+  background-color: #faecef;
+  /* background-color: var(--white); */
+  z-index: 999;
+}
+
+/* .loaderbox .loaderboxdiv {
+  width: 100%;
+  max-width: 150px;
+} */
+
+.loaderbox .loaderimg {
+  width: 100%;
+  max-width: 150px;
+}
+
+
 /* common css end */
 
 
@@ -2323,6 +2349,14 @@ video {
 
   .sectiontwotopbox .sectionbgimg, .sectionthree .sectionthreeinnerbox .sectionbgimg {
     display: none;
+  }
+
+  .sectiontwo_leftrightbox .listboxul p:first-child {
+    line-height: 30px !important;
+  }
+
+  .sectiontwo_leftrightbox .starlist li::before {
+    top: 7px;
   }
 }
 
