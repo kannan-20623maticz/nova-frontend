@@ -14,7 +14,7 @@ import { getCms } from "../../action/cmsAction";
 const Lottieimg = dynamic(() => import('lottie-react'), { ssr: false });
 
 import Images from '@/Images';
-import Loading from '@/components/loading';
+import Loader from '@/components/Loader';
 
 const page = () => {
 
@@ -333,7 +333,7 @@ const page = () => {
 
 
     if (isLoading) {
-        return <Loading />;
+        return <Loader />;
     }
 
     return (

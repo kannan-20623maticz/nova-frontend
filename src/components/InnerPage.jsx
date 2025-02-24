@@ -12,7 +12,7 @@ import TopBlackbox from '@/components/TopBlackbox';
 const Lottieimg = dynamic(() => import('lottie-react'), { ssr: false });
 
 import Images from '@/Images';
-import Loading from './loading';
+import Loader from './Loader';
 
 
 const InnerPage = (props) => {
@@ -28,7 +28,7 @@ const InnerPage = (props) => {
     }, []);
 
     if (isLoading) {
-        return <Loading />;
+        return <Loader />;
     }
 
     return (
