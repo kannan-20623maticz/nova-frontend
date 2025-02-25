@@ -17,15 +17,25 @@ import Loader from './Loader';
 
 const InnerPage = (props) => {
 
-    console.log("props_vi--",props);
-    const { page, sectionheadone, sectionheadtwo, bannersection,bannerinamge, topblackbox, multiboxone,multiboxoneimage, multiboxtwo, multiboxtwoimage,footblackbox } = props;
-    console.log("bannersection_bannersection",multiboxtwo);
+    console.log("props_vi--", props);
+    const { page, sectionheadone, sectionheadtwo, bannersection, bannerinamge, topblackbox, multiboxone, multiboxoneimage, multiboxtwo, multiboxtwoimage, footblackbox } = props;
+    console.log("bannersection_bannersection", multiboxtwo);
 
     const [isLoading, setIsLoading] = useState(true);
-    
+
     useEffect(() => {
-        props && setIsLoading(false);
+        if (props) {
+            var timer;
+            timer = setTimeout(() => {
+                setIsLoading(false);
+            }, 500);
+        }
+
+        return () => {
+            clearTimeout(timer);
+        }
     }, []);
+
 
     if (isLoading) {
         return <Loader />;
@@ -59,10 +69,10 @@ const InnerPage = (props) => {
                         <Col xs={12} sm={12} md={12} lg={6}>
                             <div className="bannerimgbox">
                                 {/* {page !== "community" && */}
-                                    <>
-                                        {(page === "creators" || page === "dao") && <Lottieimg animationData={bannerinamge?.dataimg} loop={true} />}
-                                        {(page === "fans" || page === "community") && <Image src={bannerinamge?.dataimg} alt={bannersection?.heading ? bannersection?.heading : "Banner image"} className="img-fluid" loading="eager" />}
-                                    </>
+                                <>
+                                    {(page === "creators" || page === "dao") && <Lottieimg animationData={bannerinamge?.dataimg} loop={true} />}
+                                    {(page === "fans" || page === "community") && <Image src={bannerinamge?.dataimg} alt={bannersection?.heading ? bannersection?.heading : "Banner image"} className="img-fluid" loading="eager" />}
+                                </>
                                 {/* } */}
                                 {/* {page === "community" && <video className="communityvid" autoPlay={true} loop={true} muted={true}>
                                     <source src="/assets/images/community/community.mp4" type="video/mp4" />
