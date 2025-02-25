@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import { Col, Container, Row } from 'react-bootstrap'
 import dynamic from 'next/dynamic';
@@ -25,6 +25,7 @@ const page = () => {
     ]);
     const [cmsData, setCmsData] = useState("");
     const [isLoading, setIsLoading] = useState(true);
+    const [status, setStatus] = useState(false);
     console.log("cms_data", cmsData);
 
     const getCmsData = async () => {
@@ -33,7 +34,9 @@ const page = () => {
             console.log("frontend_getData_cms", getData);
             if (getData.status) {
                 setCmsData(getData.data.data);
-                setIsLoading(false);
+                setStatus(getData.status);
+                getData.status && dataShows();
+                // setIsLoading(false);
             }
         } catch (e) {
             console.log("getCmsData_err", e);
@@ -47,6 +50,15 @@ const page = () => {
             behavior: "smooth",
         });
     }, []);
+
+
+    const dataShows = useCallback(() => {
+        let timer;
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+            setIsLoading(false);
+        }, 500);
+    }, [status]);
 
 
     if (isLoading) {

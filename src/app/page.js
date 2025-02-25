@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
 import Image from 'next/image';
 import { Accordion, Col, Container, Form, InputGroup, Row } from 'react-bootstrap'
@@ -20,6 +20,7 @@ const page = () => {
   const [cmsData, setCmsData] = useState("");
   console.log("cms", cmsData);
   const [isLoading, setIsLoading] = useState(true);
+  const [status, setStatus] = useState(false);
   const [sectiontwoborderbox] = useState([
     {
       boximg: Images.roundimgone,
@@ -470,7 +471,9 @@ const page = () => {
       console.log("frontend_getData_cms", getData);
       if (getData.status) {
         setCmsData(getData.data.data);
-        setIsLoading(false);
+        setStatus(getData.status);
+        getData.status && dataShows();
+        // setIsLoading(false);
       }
     } catch (e) {
       console.log("getCmsData_err", e);
@@ -486,6 +489,13 @@ const page = () => {
   }, []);
 
 
+  const dataShows = useCallback(() => {
+    let timer;
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 500);
+  }, [status]);
 
 
 
