@@ -1149,11 +1149,12 @@ video {
   font-size: 14px;
   line-height: 22px;
   font-weight: 600;
-  width: 140px;
+  /* width: 140px; */
   position: absolute;
   text-align: center;
   top: 32%;
-  left: 21%;
+  left: 25%;
+  /* left: 21%; */
 }
 
 .sectionsix .sectionsix_centercontent.two {
@@ -1162,12 +1163,14 @@ video {
   left: 0;
   right: 0;
   margin: auto;
+  width: max-content;
 }
 
 .sectionsix .sectionsix_centercontent.three {
   top: 32%;
   left: auto;
-  right: 19%;
+  right: 24%;
+  /* right: 19%; */
 }
 
 /* .homepage .sectionseven {
@@ -2241,6 +2244,53 @@ video {
     display: none;
   }
 
+  .sectionsix .sectionsix_centerboximgbox {
+    max-width: 650px;
+    margin-top: 80px;
+  }
+
+  .offcanvas .nav-link {
+    font-size: 18px;
+  }
+
+  .sectionsix .sectionsix_centercontent {
+    /* width: 120px; */
+    text-align: start;
+    left: 22vw;
+    font-size: 2vw;
+    line-height: 3vw;
+  }
+
+  .sectionsix .sectionsix_centercontent.three {
+    right: 21vw;
+  }
+
+  .sectionsix .sectionsix_centercontent.two {
+    text-align: center;
+  }
+
+  .sectionsix .sectionsix_centerboxhead {
+    position: absolute;
+  }
+
+  .sectionsix .sectionsix_centerboxheadone {
+    left: 0;
+    top: 0;
+  }
+
+  .sectionsix .sectionsix_centerboxheadtwo {
+    right: 0;
+    top: 0;
+  }
+
+  .sectionsix .sectionsix_centerboxheadthree {
+    left: 0;
+    right: 0;
+    bottom: -40px;
+    width: max-content;
+    margin: auto;
+  }
+
 }
 
 @media (768px <= width <= 991px) {
@@ -2320,18 +2370,18 @@ video {
   }
 
   .sectionsix .sectionsix_centercontent {
-    font-size: 10px;
-    line-height: 16px;
-    width: 100px;
+    /* font-size: 10px;
+    line-height: 16px; */
+    /* width: 70px; */
   }
 
-  .sectionsix .sectionsix_centercontent.one {
+  /* .sectionsix .sectionsix_centercontent.one {
     left: 18%;
-  }
+  } */
 
-  .sectionsix .sectionsix_centercontent.three {
+  /* .sectionsix .sectionsix_centercontent.three {
     right: 16%;
-  }
+  } */
 
   .marketplacepage .sectiontwo .borderbox {
     padding: 30px;
@@ -2357,6 +2407,35 @@ video {
 
   .sectiontwo_leftrightbox .starlist li::before {
     top: 7px;
+  }
+
+  .sectionfive .section-title {
+    font-size: 24px;
+    line-height: 35px;
+  }
+
+  .sectionsix .sectionsix_centercontent {
+    font-size: 2.2vw;
+    line-height: 3.2vw;
+  } 
+
+  .sectionsix .sectionsix_centerboxhead {
+    font-size: 22px;
+    line-height: 30px;
+  }
+
+  .sectionsix .sectionsix_centerboxheadone {
+    top: -15px;
+    left: 10px;
+  }
+
+  .sectionsix .sectionsix_centerboxheadtwo {
+    top: -30px;
+    right: 10px;
+  }
+
+  .sectionsix .sectionsix_centerbox {
+    margin: 30px 0px 20px;
   }
 }
 

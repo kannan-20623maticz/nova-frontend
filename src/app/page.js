@@ -710,24 +710,30 @@ const page = () => {
           </Row>
           <div className="sectionsix_centerbox">
             <Row className="align-items-center">
-              <Col xs={12} sm={12} md={12} lg={2} xl={3} className="mb40">
+              <Col xs={12} sm={12} md={12} lg={2} xl={3} className="mb40 d-none d-lg-block">
                 <p className="paracontent sectionsix_centerboxhead text-darkblue fntoswald">Mint & Sell</p>
               </Col>
               <Col xs={12} sm={12} md={12} lg={8} xl={6} className="mb40">
                 <div className="sectionsix_centerboximgbox">
                   <Lottieimg animationData={Images.ecosystemarrows} loop={true} />
                   {/* <Image src={Images.ecosystemcircle} alt="NOVA Ecosystem" className="img-fluid sectionsix_centerboximg" /> */}
-                  <p className="paracontent sectionsix_centercontent one">MEMBERSHIP MARKETPLACE</p>
+                  <p className="paracontent sectionsix_centerboxhead sectionsix_centerboxheadone text-darkblue fntoswald d-lg-none">Mint & Sell</p>
+                  <p className="paracontent sectionsix_centerboxhead sectionsix_centerboxheadtwo text-purple fntoswald d-lg-none">Create & <br/> Connect</p>
+                  <p className="paracontent sectionsix_centerboxhead sectionsix_centerboxheadthree text-teal fntoswald d-lg-none">Earn & Own</p>
+
+                  <p className="paracontent sectionsix_centercontent one">MEMBERSHIP <br /> MARKETPLACE</p>
                   <p className="paracontent sectionsix_centercontent two">WALLET</p>
-                  <p className="paracontent sectionsix_centercontent three">SOCIAL COMMUNITY & CREATOR HUB</p>
+                  <p className="paracontent sectionsix_centercontent three">
+                    SOCIAL <br /> COMMUNITY <br /> & CREATOR <br /> HUB
+                  </p>
                 </div>
               </Col>
-              <Col xs={12} sm={12} md={12} lg={2} xl={3}>
+              <Col xs={12} sm={12} md={12} lg={2} xl={3} className="d-none d-lg-block">
                 <p className="paracontent sectionsix_centerboxhead text-purple fntoswald">Create & Connect</p>
               </Col>
             </Row>
           </div>
-          <p className="paracontent sectionsix_centerboxhead text-teal fntoswald">Earn & Own</p>
+          <p className="paracontent sectionsix_centerboxhead d-none d-lg-block text-teal fntoswald">Earn & Own</p>
         </Container>
       </section>
       <section className="sectionseven">
