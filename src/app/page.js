@@ -9,7 +9,7 @@ import Link from 'next/link';
 // import Lottie from 'lottie-react';
 import BoxContents from '@/components/BoxContents';
 import FlowBoxContents from '@/components/FlowBoxContents';
-import { getCms } from "../action/cmsAction";
+import { Newsletter, getCms } from "../action/cmsAction";
 
 const Lottieimg = dynamic(() => import('lottie-react'), { ssr: false });
 
@@ -19,6 +19,11 @@ import Loader from "@/components/Loader";
 const page = () => {
   const [cmsData, setCmsData] = useState("");
   console.log("cms", cmsData);
+  const [email, setEmail] = useState("")
+  console.log("dscdscd",email);
+  const [error, setError] = useState("")
+
+
   const [isLoading, setIsLoading] = useState(true);
   const [status, setStatus] = useState(false);
   const [sectiontwoborderbox] = useState([
@@ -479,6 +484,23 @@ const page = () => {
       console.log("getCmsData_err", e);
     }
   }
+
+  const submit = async() => {
+
+    let emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,6}))$/;
+     if (email == "" || email == undefined || email == null) {
+       setError("REQUIRED")
+     } else if (!(emailRegex.test(email))) {
+       setError("Invalid email")
+     }else{
+       setError("")
+   }
+   const getData = await Newsletter({ email: email.toLocaleLowerCase() });
+
+
+
+  }
+
 
   useEffect(() => {
     getCmsData()
@@ -1329,10 +1351,13 @@ const page = () => {
                           <Form.Control
                             aria-label="Subscribe Newsletter"
                             aria-describedby="news"
+                            onChange={(e) => setEmail(e.target.value)}
                           />
-                          <InputGroup.Text id="news">
-                            <button type="button" className="btn sitebtn greenbtn fw600">Subscribe</button>
+                          <InputGroup.Text id="news" >
+                            <button type="button" className="btn sitebtn greenbtn fw600" onClick={() => submit()} >Subscribe</button>
                           </InputGroup.Text>
+
+                        
                         </InputGroup>
                       </Form>
                       <p className="paracontent text-grey">We promise not to spam you !</p>
