@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import { Col, Container, Row } from 'react-bootstrap'
 import dynamic from 'next/dynamic';
@@ -104,6 +104,21 @@ const page = () => {
       setIsLoading(false);
     }, 500);
   }, [status]);
+  
+
+  const callbackRef = useCallback((node) => {
+    if(node !== null) {
+      let liContent = node.children[0].children;
+        
+      for(let data of liContent) {
+        if(data.textContent.toLowerCase().includes("no")) {
+          data.classList.add("close");
+        } else {
+          data.classList.add("check")
+        }
+      }
+    }
+  }, []);
 
 
   if (isLoading) {
@@ -146,15 +161,15 @@ const page = () => {
             <Row className="align-items-center">
               <Col xs={12} sm={12} md={12} lg={6} className="mb40">
                 <h2 className="section-title mb-3">
-                  {cmsData && cmsData?.content?.[1].description}
+                  {cmsData && cmsData?.content?.[1].heading}                  
                 </h2>
                 <p className="paracontent text-skyblue">
-                  {cmsData && cmsData?.content?.[1].heading}
-
+                  {cmsData && cmsData?.content?.[1].description}
                 </p>
                 <div
                   dangerouslySetInnerHTML={{ __html: cmsData && cmsData?.content?.[1].sunediter }}
                   className="sectiontwolistbox mt-4"
+                  ref={callbackRef}
                 >
 
                 </div>
