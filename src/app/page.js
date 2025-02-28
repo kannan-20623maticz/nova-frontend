@@ -826,7 +826,7 @@ const page = () => {
           </div>
         </Container>
       </section>
-      <section className="sectionnine">
+      <section className="sectionnine stars novaearn">
         <Image src={Images.earnownbg} alt="cover" className="img-fluid sectionbgimg" fill />
         <Container>
           <div className="sectionninebox">
@@ -839,15 +839,28 @@ const page = () => {
                 <p className="paracontent text-white">
                   {cmsData && cmsData?.content[4]?.card[2]?.description}
                 </p>
-                <ul className="mt-3 mb-4 sectionnine_earnownul">
-                  {
+                {/* <ul className="mt-3 mb-4 sectionnine_earnownul"> */}
+                  {/* {
                     earnownli.map((eo, i) => (
                       <li className="starlist" key={i}>
                         <p className="paracontent text-lightgreen">{eo.content}</p>
                       </li>
                     ))
+                  } */}
+                  {
+                    // <li className="starlist"> 
+
+                 <div  className="listboxul"
+                  
+                  dangerouslySetInnerHTML={{ __html: cmsData && cmsData?.content[4]?.card[2]?.sunediter }} 
+
+                     ></div>
+
+                  
+                  // </li>
                   }
-                </ul>
+                  
+                {/* </ul> */}
                 <Link href="/" className="btn sitebtn greenbtn">
                   Learnmore
                   <Image src={Images.blackright} alt="Download" className="img-fluid" />

@@ -1416,6 +1416,15 @@ video {
 /* .sectiontwentythree {
   background-image: url("/assets/images/blackboxonebg.webp");
 } */
+.novaearn ul{
+  color: var(--lightgreen) !important;
+  font-size: 17px !important;
+  margin-top: 20px !important;
+  margin-bottom: 25px !important;
+}
+.novaearn ul li p{
+  color: var(--lightgreen) !important; 
+}
 
 .sectiontwentyfour .sectiontwentyfourbox {
   margin-top: 50px;
@@ -1731,7 +1740,26 @@ video {
   position: relative;
 }
 
-.walletpage .sectiontwo ul li::before {
+.walletpage .sectiontwo ul li.close::before, .walletpage .sectiontwo ul li.check::before {
+  content: "";
+  position: absolute;
+  background-image: url("/assets/images/close.webp");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 18px;
+  height: 18px;
+  top: 0;
+  bottom: 0;
+  left: -32px;
+  margin: auto;
+}
+
+.walletpage .sectiontwo ul li.check::before {
+  background-image: url("/assets/images/checked.webp");
+}
+
+/* .walletpage .sectiontwo ul li::before {
   content: "";
   position: absolute;
   background-image: url("/assets/images/close.webp");
@@ -1748,7 +1776,7 @@ video {
 
 .walletpage .sectiontwo ul li:last-child:before {
   background-image: url("/assets/images/checked.webp");
-}
+} */
 
 .walletpage .sectiontwo ul li p {
   font-size: 16px;
