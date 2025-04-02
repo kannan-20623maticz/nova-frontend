@@ -16,7 +16,6 @@ const Lottieimg = dynamic(() => import('lottie-react'), { ssr: false });
 import Images from '@/Images';
 import Loader from "@/components/Loader";
 import ResizeHook from "@/hooks/ResizeHook";
-import BoxAccordion from "@/components/BoxAccordion";
 
 const page = () => {
   const [cmsData, setCmsData] = useState("");
