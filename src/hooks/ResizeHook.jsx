@@ -2,13 +2,15 @@ import { useEffect, useState } from 'react';
 
 const ResizeHook = () => {
 
-    if (typeof window === undefined) {
-        return "";
-    }
-
-    const [width, setWidth] = useState(window.innerWidth);
+    const [width, setWidth] = useState(0);
 
     useEffect(() => {
+
+        if (typeof window === "undefined") {
+            return;
+        }
+
+        setWidth(window.innerWidth);
 
         const handleResize = () => {
             setWidth(window.innerWidth);
@@ -19,7 +21,7 @@ const ResizeHook = () => {
         return () => {
             window.removeEventListener("resize", handleResize);
         }
-    }, [width]);
+    }, []);
 
     return width;
 }
