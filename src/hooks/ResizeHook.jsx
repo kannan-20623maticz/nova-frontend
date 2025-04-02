@@ -2,6 +2,10 @@ import { useEffect, useState } from 'react';
 
 const ResizeHook = () => {
 
+    if (typeof window === undefined) {
+        return "";
+    }
+
     const [width, setWidth] = useState(window.innerWidth);
 
     useEffect(() => {

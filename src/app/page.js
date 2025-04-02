@@ -579,9 +579,11 @@ const page = () => {
   }, [status]);
 
 
-  if (typeof window !== undefined) {
-    var width = ResizeHook();
-  }
+  // if (typeof window !== undefined) {
+  //   var width = ResizeHook();
+  // }
+
+  const width = ResizeHook();
 
   if (status) {
     var firstBoxes;
