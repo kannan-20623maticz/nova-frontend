@@ -1454,7 +1454,6 @@ const page = () => {
             <div className="sectiontwentysixbox mt-5 gridboxthree">
               {/* <BoxContents data={ecosystem} /> */}
               <BoxContents data={(cmsData && cmsData?.content[13]?.card.length > 0) ? cmsData?.content[13]?.card : []} image={ecosystem} page="homepage" />
-              {/* <BoxAccordion boxone={ecoSystemOne} boxtwo={ecoSystemTwo} boxthree={ecoSystemThree} /> */}
             </div>
           </div>
         </Container>
