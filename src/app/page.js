@@ -15,12 +15,14 @@ const Lottieimg = dynamic(() => import('lottie-react'), { ssr: false });
 
 import Images from '@/Images';
 import Loader from "@/components/Loader";
+import ResizeHook from "@/hooks/ResizeHook";
+import BoxAccordion from "@/components/BoxAccordion";
 
 const page = () => {
   const [cmsData, setCmsData] = useState("");
   console.log("cms", cmsData);
   const [email, setEmail] = useState("")
-  console.log("dscdscd",email);
+  console.log("dscdscd", email);
   const [error, setError] = useState("")
 
 
@@ -177,32 +179,90 @@ const page = () => {
     },
   ]);
 
-  const [earnownli] = useState([
+  const [listsboxesone] = useState([
     {
-      content: "Earn with USDC and SOL."
+      listboximg: Images.listimgone,
     },
     {
-      content: "Spend with debit card."
+      listboximg: Images.listimgtwo,
     },
     {
-      content: "Tip your favorite creators or influencers."
+      listboximg: Images.listimgseven,
     },
   ]);
 
-  const [tokenMember] = useState([
+  const [listsboxesonesec] = useState([
     {
-      tokencontent: "Create your Passion in Nova",
+      listboximg: Images.listimgone,
     },
     {
-      tokencontent: "Connect with your peers & build your community",
+      listboximg: Images.listimgthree,
     },
     {
-      tokencontent: "Sell or auction your own NFT Membership Passes in Marketplace",
+      listboximg: Images.listimgfive,
     },
     {
-      tokencontent: "Offer Exclusive content, Group Chat, Video Rooms, Audio Spaces",
+      listboximg: Images.listimgseven,
     },
   ]);
+
+  const [listsboxestwo] = useState([
+    {
+      listboximg: Images.listimgtwo,
+    },
+    {
+      listboximg: Images.listimgfive,
+    },
+  ]);
+
+  const [listsboxestwosec] = useState([
+    {
+      listboximg: Images.listimgtwo,
+    },
+    {
+      listboximg: Images.listimgtwo,
+    },
+    {
+      listboximg: Images.listimgsix
+    },
+  ]);
+
+  const [listsboxesthree] = useState([
+    {
+      listboximg: Images.listimgthree,
+    },
+    {
+      listboximg: Images.listimgsix,
+    },
+  ]);
+
+
+  // const [earnownli] = useState([
+  //   {
+  //     content: "Earn with USDC and SOL."
+  //   },
+  //   {
+  //     content: "Spend with debit card."
+  //   },
+  //   {
+  //     content: "Tip your favorite creators or influencers."
+  //   },
+  // ]);
+
+  // const [tokenMember] = useState([
+  //   {
+  //     tokencontent: "Create your Passion in Nova",
+  //   },
+  //   {
+  //     tokencontent: "Connect with your peers & build your community",
+  //   },
+  //   {
+  //     tokencontent: "Sell or auction your own NFT Membership Passes in Marketplace",
+  //   },
+  //   {
+  //     tokencontent: "Offer Exclusive content, Group Chat, Video Rooms, Audio Spaces",
+  //   },
+  // ]);
 
   const [membership] = useState([
     {
@@ -485,17 +545,17 @@ const page = () => {
     }
   }
 
-  const submit = async() => {
+  const submit = async () => {
 
     let emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,6}))$/;
-     if (email == "" || email == undefined || email == null) {
-       setError("REQUIRED")
-     } else if (!(emailRegex.test(email))) {
-       setError("Invalid email")
-     }else{
-       setError("")
-   }
-   const getData = await Newsletter({ email: email.toLocaleLowerCase() });
+    if (email == "" || email == undefined || email == null) {
+      setError("REQUIRED")
+    } else if (!(emailRegex.test(email))) {
+      setError("Invalid email")
+    } else {
+      setError("")
+    }
+    const getData = await Newsletter({ email: email.toLocaleLowerCase() });
 
 
 
@@ -518,6 +578,49 @@ const page = () => {
       setIsLoading(false);
     }, 500);
   }, [status]);
+
+
+  if (typeof window !== undefined) {
+    var width = ResizeHook();
+  }
+
+  if (status) {
+    var firstBoxes;
+    var secondBoxes;
+    var thirdBoxes;
+
+    var ecoSystemOne;
+    var ecoSystemTwo;
+    var ecoSystemThree;
+
+    if (width > 1200) {
+      (firstBoxes = cmsData?.content[3]?.card.filter((_, index) => index % 3 === 0));
+      (secondBoxes = cmsData?.content[3]?.card.filter((_, index) => index % 3 === 1));
+      (thirdBoxes = cmsData?.content[3]?.card.filter((_, index) => index % 3 === 2));
+      
+      (ecoSystemOne = cmsData?.content[13]?.card.filter((_, index) => index % 3 === 0));
+      (ecoSystemTwo = cmsData?.content[13]?.card.filter((_, index) => index % 3 === 1));
+      (ecoSystemThree = cmsData?.content[13]?.card.filter((_, index) => index % 3 === 2));
+    }
+
+    if (width < 1199) {
+      (firstBoxes = cmsData?.content[3]?.card.filter((_, index) => index % 2 === 0));
+      (secondBoxes = cmsData?.content[3]?.card.filter((_, index) => index % 2 !== 0));
+    }
+
+    if (width < 767) {
+      width < 767 && (firstBoxes = cmsData?.content[3]?.card);
+    }
+
+    // width > 1200 && (firstBoxes = cmsData?.content[3]?.card.filter((_, index) => index % 3 === 0));
+    // width < 1199 && (firstBoxes = cmsData?.content[3]?.card.filter((_, index) => index % 2 === 0));
+    // width > 1200 && (secondBoxes = cmsData?.content[3]?.card.filter((_, index) => index % 3 === 1));
+    // width < 1199 && (secondBoxes = cmsData?.content[3]?.card.filter((_, index) => index % 2 !== 0));
+    // width > 1200 && (thirdBoxes = cmsData?.content[3]?.card.filter((_, index) => index % 3 === 2));
+
+  }
+
+
 
 
 
@@ -649,23 +752,25 @@ const page = () => {
         <Container className="containertwo">
           <div className="blackbox">
             <Row className="justify-content-center">
-              <Col xs={12} sm={12} md={12} lg={6}>
+              <Col xs={12} sm={12} md={12} lg={7} xl={6}>
                 <h2 className="section-title text-center">
                   {cmsData && cmsData?.content[3]?.heading}
                 </h2>
               </Col>
             </Row>
             <div className="listsbox stars mt-5">
-              <Row className="justify-content-center">
-                {
-                  (cmsData?.content?.[3]?.card?.length > 0) ?
-                    cmsData?.content[3]?.card?.map((libox, index) => (
-                      <Col xs={12} sm={12} md={6} lg={6} xl={4} key={index}>
-                        <div className="borderbox">
+              <Accordion>
+                <div>
+                  {
+                    firstBoxes.map((libox, index) => (
+                      <Accordion.Item eventKey={libox.heading} key={libox.heading} className="borderbox">
+                        <Accordion.Header>
                           <div className="d-flex align-items-center gap20">
-                            <Image src={listsboxes[index].listboximg} alt={listsboxes[index].listboxhead} className="img-fluid borderboximg" />
+                            <Image src={width < 767 ? listsboxes[index].listboximg : width < 1199 ? listsboxesonesec[index].listboximg : listsboxesone[index].listboximg} alt={libox.heading} className="img-fluid borderboximg" />
                             <p className="paracontent text-lightgreen fw500 borderboxhead">{libox.heading}</p>
                           </div>
+                        </Accordion.Header>
+                        <Accordion.Body>
                           <p className="paracontent text-white my-3 fw500">{libox.subHeading}</p>
                           <div
                             dangerouslySetInnerHTML={{ __html: libox.sunediter }}
@@ -673,22 +778,104 @@ const page = () => {
                           >
 
                           </div>
-                          {/* <ul className="listboxul">
-                          {
-                            libox.listboxli.map((liboxinn, i) => (
-                              <li className="listboxli starlist" key={i}>
-                                <p className="borderboxdesc paracontent">
-                                  {liboxinn.licontent}
-                                </p>
-                              </li>
-                            ))
-                          }
-                        </ul> */}
-                        </div>
-                      </Col>
-                    )) : ""
+                        </Accordion.Body>
+                      </Accordion.Item>
+                    ))
+                  }
+                </div>
+                {
+                  width > 767 && <div>
+                    {
+                      secondBoxes && secondBoxes.map((libox, index) => (
+                        <Accordion.Item eventKey={libox.heading} key={libox.heading} className="borderbox">
+                          <Accordion.Header>
+                            <div className="d-flex align-items-center gap20">
+                              <Image src={width < 1199 ? listsboxestwosec[index].listboximg : listsboxestwo[index].listboximg} alt={libox.heading} className="img-fluid borderboximg" />
+                              <p className="paracontent text-lightgreen fw500 borderboxhead">{libox.heading}</p>
+                            </div>
+                          </Accordion.Header>
+                          <Accordion.Body>
+                            <p className="paracontent text-white my-3 fw500">{libox.subHeading}</p>
+                            <div
+                              dangerouslySetInnerHTML={{ __html: libox.sunediter }}
+                              className="listboxul"
+                            >
+
+                            </div>
+                          </Accordion.Body>
+                        </Accordion.Item>
+                      ))
+                    }
+                  </div>
                 }
-              </Row>
+
+                {
+                  thirdBoxes && <div>
+                    {
+                      thirdBoxes && thirdBoxes.map((libox, index) => (
+                        <Accordion.Item eventKey={libox.heading} key={libox.heading} className="borderbox">
+                          <Accordion.Header>
+                            <div className="d-flex align-items-center gap20">
+                              <Image src={listsboxesthree[index].listboximg} alt={libox.heading} className="img-fluid borderboximg" />
+                              <p className="paracontent text-lightgreen fw500 borderboxhead">{libox.heading}</p>
+                            </div>
+                          </Accordion.Header>
+                          <Accordion.Body>
+                            <p className="paracontent text-white my-3 fw500">{libox.subHeading}</p>
+                            <div
+                              dangerouslySetInnerHTML={{ __html: libox.sunediter }}
+                              className="listboxul"
+                            >
+
+                            </div>
+                          </Accordion.Body>
+                        </Accordion.Item>
+                      ))
+                    }
+                  </div>
+                }
+
+
+                {/* <Row className="justify-content-center">
+                  {
+                    (cmsData?.content?.[3]?.card?.length > 0) ?
+                      cmsData?.content[3]?.card?.map((libox, index) => (
+                        <Col xs={12} sm={12} md={6} lg={6} xl={4} key={index}>
+                          <div className="borderbox">
+                            <Accordion.Item eventKey={index} className="borderbox">
+                              <Accordion.Header>
+                                <div className="d-flex align-items-center gap20">
+                                  <Image src={listsboxes[index].listboximg} alt={listsboxes[index].listboxhead} className="img-fluid borderboximg" />
+                                  <p className="paracontent text-lightgreen fw500 borderboxhead">{libox.heading}</p>
+                                </div>
+                              </Accordion.Header>
+                              <Accordion.Body>
+                                <p className="paracontent text-white my-3 fw500">{libox.subHeading}</p>
+                                <div
+                                  dangerouslySetInnerHTML={{ __html: libox.sunediter }}
+                                  className="listboxul"
+                                >
+
+                                </div>
+                              </Accordion.Body>
+                            </Accordion.Item>
+                            <ul className="listboxul">
+                              {
+                                libox.listboxli.map((liboxinn, i) => (
+                                  <li className="listboxli starlist" key={i}>
+                                    <p className="borderboxdesc paracontent">
+                                      {liboxinn.licontent}
+                                    </p>
+                                  </li>
+                                ))
+                              }
+                            </ul>
+                          </div>
+                        </Col>
+                      )) : ""
+                  }
+                </Row> */}
+              </Accordion>
             </div>
           </div>
         </Container>
@@ -725,7 +912,7 @@ const page = () => {
         <Container>
           <Row className="justify-content-center">
             <Col xs={12} sm={12} md={12} lg={8}>
-              <h2 className="section-title text-center text-lightyellow fw700">
+              <h2 className="section-title text-center fw700">
                 The NOVA Ecosystem
               </h2>
             </Col>
@@ -733,15 +920,15 @@ const page = () => {
           <div className="sectionsix_centerbox">
             <Row className="align-items-center">
               <Col xs={12} sm={12} md={12} lg={2} xl={3} className="mb40 d-none d-lg-block">
-                <p className="paracontent sectionsix_centerboxhead text-darkblue fntoswald">Mint & Sell</p>
+                <p className="paracontent sectionsix_centerboxhead text-skybluetwo fntoswald">Mint & Sell</p>
               </Col>
               <Col xs={12} sm={12} md={12} lg={8} xl={6} className="mb40">
                 <div className="sectionsix_centerboximgbox">
                   <Lottieimg animationData={Images.ecosystemarrows} loop={true} />
                   {/* <Image src={Images.ecosystemcircle} alt="NOVA Ecosystem" className="img-fluid sectionsix_centerboximg" /> */}
-                  <p className="paracontent sectionsix_centerboxhead sectionsix_centerboxheadone text-darkblue fntoswald d-lg-none">Mint & Sell</p>
-                  <p className="paracontent sectionsix_centerboxhead sectionsix_centerboxheadtwo text-purple fntoswald d-lg-none">Create & <br/> Connect</p>
-                  <p className="paracontent sectionsix_centerboxhead sectionsix_centerboxheadthree text-teal fntoswald d-lg-none">Earn & Own</p>
+                  <p className="paracontent sectionsix_centerboxhead sectionsix_centerboxheadone text-skybluetwo fntoswald d-lg-none">Mint & Sell</p>
+                  <p className="paracontent sectionsix_centerboxhead sectionsix_centerboxheadtwo text-purpletwo fntoswald d-lg-none">Create & <br /> Connect</p>
+                  <p className="paracontent sectionsix_centerboxhead sectionsix_centerboxheadthree text-yellowtwo fntoswald d-lg-none">Earn & Own</p>
 
                   <p className="paracontent sectionsix_centercontent one">MEMBERSHIP <br /> MARKETPLACE</p>
                   <p className="paracontent sectionsix_centercontent two">WALLET</p>
@@ -751,11 +938,11 @@ const page = () => {
                 </div>
               </Col>
               <Col xs={12} sm={12} md={12} lg={2} xl={3} className="d-none d-lg-block">
-                <p className="paracontent sectionsix_centerboxhead text-purple fntoswald">Create & Connect</p>
+                <p className="paracontent sectionsix_centerboxhead text-purpletwo fntoswald">Create & Connect</p>
               </Col>
             </Row>
           </div>
-          <p className="paracontent sectionsix_centerboxhead d-none d-lg-block text-teal fntoswald">Earn & Own</p>
+          <p className="paracontent sectionsix_centerboxhead d-none d-lg-block text-yellowtwo fntoswald">Earn & Own</p>
         </Container>
       </section>
       <section className="sectionseven">
@@ -765,12 +952,12 @@ const page = () => {
             <Row className="align-items-center">
               <Col xs={12} sm={12} md={12} lg={6} className="mb40">
                 <h2 className="section-title mb-2">{cmsData && cmsData?.content[4]?.card[0]?.heading} </h2>
-                <p className="paracontent text-lightgreen text-uppercase fw500 mb-3">
+                <p className="paracontent text-skybluetwo text-uppercase fw500 mb-3">
                   {cmsData && cmsData?.content[4]?.card[0]?.subHeading}                </p>
                 <p className="paracontent mb-4 text-white">
                   {cmsData && cmsData?.content[4]?.card[0]?.description}
                 </p>
-                <Link href="/" className="btn sitebtn rotateicon greenbtn">
+                <Link href="/" className="btn sitebtn rotateicon skybluetwobtn">
                   Learnmore
                   <Image src={Images.downloadright} alt="Download" className="img-fluid" width={30} height={30} />
                 </Link>
@@ -798,27 +985,27 @@ const page = () => {
               </Col>
               <Col xs={12} sm={12} md={12} lg={6} className="mb40">
                 <h2 className="section-title mb-2">{cmsData && cmsData?.content[4]?.card[1]?.heading}</h2>
-                <p className="paracontent text-mediumblue text-uppercase fw500 mb-3">
+                <p className="paracontent text-purpletwo text-uppercase fw500 mb-3">
                   {cmsData && cmsData?.content[4]?.card[1]?.subHeading}                </p>
                 <p className="paracontent mb-4 text-white">
                   {cmsData && cmsData?.content[4]?.card[1]?.description}
                 </p>
                 <div className="d-flex align-items-center flex-wrap gap-3">
-                  <Link href="/community" className="btn sitebtn blueoutlinebtn">
+                  <Link href="/community" className="btn sitebtn purpleoutlinebtn">
                     Community
-                    <Image src={Images.blueright} alt="Right Arrow" className="img-fluid" />
+                    <Image src={Images.whiteright} alt="Right Arrow" className="img-fluid" />
                   </Link>
-                  <Link href="/creators" className="btn sitebtn blueoutlinebtn">
+                  <Link href="/creators" className="btn sitebtn purpleoutlinebtn">
                     Creators
-                    <Image src={Images.blueright} alt="Right Arrow" className="img-fluid" />
+                    <Image src={Images.whiteright} alt="Right Arrow" className="img-fluid" />
                   </Link>
-                  <Link href="/fans" className="btn sitebtn blueoutlinebtn">
+                  <Link href="/fans" className="btn sitebtn purpleoutlinebtn">
                     Fans
-                    <Image src={Images.blueright} alt="Right Arrow" className="img-fluid" />
+                    <Image src={Images.whiteright} alt="Right Arrow" className="img-fluid" />
                   </Link>
-                  <Link href="/dao" className="btn sitebtn blueoutlinebtn">
+                  <Link href="/dao" className="btn sitebtn purpleoutlinebtn">
                     DAO’s
-                    <Image src={Images.blueright} alt="Right Arrow" className="img-fluid" />
+                    <Image src={Images.whiteright} alt="Right Arrow" className="img-fluid" />
                   </Link>
                 </div>
               </Col>
@@ -833,35 +1020,35 @@ const page = () => {
             <Row className="align-items-center">
               <Col xs={12} sm={12} md={12} lg={6} className="mb40">
                 <h2 className="section-title mb-2">{cmsData && cmsData?.content[4]?.card[2]?.heading}</h2>
-                <p className="paracontent text-lightgreen text-uppercase fw500 mb-3">
+                <p className="paracontent text-yellowtwo text-uppercase fw500 mb-3">
                   {cmsData && cmsData?.content[4]?.card[2]?.subHeading}
                 </p>
                 <p className="paracontent text-white">
                   {cmsData && cmsData?.content[4]?.card[2]?.description}
                 </p>
                 {/* <ul className="mt-3 mb-4 sectionnine_earnownul"> */}
-                  {/* {
+                {/* {
                     earnownli.map((eo, i) => (
                       <li className="starlist" key={i}>
                         <p className="paracontent text-lightgreen">{eo.content}</p>
                       </li>
                     ))
                   } */}
-                  {
-                    // <li className="starlist"> 
+                {
+                  // <li className="starlist"> 
 
-                 <div  className="listboxul"
-                  
-                  dangerouslySetInnerHTML={{ __html: cmsData && cmsData?.content[4]?.card[2]?.sunediter }} 
+                  <div className="listboxul"
 
-                     ></div>
+                    dangerouslySetInnerHTML={{ __html: cmsData && cmsData?.content[4]?.card[2]?.sunediter }}
 
-                  
+                  ></div>
+
+
                   // </li>
-                  }
-                  
+                }
+
                 {/* </ul> */}
-                <Link href="/" className="btn sitebtn greenbtn">
+                <Link href="/" className="btn sitebtn yellowtwobtn">
                   Learnmore
                   <Image src={Images.blackright} alt="Download" className="img-fluid" />
                 </Link>
@@ -1266,8 +1453,8 @@ const page = () => {
             </Row>
             <div className="sectiontwentysixbox mt-5 gridboxthree">
               {/* <BoxContents data={ecosystem} /> */}
-              <BoxContents data={(cmsData && cmsData?.content[13]?.card.length > 0) ? cmsData?.content[13]?.card : []} image={ecosystem} />
-
+              <BoxContents data={(cmsData && cmsData?.content[13]?.card.length > 0) ? cmsData?.content[13]?.card : []} image={ecosystem} page="homepage" />
+              {/* <BoxAccordion boxone={ecoSystemOne} boxtwo={ecoSystemTwo} boxthree={ecoSystemThree} /> */}
             </div>
           </div>
         </Container>
@@ -1370,7 +1557,7 @@ const page = () => {
                             <button type="button" className="btn sitebtn greenbtn fw600" onClick={() => submit()} >Subscribe</button>
                           </InputGroup.Text>
 
-                        
+
                         </InputGroup>
                       </Form>
                       <p className="paracontent text-grey">We promise not to spam you !</p>
