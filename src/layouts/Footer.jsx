@@ -1,11 +1,43 @@
 "use client";
+import BackToTop from '@/components/BackToTop';
 import Images from '@/Images';
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 
 const Footer = () => {
+
+    const [backtop, setBacktop] = useState(false);
+
+    useEffect(() => {
+        if(typeof window === "undefined") {
+            return;
+        }
+
+        const handleScroll = () => {
+            window.scrollY > 500 ? setBacktop(true) : setBacktop(false);            
+        }
+
+        window.addEventListener("scroll", handleScroll);
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        }
+    }, []);
+
+    const handleClick = () => {
+        if(typeof window !== "undefined") {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        };
+    }
+
+    
+    
+
     return (
         <footer className="footer">
             <div className="footerbox">
@@ -56,6 +88,7 @@ const Footer = () => {
                 </Container>
             </div>
             <p className="foot-text">© 2025 Nova. All rights reserved.</p>
+            <BackToTop show={backtop} handleClick={handleClick} />
         </footer>
     )
 }

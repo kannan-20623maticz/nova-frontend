@@ -16,6 +16,7 @@ const Lottieimg = dynamic(() => import('lottie-react'), { ssr: false });
 import Images from '@/Images';
 import Loader from "@/components/Loader";
 import ResizeHook from "@/hooks/ResizeHook";
+import BoxAccordion from "@/components/BoxAccordion";
 
 const page = () => {
   const [cmsData, setCmsData] = useState("");
@@ -236,6 +237,71 @@ const page = () => {
   ]);
 
 
+
+  const [boxesone] = useState([
+    {
+      boximg: Images.ecosystemone,
+    },
+    {
+      boximg: Images.ecosystemfour,
+    },
+    {
+      boximg: Images.ecosystemseven,
+    },
+  ]);
+
+  const [boxesonesec] = useState([
+    {
+      boximg: Images.ecosystemone,
+    },
+    {
+      boximg: Images.ecosystemthree,
+    },
+    {
+      boximg: Images.ecosystemfive,
+    },
+    {
+      boximg: Images.ecosystemseven,
+    },
+  ]);
+
+  const [boxestwo] = useState([
+    {
+      boximg: Images.ecosystemtwo,
+    },
+    {
+      boximg: Images.ecosystemfive,
+    },
+    {
+      boximg: Images.ecosystemeight,
+    },
+  ]);
+
+  const [boxestwosec] = useState([
+    {
+      boximg: Images.ecosystemtwo,
+    },
+    {
+      boximg: Images.ecosystemfour,
+    },
+    {
+      boximg: Images.ecosystemsix
+    },
+    {
+      boximg: Images.ecosystemeight
+    },
+  ]);
+
+  const [boxesthree] = useState([
+    {
+      boximg: Images.ecosystemthree,
+    },
+    {
+      boximg: Images.ecosystemsix,
+    },
+  ]);
+
+
   // const [earnownli] = useState([
   //   {
   //     content: "Earn with USDC and SOL."
@@ -414,42 +480,42 @@ const page = () => {
 
   const [ecosystem] = useState([
     {
-      dataimg: Images.ecosystemone,
+      boximg: Images.ecosystemone,
       datahead: "Creator Workspace",
       datadesc: "Streamline your creative process with a dedicated workspace to plan, collaborate, and manage your projects. From content scheduling to performance insights, this will be your go-to hub for productivity and growth."
     },
     {
-      dataimg: Images.ecosystemtwo,
+      boximg: Images.ecosystemtwo,
       datahead: "Social Shopping",
       datadesc: "Turn connections into commerce. Social Shopping will allow you to explore, buy, and sell directly within the NOVA ecosystem, creating a seamless shopping experience tied to your community."
     },
     {
-      dataimg: Images.ecosystemthree,
+      boximg: Images.ecosystemthree,
       datahead: "Social Experiences and Events",
       datadesc: "Fans hold their passes in their wallets, allowing them to sell, trade, or keep them as valuable assets."
     },
     {
-      dataimg: Images.ecosystemfour,
+      boximg: Images.ecosystemfour,
       datahead: "Brand Partnerships",
       datadesc: "Fans hold their passes in their wallets, allowing them to sell, trade, or keep them as valuable assets."
     },
     {
-      dataimg: Images.ecosystemfive,
+      boximg: Images.ecosystemfive,
       datahead: "Job Profiles and Search",
       datadesc: "Fans hold their passes in their wallets, allowing them to sell, trade, or keep them as valuable assets."
     },
     {
-      dataimg: Images.ecosystemsix,
+      boximg: Images.ecosystemsix,
       datahead: "Loyalty Perks and Points",
       datadesc: "Fans hold their passes in their wallets, allowing them to sell, trade, or keep them as valuable assets."
     },
     {
-      dataimg: Images.ecosystemseven,
+      boximg: Images.ecosystemseven,
       datahead: "Real World Assets",
       datadesc: "Fans hold their passes in their wallets, allowing them to sell, trade, or keep them as valuable assets."
     },
     {
-      dataimg: Images.ecosystemeight,
+      boximg: Images.ecosystemeight,
       datahead: "Multichain Wallet",
       datadesc: "Fans hold their passes in their wallets, allowing them to sell, trade, or keep them as valuable assets."
     },
@@ -579,10 +645,6 @@ const page = () => {
   }, [status]);
 
 
-  // if (typeof window !== undefined) {
-  //   var width = ResizeHook();
-  // }
-
   const width = ResizeHook();
 
   if (status) {
@@ -607,11 +669,15 @@ const page = () => {
     if (width < 1199) {
       (firstBoxes = cmsData?.content[3]?.card.filter((_, index) => index % 2 === 0));
       (secondBoxes = cmsData?.content[3]?.card.filter((_, index) => index % 2 !== 0));
+      (ecoSystemOne = cmsData?.content[13]?.card.filter((_, index) => index % 2 === 0));
+      (ecoSystemTwo = cmsData?.content[13]?.card.filter((_, index) => index % 2 !== 0));
     }
 
     if (width < 767) {
-      width < 767 && (firstBoxes = cmsData?.content[3]?.card);
+      (firstBoxes = cmsData?.content[3]?.card);
+      (ecoSystemOne = cmsData?.content[13]?.card);
     }
+    
 
     // width > 1200 && (firstBoxes = cmsData?.content[3]?.card.filter((_, index) => index % 3 === 0));
     // width < 1199 && (firstBoxes = cmsData?.content[3]?.card.filter((_, index) => index % 2 === 0));
@@ -749,7 +815,7 @@ const page = () => {
           </div>
         </Container>
       </section>
-      <section className="sectionfour sectionblackbg">
+      <section className="sectionfour sectionblackbg dropaccordion">
         <Container className="containertwo">
           <div className="blackbox">
             <Row className="justify-content-center">
@@ -766,7 +832,7 @@ const page = () => {
                     firstBoxes.map((libox, index) => (
                       <Accordion.Item eventKey={libox.heading} key={libox.heading} className="borderbox">
                         <Accordion.Header>
-                          <div className="d-flex align-items-center gap20">
+                          <div className="d-flex align-items-center gap20 flex-grow-1">
                             <Image src={width < 767 ? listsboxes[index].listboximg : width < 1199 ? listsboxesonesec[index].listboximg : listsboxesone[index].listboximg} alt={libox.heading} className="img-fluid borderboximg" />
                             <p className="paracontent text-lightgreen fw500 borderboxhead">{libox.heading}</p>
                           </div>
@@ -790,7 +856,7 @@ const page = () => {
                       secondBoxes && secondBoxes.map((libox, index) => (
                         <Accordion.Item eventKey={libox.heading} key={libox.heading} className="borderbox">
                           <Accordion.Header>
-                            <div className="d-flex align-items-center gap20">
+                            <div className="d-flex align-items-center gap20 flex-grow-1">
                               <Image src={width < 1199 ? listsboxestwosec[index].listboximg : listsboxestwo[index].listboximg} alt={libox.heading} className="img-fluid borderboximg" />
                               <p className="paracontent text-lightgreen fw500 borderboxhead">{libox.heading}</p>
                             </div>
@@ -816,7 +882,7 @@ const page = () => {
                       thirdBoxes && thirdBoxes.map((libox, index) => (
                         <Accordion.Item eventKey={libox.heading} key={libox.heading} className="borderbox">
                           <Accordion.Header>
-                            <div className="d-flex align-items-center gap20">
+                            <div className="d-flex align-items-center gap20 flex-grow-1">
                               <Image src={listsboxesthree[index].listboximg} alt={libox.heading} className="img-fluid borderboximg" />
                               <p className="paracontent text-lightgreen fw500 borderboxhead">{libox.heading}</p>
                             </div>
@@ -1112,7 +1178,7 @@ const page = () => {
                 </div>
               </Col>
               <Col xs={12} sm={12} md={12} lg={6} className="mb40">
-                <h2 className="section-title section-titlebig text-lightgreen mb-2"> {cmsData && cmsData?.content[6]?.heading}  </h2>
+                <h2 className="section-title section-titlebig text-lightgreen mb-3"> {cmsData && cmsData?.content[6]?.heading}  </h2>
                 <p className="section-titletwo mb-3">
                   {cmsData && cmsData?.content[6]?.subHeading}                 </p>
                 <p className="paracontent mb-3 text-white">
@@ -1440,11 +1506,11 @@ const page = () => {
           </Row>
         </Container>
       </section>
-      <section className="sectiontwentysix sectionblackbg">
+      <section className="sectiontwentysix sectionblackbg dropaccordion">
         <Container className="containertwo">
           <div className="blackbox">
             <Row className="justify-content-center">
-              <Col xs={12} sm={12} md={12} lg={6}>
+              <Col xs={12} sm={12} md={12} lg={7} xl={6}>
                 <h2 className="section-title text-center">
                   {/* <span className="text-lightpurple">Ecosystem Expansion : The Future of</span> <span className="text-lightgreen">NOVA</span> */}
                   <span className="text-lightpurple">{cmsData && cmsData?.content[13]?.heading}  </span> <span className="text-lightgreen"></span>
@@ -1454,7 +1520,8 @@ const page = () => {
             </Row>
             <div className="sectiontwentysixbox mt-5 gridboxthree">
               {/* <BoxContents data={ecosystem} /> */}
-              <BoxContents data={(cmsData && cmsData?.content[13]?.card.length > 0) ? cmsData?.content[13]?.card : []} image={ecosystem} page="homepage" />
+              {/* <BoxContents data={(cmsData && cmsData?.content[13]?.card.length > 0) ? cmsData?.content[13]?.card : []} image={ecosystem} page="homepage" /> */}
+              <BoxAccordion width={width} boxone={ecoSystemOne} boxtwo={ecoSystemTwo} boxthree={ecoSystemThree} listsboxes={ecosystem} boxesone={boxesone} boxesonesec={boxesonesec} boxestwo={boxestwo} boxestwosec={boxestwosec} boxesthree={boxesthree} />
             </div>
           </div>
         </Container>

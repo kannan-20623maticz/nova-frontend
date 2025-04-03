@@ -21,6 +21,7 @@ const Images = {
     listimgsix: require("../public/assets/images/listimgsix.webp"),
     listimgseven: require("../public/assets/images/listimgseven.webp"),
     blueright: require("../public/assets/images/blueright.webp"),
+    whiteright: require("../public/assets/images/whiteright.webp"),
     createconnect: require("../public/assets/images/create-connect.webp"),
     blackright: require("../public/assets/images/blackright.webp"),
     neweraimg: require("../public/assets/images/neweraimg.webp"),
@@ -83,6 +84,7 @@ const Images = {
     bannerbg: require("../public/assets/images/bannerbg.webp"),
     secondbg: require("../public/assets/images/secondbg.webp"),
     greybg: require("../public/assets/images/greybg.webp"),
+    backtop: require("../public/assets/images/backtop.webp"),
 
     explorebgone: require("../public/assets/images/explorebgone.webp"),
     explorebgtwo: require("../public/assets/images/explorebgtwo.webp"),
