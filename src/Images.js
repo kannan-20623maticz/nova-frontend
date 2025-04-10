@@ -17,6 +17,7 @@ const Images = {
     listimgone: require("../public/assets/images/listimgone.webp"),
     listimgtwo: require("../public/assets/images/listimgtwo.webp"),
     listimgthree: require("../public/assets/images/listimgthree.webp"),
+    listimgfour: require("../public/assets/images/listimgfour.webp"),
     listimgfive: require("../public/assets/images/listimgfive.webp"),
     listimgsix: require("../public/assets/images/listimgsix.webp"),
     listimgseven: require("../public/assets/images/listimgseven.webp"),
@@ -85,6 +86,7 @@ const Images = {
     secondbg: require("../public/assets/images/secondbg.webp"),
     greybg: require("../public/assets/images/greybg.webp"),
     backtop: require("../public/assets/images/backtop.webp"),
+    dollar: require("../public/assets/images/dollar.webp"),
 
     explorebgone: require("../public/assets/images/explorebgone.webp"),
     explorebgtwo: require("../public/assets/images/explorebgtwo.webp"),

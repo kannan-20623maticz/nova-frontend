@@ -115,7 +115,7 @@ const page = () => {
     },
     {
       listboxhead: "Social Events & Experiences",
-      listboximg: Images.listimgtwo,
+      listboximg: Images.listimgfour,
       listboxsubhead: "(Creator & Community Hub)",
       listboxli: [
         {
@@ -184,7 +184,7 @@ const page = () => {
       listboximg: Images.listimgone,
     },
     {
-      listboximg: Images.listimgtwo,
+      listboximg: Images.listimgfour,
     },
     {
       listboximg: Images.listimgseven,
@@ -213,6 +213,9 @@ const page = () => {
     {
       listboximg: Images.listimgfive,
     },
+    {
+      listboximg: Images.listimgseven,
+    },
   ]);
 
   const [listsboxestwosec] = useState([
@@ -220,7 +223,7 @@ const page = () => {
       listboximg: Images.listimgtwo,
     },
     {
-      listboximg: Images.listimgtwo,
+      listboximg: Images.listimgfour,
     },
     {
       listboximg: Images.listimgsix
@@ -656,14 +659,24 @@ const page = () => {
     var ecoSystemTwo;
     var ecoSystemThree;
 
+    let arrone = [0, 3];
+    let arrtwo = [1, 4, 6];
+    let arrthree = [2, 5];
+
     if (width > 1200) {
-      (firstBoxes = cmsData?.content[3]?.card.filter((_, index) => index % 3 === 0));
-      (secondBoxes = cmsData?.content[3]?.card.filter((_, index) => index % 3 === 1));
-      (thirdBoxes = cmsData?.content[3]?.card.filter((_, index) => index % 3 === 2));
-      
+
+      (firstBoxes = cmsData?.content[3]?.card.filter((_, index) => arrone.includes(index)));
+      (secondBoxes = cmsData?.content[3]?.card.filter((_, index) => arrtwo.includes(index)));
+      (thirdBoxes = cmsData?.content[3]?.card.filter((_, index) => arrthree.includes(index)));
+
+      // (firstBoxes = cmsData?.content[3]?.card.filter((_, index) => index % 3 === 0));
+      // (secondBoxes = cmsData?.content[3]?.card.filter((_, index) => index % 3 === 1));
+      // (thirdBoxes = cmsData?.content[3]?.card.filter((_, index) => index % 3 === 2));
+
       (ecoSystemOne = cmsData?.content[13]?.card.filter((_, index) => index % 3 === 0));
       (ecoSystemTwo = cmsData?.content[13]?.card.filter((_, index) => index % 3 === 1));
-      (ecoSystemThree = cmsData?.content[13]?.card.filter((_, index) => index % 3 === 2));
+      (ecoSystemThree = cmsData?.content[13]?.card.filter((_, index) => index % 3 === 2));    
+
     }
 
     if (width < 1199) {
@@ -677,7 +690,7 @@ const page = () => {
       (firstBoxes = cmsData?.content[3]?.card);
       (ecoSystemOne = cmsData?.content[13]?.card);
     }
-    
+
 
     // width > 1200 && (firstBoxes = cmsData?.content[3]?.card.filter((_, index) => index % 3 === 0));
     // width < 1199 && (firstBoxes = cmsData?.content[3]?.card.filter((_, index) => index % 2 === 0));
@@ -713,10 +726,16 @@ const page = () => {
                 </h1>
                 <p className="paracontent">
                   {cmsData && cmsData?.content[0]?.description}                </p>
-                <button type="button" className="btn sitebtn">
-                  Download
-                  <Image src={Images.download} alt="Down Arrow" className="img-fluid" />
-                </button>
+                <div className="flexbox gap-3">
+                  <button type="button" className="btn sitebtn">
+                    Download
+                    <Image src={Images.download} alt="Down Arrow" className="img-fluid" />
+                  </button>
+                  <Link href="/marketplace" className="btn sitebtn yellowtwobtn">
+                    Nova Marketplace
+                    <Image src={Images.dollar} alt="Down Arrow" className="img-fluid" />
+                  </Link>
+                </div>
                 <div className="bannersmimgs">
                   <p className="bannerimgtext paracontent">Available On :</p>
                   <div className="d-flex align-items-center mb-3">
@@ -1024,7 +1043,7 @@ const page = () => {
                 <p className="paracontent mb-4 text-white">
                   {cmsData && cmsData?.content[4]?.card[0]?.description}
                 </p>
-                <Link href="/" className="btn sitebtn rotateicon skybluetwobtn">
+                <Link href="/" className="btn sitebtn skybluetwobtn">
                   Learnmore
                   <Image src={Images.downloadright} alt="Download" className="img-fluid" width={30} height={30} />
                 </Link>
@@ -1117,7 +1136,7 @@ const page = () => {
                 {/* </ul> */}
                 <Link href="/" className="btn sitebtn yellowtwobtn">
                   Learnmore
-                  <Image src={Images.blackright} alt="Download" className="img-fluid" />
+                  <Image src={Images.whiteright} alt="Download" className="img-fluid" />
                 </Link>
               </Col>
               <Col xs={12} sm={12} md={12} lg={6}>

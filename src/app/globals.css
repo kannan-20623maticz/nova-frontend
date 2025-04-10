@@ -40,10 +40,14 @@
     --lightorange: #FBABA0;
     --rose: #CA9EF5;
     --darkorange: #FF7A86;
-    --skybluetwo: #00F5FF;
+    --skybluetwo: #6D29E3;
+    --yellowtwo: #0085D1;
+    --purpletwo: #D5356C;
+    --purpleoutlinebtn: #3F1F2A;
+    /* --skybluetwo: #00F5FF;
     --yellowtwo: #F6D15A;
     --purpletwo: #FA36F3;
-    --purpleoutlinebtn: #FA36F333;
+    --purpleoutlinebtn: #FA36F333; */
 }
 
 
@@ -463,13 +467,17 @@ section .container {
 .skybluetwobtn {
   background-color: var(--skybluetwo) !important;
   border-color: var(--skybluetwo) !important;
-  color: var(--black) !important;
+  color: var(--white) !important;
+}
+
+.skybluetwobtn img {
+  filter: invert(1);
 }
 
 .yellowtwobtn {
   background-color: var(--yellowtwo) !important;
   border-color: var(--yellowtwo) !important;
-  color: var(--black) !important;
+  color: var(--white) !important;
 }
 
 .greenbtn img, .skybluebtn img, .lightorangebtn img {
@@ -1261,7 +1269,7 @@ video {
 }
 
 .homepage .sectionnine.stars li::after {
-  background-image: url("/assets/images/staryellow.webp");
+  background-image: url("/assets/images/starblue.webp");
 }
 
 .homepage .sectionten {
